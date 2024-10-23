@@ -1,0 +1,172 @@
+\documentclass[10pt,openany]{book}
+
+% 基础定义
+\def\freefont{} % 使用免费商业字体
+\def\costomizetitlepage{} % 使用自定义扉页titlepage.tex
+% \def\bleed{} % 出血
+
+% 基本内容
+\newcommand{\mytitleen}{Title in English}
+\newcommand{\mytitle}{同人本LaTeX模板}
+\newcommand{\myauthor}{兔子草}
+\newcommand{\mycp}{Alice Bob / Carol David}
+\title{\mytitleen\\\mytitle}
+\author{\myauthor}
+\date{}
+
+\input{formats}
+\usepackage{subfiles}
+
+\begin{document}
+
+\pagestyle{mystyle}
+
+\ifdefined\costomizetitlepage
+    \subfile{titlepage}
+\else
+    \maketitle
+\fi
+
+{\
+\vfill
+\thispagestyle{empty}
+\large
+\setstretch{2}
+
+这只是一个模板，\href{https://zhuty18.github.io/docs/\%E5\%90\%8C\%E4\%BA\%BA\%E6\%96\%87LaTeX\%E6\%8E\%92\%E7\%89\%88\%E6\%95\%99\%E7\%A8\%8B}{\underline{点击此处}}跳转{\LaTeX}同人本排版教程。
+
+\blankline
+
+在禁用freefont时，本模板会使用ctex包的原生字体，能支持Overleaf在线预览。
+
+\begin{center}
+    {\bfseries 但是很丑。}
+\end{center}
+
+更漂亮的版本请参见样例pdf\endnote{即本模板配置好字体后编译得到的结果}。或将本模板下载到本地，配置好字体后启用freefont。
+
+\blankline
+
+\vfill
+
+\normalsize\signature
+
+\vfill
+
+\theendnotes}
+
+\tocgeo
+\tableofcontents
+\thispagestyle{empty}
+
+\cleardoublepage
+\setcounter{page}{1}
+\restoregeometry
+
+\part{假文}
+
+乱数假文（Lorem Ipsum）即排版时使用的无意义填充文本。本模板内含“中文与拉丁字母混合排版”，“纯中文排版”和“纯拉丁字母排版”。
+
+\chapter{混合排版}
+
+由于目前没有中英文混合的Lorem Ipsum包\footnote{对此深感遗憾}可用，直接引用了一篇科普来作为中英文混合的内容填充样例\endnote{本文来源于https://cn.lipsum.com/}。
+
+\section*{正文}
+
+Lorem Ipsum，也称乱数假文或者哑元文本，是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
+
+恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
+
+以下展示了自1500世纪以来使用的标准Lorem Ipsum段落，西塞罗笔下“de Finibus Bonorum et Malorum”章节1.10.32 ， 1.10.33的原著作，以及其1914年译自H. Rackham的英文版本
+
+无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+
+如今互联网提供各种各样版本的Lorem Ipsum段落，但是大多数都多多少少出于刻意幽默或者其他随机插入的荒谬单词而被篡改过了。如果你想取用一段Lorem Ipsum，请确保段落中不含有令人尴尬的不恰当内容。所有网上的Lorem Ipsum生成器都倾向于在必要时重复预先准备的部分，然而这个生成器则是互联网上首个确切的生成器。它使用由超过200个拉丁单词所构造的词典，结合了几个模范句子结构，来生成看起来恰当的Lorem Ipsum。因此，生成出的结果无一例外免于重复，刻意的幽默，以及非典型的词汇等等。
+
+Lorem Ipsum，也称乱数假文或者哑元文本，是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
+
+恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
+
+以下展示了自1500世纪以来使用的标准Lorem Ipsum段落，西塞罗笔下“de Finibus Bonorum et Malorum”章节1.10.32 ， 1.10.33的原著作，以及其1914年译自H. Rackham的英文版本
+
+无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+
+如今互联网提供各种各样版本的Lorem Ipsum段落，但是大多数都多多少少出于刻意幽默或者其他随机插入的荒谬单词而被篡改过了。如果你想取用一段Lorem Ipsum，请确保段落中不含有令人尴尬的不恰当内容。所有网上的Lorem Ipsum生成器都倾向于在必要时重复预先准备的部分，然而这个生成器则是互联网上首个确切的生成器。它使用由超过200个拉丁单词所构造的词典，结合了几个模范句子结构，来生成看起来恰当的Lorem Ipsum。因此，生成出的结果无一例外免于重复，刻意的幽默，以及非典型的词汇等等。
+
+\vfill
+
+\theendnotes
+
+\chapter{纯中文}
+
+本文出自狗屁不通文章生成器\footnote{https://suulnnka.github.io/BullshitGenerator/index.html}。
+
+\section*{正文}
+
+经过上述讨论，拿破仑·希尔在不经意间这样说过，不要等待，时机永远不会恰到好处。这启发了我，这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。叔本华说过一句富有哲理的话，普通人只想到如何度过时间，有才能的人设法利用时间。这句话语虽然很短，但令我浮想联翩。生活中，若中午吃什么出现了，我们就不得不考虑它出现了的事实。我认为，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。一般来讲，我们都必须务必慎重的考虑考虑。而这些并不是完全重要，更加重要的问题是，每个人都不得不面对这些问题。在面对这种问题时，一般来说，问题的关键究竟为何？一般来讲，我们都必须务必慎重的考虑考虑。既然如何，要想清楚，中午吃什么，到底是一种怎么样的存在。既然如此，普列姆昌德曾经提到过，希望的灯一旦熄灭，生活刹那间变成了一片黑暗。这句话语虽然很短，但令我浮想联翩。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。屠格涅夫曾经说过，你想成为幸福的人吗？但愿你首先学会吃得起苦。这句话语虽然很短，但令我浮想联翩。我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。既然如何，所谓中午吃什么，关键是中午吃什么需要如何写。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。中午吃什么，发生了会如何，不发生又会如何。这样看来。
+
+米歇潘说过一句富有哲理的话，生命是一条艰险的峡谷，只有勇敢的人才能通过。这不禁令我深思。韩非曾经说过，内外相应，言行相称。这不禁令我深思。要想清楚，中午吃什么，到底是一种怎么样的存在。塞内加曾经说过，勇气通往天堂，怯懦通往地狱。这启发了我，既然如何，一般来说，我们都知道，只要有意义，那么就必须慎重考虑。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。就我个人来说，中午吃什么对我的意义，不能不说非常重大。我认为，中午吃什么，发生了会如何，不发生又会如何。而这些并不是完全重要，更加重要的问题是，卡耐基曾经说过，我们若已接受最坏的，就再没有什么损失。这启发了我，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。莎士比亚说过一句富有哲理的话，人的一生是短的，但如果卑劣地过这一生，就太长了。这似乎解答了我的疑惑。塞内加曾经提到过，勇气通往天堂，怯懦通往地狱。我希望诸位也能好好地体会这句话。现在，解决中午吃什么的问题，是非常非常重要的。所以，我认为，一般来讲，我们都必须务必慎重的考虑考虑。我们都知道，只要有意义，那么就必须慎重考虑。经过上述讨论，所谓中午吃什么，关键是中午吃什么需要如何写。了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。中午吃什么，发生了会如何，不发生又会如何。在这种困难的抉择下，本人思来想去，寝食难安。海贝尔说过一句富有哲理的话，人生就是学校。在那里，与其说好的教师是幸福，不如说好的教师是不幸。这似乎解答了我的疑惑。我们不得不面对一个非常尴尬的事实，那就是，就我个人来说，中午吃什么对我的意义，不能不说非常重大。我们不得不面对一个非常尴尬的事实，那就是，我认为，而这些并不是完全重要，更加重要的问题是，带着这些问题，我们来审视一下中午吃什么。既然如此，问题的关键究竟为何？所谓中午吃什么，关键是中午吃什么需要如何写。总结的来说，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。莎士比亚说过一句富有哲理的话，人的一生是短的，但如果卑劣地过这一生，就太长了。这启发了我，那么，中午吃什么，到底应该如何实现。现在，解决中午吃什么的问题，是非常非常重要的。所以，文森特·皮尔曾经提到过，改变你的想法，你就改变了自己的世界。这似乎解答了我的疑惑。我认为，在这种困难的抉择下，本人思来想去，寝食难安。一般来说，那么，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。带着这些问题，我们来审视一下中午吃什么。西班牙曾经提到过，自知之明是最难得的知识。我希望诸位也能好好地体会这句话。卡耐基曾经说过，我们若已接受最坏的，就再没有什么损失。这似乎解答了我的疑惑。那么，既然如此，在这种困难的抉择下，本人思来想去，寝食难安。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。从这个角度来看，既然如何，可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。中午吃什么因何而发生？爱迪生在不经意间这样说过，失败也是我需要的，它和成功对我一样有价值。这启发了我，吉格·金克拉说过一句富有哲理的话，如果你能做梦，你就能实现它。这似乎解答了我的疑惑。
+
+塞涅卡曾经说过，生命如同寓言，其价值不在与长短，而在与内容。我希望诸位也能好好地体会这句话。在这种困难的抉择下，本人思来想去，寝食难安。就我个人来说，中午吃什么对我的意义，不能不说非常重大。这样看来，而这些并不是完全重要，更加重要的问题是，对我个人而言，中午吃什么不仅仅是一个重大的事件，还可能会改变我的人生。带着这些问题，我们来审视一下中午吃什么。那么，中午吃什么，到底应该如何实现。奥普拉·温弗瑞曾经说过，你相信什么，你就成为什么样的人。这启发了我，从这个角度来看，中午吃什么，发生了会如何，不发生又会如何。叔本华在不经意间这样说过，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这不禁令我深思。我们不得不面对一个非常尴尬的事实，那就是，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。既然如何，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。这样看来。
+
+叔本华说过一句富有哲理的话，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这不禁令我深思。就我个人来说，中午吃什么对我的意义，不能不说非常重大。米歇潘曾经提到过，生命是一条艰险的峡谷，只有勇敢的人才能通过。带着这句话，我们还要更加慎重的审视这个问题：在这种困难的抉择下，本人思来想去，寝食难安。中午吃什么，发生了会如何，不发生又会如何。塞内加曾经提到过，勇气通往天堂，怯懦通往地狱。我希望诸位也能好好地体会这句话。我们都知道，只要有意义，那么就必须慎重考虑。我认为，带着这些问题，我们来审视一下中午吃什么。中午吃什么，到底应该如何实现。从这个角度来看，从这个角度来看，中午吃什么因何而发生？而这些并不是完全重要，更加重要的问题是，这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。问题的关键究竟为何？别林斯基曾经说过，好的书籍是最贵重的珍宝。带着这句话，我们还要更加慎重的审视这个问题：我认为，从这个角度来看，要想清楚，中午吃什么，到底是一种怎么样的存在。总结的来说，经过上述讨论，一般来说，我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。中午吃什么因何而发生？在这种困难的抉择下，本人思来想去，寝食难安。带着这些问题，我们来审视一下中午吃什么。本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。一般来说，从这个角度来看，一般来说，从这个角度来看，我们不得不面对一个非常尴尬的事实，那就是，了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。问题的关键究竟为何。
+
+可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。既然如何，经过上述讨论，既然如何，现在，解决中午吃什么的问题，是非常非常重要的。所以，既然如此，我们不得不面对一个非常尴尬的事实，那就是，了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。乌申斯基说过一句富有哲理的话，学习是劳动，是充满思想的劳动。我希望诸位也能好好地体会这句话。我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。既然如何，我们都知道，只要有意义，那么就必须慎重考虑。问题的关键究竟为何？我们不得不面对一个非常尴尬的事实，那就是，就我个人来说，中午吃什么对我的意义，不能不说非常重大。既然如此，我们都知道，只要有意义，那么就必须慎重考虑。富兰克林说过一句富有哲理的话，读书是易事，思索是难事，但两者缺一，便全无用处。这启发了我。
+
+在这种困难的抉择下，本人思来想去，寝食难安。我们不得不面对一个非常尴尬的事实，那就是，中午吃什么，到底应该如何实现。经过上述讨论，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。一般来讲，我们都必须务必慎重的考虑考虑。所谓中午吃什么，关键是中午吃什么需要如何写。问题的关键究竟为何？带着这些问题，我们来审视一下中午吃什么。本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。既然如何，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。既然如何，这样看来，从这个角度来看，了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。每个人都不得不面对这些问题。在面对这种问题时，对我个人而言，中午吃什么不仅仅是一个重大的事件，还可能会改变我的人生。莎士比亚在不经意间这样说过，人的一生是短的，但如果卑劣地过这一生，就太长了。带着这句话，我们还要更加慎重的审视这个问题：既然如此，了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。我认为，中午吃什么，发生了会如何，不发生又会如何。了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。就我个人来说，中午吃什么对我的意义，不能不说非常重大。这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。就我个人来说，中午吃什么对我的意义，不能不说非常重大。我们都知道，只要有意义，那么就必须慎重考虑。带着这些问题，我们来审视一下中午吃什么。这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。我认为，博曾经说过，一次失败，只是证明我们成功的决心还够坚强。维带着这句话，我们还要更加慎重的审视这个问题：总结的来说，中午吃什么，到底应该如何实现。这样看来，维龙在不经意间这样说过，要成功不需要什么特别的才能，只要把你能做的小事做得好就行了。这似乎解答了我的疑惑。培根曾经说过，合理安排时间，就等于节约时间。带着这句话，我们还要更加慎重的审视这个问题：我们不得不面对一个非常尴尬的事实，那就是，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。我们不得不面对一个非常尴尬的事实，那就是，生活中，若中午吃什么出现了，我们就不得不考虑它出现了的事实。我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。从这个角度来看，每个人都不得不面对这些问题。在面对这种问题时，问题的关键究竟为何？这样看来，我们不得不面对一个非常尴尬的事实，那就是，每个人都不得不面对这些问题。在面对这种问题时，中午吃什么，到底应该如何实现。我们都知道，只要有意义，那么就必须慎重考虑。中午吃什么，发生了会如何，不发生又会如何。所谓中午吃什么，关键是中午吃什么需要如何写。拉罗什夫科曾经说过，取得成就时坚持不懈，要比遭到失败时顽强不屈更重要。这似乎解答了我的疑惑。问题的关键究竟为何？所谓中午吃什么，关键是中午吃什么需要如何写。一般来说，中午吃什么因何而发生？中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。我们不得不面对一个非常尴尬的事实，那就是，中午吃什么，到底应该如何实现。而这些并不是完全重要，更加重要的问题是，所谓中午吃什么，关键是中午吃什么需要如何写。我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。美华纳曾经说过，勿问成功的秘诀为何，且尽全力做你应该做的事吧。这不禁令我深思。了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。生活中，若中午吃什么出现了，我们就不得不考虑它出现了的事实。每个人都不得不面对这些问题。在面对这种问题时，吉格·金克拉说过一句富有哲理的话，如果你能做梦，你就能实现它。这句话语虽然很短，但令我浮想联翩。培根曾经提到过，深窥自己的心，而后发觉一切的奇迹在你自己。这句话语虽然很短，但令我浮想联翩。现在，解决中午吃什么的问题，是非常非常重要的。所以，我认为，经过上述讨论，经过上述讨论，那么，韩非在不经意间这样说过，内外相应，言行相称。这句话语虽然很短，但令我浮想联翩。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。所谓中午吃什么，关键是中午吃什么需要如何写。这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。
+
+\chapter{纯拉丁字母}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nisl felis, vestibulum efficitur velit nec, malesuada faucibus mi. Fusce consectetur ac urna cursus faucibus. Maecenas vitae tortor nulla. Fusce ultrices lorem sit amet quam elementum, commodo dictum velit congue. Nulla non lorem ac leo imperdiet dapibus id eget felis. Aliquam vestibulum eros quis odio interdum consectetur. Proin scelerisque enim non mi accumsan, eu cursus nisl gravida. Aenean sodales nisi sem, quis fringilla lorem gravida sed. Nunc vel tristique risus. Vivamus vel est suscipit, euismod neque at, iaculis libero.
+
+Aenean dapibus tempor urna, id mollis nibh commodo vitae. Cras a accumsan enim, vel ultrices ipsum. Sed ullamcorper elit sit amet velit interdum sollicitudin. Donec consequat purus hendrerit, ornare sem at, mollis lectus. Etiam consectetur ipsum ac nibh ornare vehicula. Integer eu quam nibh. In nisl lectus, ullamcorper sed pharetra eu, vehicula a nisl. Fusce euismod quam lacus, a blandit sapien tempor lacinia. Vivamus finibus fermentum magna ut ornare. Morbi semper ligula leo, id condimentum libero rutrum id.
+
+Aliquam finibus rutrum ante id sodales. Fusce non nibh est. Fusce quam turpis, condimentum in viverra quis, lacinia vitae libero. Cras mollis leo quis nibh mattis, vitae ornare sapien efficitur. Aliquam lobortis venenatis lobortis. Nunc massa urna, aliquet a lacus non, tincidunt porttitor erat. Sed a metus mollis, tincidunt mi vel, fermentum tortor. Quisque semper sollicitudin hendrerit. Aliquam sed laoreet lorem. Nullam sit amet rutrum diam, quis dictum diam. Ut iaculis ipsum ipsum, vel congue nisl dictum nec. Phasellus ornare augue turpis, feugiat faucibus leo maximus eu. Phasellus nec lacus viverra, viverra diam eget, dictum lacus. Duis hendrerit rhoncus scelerisque. Integer blandit tortor et lacus maximus, ut ornare ex fringilla.
+
+In et tortor bibendum, ornare lorem nec, pulvinar mauris. Nunc neque lacus, fringilla ac elementum et, iaculis sed leo. Phasellus consequat sed mauris sed varius. Pellentesque nec diam eleifend, porttitor lacus et, tempor orci. Nunc mattis sed sapien non maximus. 
+
+Cras imperdiet nibh et ipsum hendrerit pellentesque. Praesent malesuada, tortor vitae fringilla fermentum, velit urna vulputate sem, a tristique velit lacus et nunc. Nullam sollicitudin felis nisi, ut ultrices justo imperdiet quis. Etiam commodo semper condimentum. Nunc quis leo fringilla, volutpat lectus vitae, lobortis sapien. Aenean pretium non lacus quis condimentum. Sed sed sem tempor, varius purus ultricies, ullamcorper lectus. Donec sed viverra dui, ac imperdiet dui. Sed tristique posuere elit, vel tincidunt elit aliquam nec. Vivamus id ipsum ac nisl vulputate feugiat a sed felis. Nunc varius justo sit amet ultrices vehicula.
+
+Donec vel purus accumsan lectus porttitor posuere. Suspendisse quis nunc volutpat, sodales tellus in, malesuada nisl. Donec tincidunt fringilla sem, in porttitor massa dignissim ultricies. Sed at commodo massa, consectetur gravida mi. Praesent placerat odio vitae libero porttitor tincidunt. Praesent euismod ac lacus eu condimentum. Phasellus congue, augue et fermentum semper, nisl mauris venenatis risus, eget tincidunt neque magna eget justo. Sed nisi turpis, dapibus eu porta vitae, facilisis non erat. Pellentesque porta arcu eget ultrices fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam accumsan ipsum id arcu finibus commodo. Nulla accumsan, leo id aliquet gravida, odio eros pharetra velit, eget feugiat justo leo et augue. Aliquam consectetur iaculis nisi id aliquam. Donec eget dictum neque. Aenean viverra mauris sit amet erat consectetur consectetur.
+
+Aenean et ultricies est, at sodales leo. Nulla facilisi. Fusce faucibus accumsan elit, quis sagittis mauris suscipit laoreet. Curabitur sagittis, tortor ac cursus sagittis, ex neque ultrices ex, interdum placerat velit nibh eget metus. Maecenas porttitor justo in felis congue convallis. Suspendisse scelerisque ultrices odio nec finibus. Duis ullamcorper massa a aliquet dictum.
+
+Nam lacus nisl, semper in metus sed, malesuada laoreet leo. In urna elit, lacinia in gravida sed, ornare ac purus. Duis rhoncus fermentum elementum. Sed molestie purus quis tortor rhoncus, accumsan feugiat arcu suscipit. In eu mi quis ex tincidunt maximus aliquam id sapien. In pulvinar dui eleifend convallis ullamcorper. Phasellus congue molestie felis faucibus maximus. Praesent ultrices magna ut risus bibendum gravida. Aliquam ac lectus enim. Vivamus id libero purus.
+
+Aliquam iaculis metus a tellus aliquam aliquet. Aliquam accumsan ornare erat. Suspendisse at est a metus consectetur scelerisque eu eget purus. Nam tempus sollicitudin nulla, quis semper purus. Praesent gravida, mi id egestas facilisis, elit nisi viverra dolor, quis tempor tellus justo a nibh. Nulla facilisi. In vitae dui eget mi sagittis eleifend. Sed vitae lobortis nisl. Aenean nec velit dolor. Vestibulum ut tellus dictum, iaculis quam vitae, mattis nibh. Sed hendrerit dolor quis quam dapibus volutpat id a orci. Donec sed condimentum nisl. Duis tempus est augue, nec hendrerit quam elementum ac.
+
+Praesent mollis faucibus felis vitae finibus. Nullam gravida risus nulla, in tempor risus venenatis id. Nullam varius tellus vitae nulla lobortis congue a vel velit. In in arcu at ligula ornare sagittis sed et ante. Phasellus auctor quam nisi, sed vehicula enim accumsan ac. Etiam tempus id felis tincidunt rhoncus. Ut suscipit augue quis tempus eleifend. Suspendisse potenti. Suspendisse potenti. Sed id arcu vel quam blandit rutrum. \endnote{Generated from https://www.lipsum.com/}
+
+\vfill
+
+\theendnotes
+
+\part{模板说明}
+
+\chapter{初始设置}
+
+\section{基本内容}
+
+main.tex第8-15行，定义了一些基础信息，包括标题、作者、CP，视情况修改即可。
+
+\section{基础定义}
+
+main.tex第3-6行，使用定义的方式进行了基础定义。
+
+\textbackslash freefont，启用代表使用免费商用字体（需要独立安装）。本模板使用的英文字体均可在1001Font（\underline{https://1001fonts.com}）上获取，中文字体仅限于方正书宋、方正黑体、方正楷体、方正仿宋、思源宋体五种。思源黑体也为免费商用字体，但本模板没有使用。
+
+\textbackslash costomizetitlepage，启用代表使用独立扉页设计（见titlepage.tex，模版自带了一版设计），禁用则使用\LaTeX 内置的扉页。
+
+\textbackslash bleed，启用代表增设出血（上下左右各3mm），禁用则代表按A5（148*210mm）输出\textbf{效果图}。
+
+\chapter{进阶设置}
+
+修改formats.tex以改动模板，适配自己的需求。
+
+如果对其中一些内容感到困惑，或者发现并不能完全满足自己的需求，请阅读排版教程，\href{https://zhuty18.github.io/docs/\%E5\%90\%8C\%E4\%BA\%BA\%E6\%96\%87LaTeX\%E6\%8E\%92\%E7\%89\%88\%E6\%95\%99\%E7\%A8\%8B}{\underline{点击此处}}跳转。
+
+\signature
+
+\myendpage
+
+\end{document}
