@@ -8,6 +8,12 @@
 \usepackage{hyperref}
 \hypersetup{hidelinks}
 
+% 调整行距为1.618
+\usepackage{setspace}
+\setstretch{1.618}
+% 段距增加弹性
+\setlength{\parskip}{0em plus .1\baselineskip}
+
 % 页面配置
 \usepackage{geometry}
 % 主布局
@@ -31,8 +37,9 @@
 \setlength{\pbottom}{21mm}
 \setlength{\pinner}{22mm}
 \setlength{\pouter}{13.5mm}
-\setlength{\phsep}{7mm}
-\setlength{\pfskip}{12mm}
+\setlength{\phsep}{\baselineskip}
+\setlength{\pfskip}{2.3\baselineskip}
+\addtolength{\pfskip}{-1em}
 % 目录页布局
 \newcommand{\tocgeo}{}
 \ifdefined\bleed
@@ -49,13 +56,21 @@
 \else
     \renewcommand{\tocgeo}{\newgeometry{left=27mm,right=27mm,top=\ptop,bottom=\pbottom}}
 \fi
+
+\newcommand{\charcount}{32}
+\newcommand{\linecount}{25}
+\newlength{\theight}
+\setlength{\theight}{\linecount\baselineskip}
+\addtolength{\theight}{1em}
+\addtolength{\theight}{-\baselineskip}
+
 \geometry{
     paperwidth=\pw,
     paperheight=\ph,
     top=\ptop,
-    bottom=\pbottom,
     outer=\pouter,
-    inner=\pinner,
+    textwidth=\charcount\ccwd,
+    textheight=\theight,
     headsep=\phsep,
     footskip=\pfskip,
 }
@@ -88,10 +103,10 @@
 % 目录内标题格式
 \titlecontents{part}
 [0em]
-{\vspace{1.5em}\LARGE\tocpart}
+{\vspace{1.2em}\LARGE\tocpart}
 {}
 {}
-{\hspace{4mm}\pagenumberfont\contentspage}[\vspace{1em}]
+{\hspace{4mm}\pagenumberfont\contentspage}[\vspace{0.8em}]
 
 \titlecontents{chapter}
 [2em]
@@ -276,12 +291,6 @@
     \end{minipage}
     \vspace{5mm}
 }
-
-% 调整行距为1.618
-\usepackage{setspace}
-\setstretch{1.5}
-% 段距增加弹性
-\setlength{\parskip}{0em plus .1\baselineskip}
 
 % 插入图片
 \usepackage{graphicx}
