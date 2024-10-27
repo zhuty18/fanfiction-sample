@@ -2,7 +2,7 @@
 \usepackage[fontset=none]{ctex}
 \usepackage{geometry}
 \geometry{
-    left=10mm,right=10mm,top=10mm,bottom=10mm
+    left=25mm,right=25mm,top=10mm,bottom=10mm
 }
 \usepackage{xcolor}
 
@@ -12,7 +12,7 @@
 \newfontfamily{\accanthis}{Accanthis ADF Std No3}[Ligatures=Rare]
 \newfontfamily{\alegreya}{Alegreya}
 \newfontfamily{\andada}{Andada}
-\newfontfamily{\baskervald}{Baskervald ADF Std}[WordSpace=0.6]
+\newfontfamily{\baskervald}{Baskervald ADF Std}
 \newfontfamily{\cormorant}{Cormorant Medium}[Ligatures=Rare]
 \newfontfamily{\crimson}{Crimson Roman}
 \newfontfamily{\droid}{Droid Serif}
@@ -22,12 +22,12 @@
 \newfontfamily{\basker}{Libre Baskerville}[Ligatures=Rare]
 \newfontfamily{\litos}{Litos Script}
 \newfontfamily{\mekanus}{Mekanus ADF Std}[Ligatures=Rare]
-\newfontfamily{\neuton}{Neuton Light}[Scale=1.1]
+\newfontfamily{\neuton}{Neuton}
 \newfontfamily{\nimbus}{Nimbus Roman No9 L}
 \newfontfamily{\pt}{PT Serif}
 \newfontfamily{\romand}{Romande ADF Std}[Ligatures=Rare]
 \newfontfamily{\simonetta}{Simonetta}
-\newfontfamily{\spectral}{Spectral}[Ligatures=Rare,LetterSpace=-3]
+\newfontfamily{\spectral}{Spectral}[Ligatures=Rare]
 \newfontfamily{\tribun}{TribunADFStd-Cond.otf}[ItalicFont=TribunADFStd-CondItalic.otf]
 \newfontfamily{\vollkorn}{Vollkorn}[Ligatures=Rare]
 
@@ -48,6 +48,10 @@
 
 \null}
 
+% \newcommand{\testtext}{
+
+% 处于发情期的Alpha小红咬住Omega小明的腺体，开始在心里默数30秒。}
+
 \newcommand{\testtexts}{\null
 
 Detective Bruce Wayne II
@@ -58,55 +62,69 @@ Hal Jordan of 2814
 
 \setlength{\parindent}{0pt}
 
+\newcommand{\test}[2]{#1 #2
+
+\testtext}
+
 \begin{document}
 
 \pagestyle{empty}
 
-\songti 思源宋体\testtext
+% \test{\songti}{思源宋体}
 
-\accanthis Accanthis ADF Std No3\testtext
+% \test{\neuton}{Neuton}
 
-\alegreya Alegreya\testtext
+% \test{\eb}{EB Garamond 12 Regular}
 
-\andada Andada\testtext
+% \test{\spectral}{Spectral}
 
-\baskervald Baskervald\testtext
+% \clearpage
 
-\cormorant Cormorant\testtext
+\test{\songti}{思源宋体}
 
-\crimson Crimson\testtext
+\test{\accanthis}{Accanthis ADF Std No3}
 
-\droid Droid Serif\testtext
+\test{\alegreya}{Alegreya}
 
-\eb EB Garamond 12 Regular\testtext
+\test{\andada}{Andada}
 
-\irianis Irianis ADF Std\testtext
+\test{\baskervald}{Baskervald}
+
+\test{\cormorant}{Cormorant}
+
+\test{\crimson}{Crimson}
+
+\test{\droid}{Droid Serif}
+
+\test{\eb}{EB Garamond 12 Regular}
+
+\test{\irianis}{Irianis ADF Std}
 
 % \komika Komika Hand\testtext
 
-\basker Libre Baskerville\testtext
+\test{\basker}{Libre Baskerville}
 
-{\color{red}\litos Litos Script\testtext}
+{\color{red}\test{\litos}{Litos Script}}
 
-\mekanus Mekanus ADF Std\testtext
+\test{\mekanus}{Mekanus ADF Std}
 
-\neuton Neuton\testtext
+\test{\neuton}{Neuton}
 
-\nimbus Nimbus Roman No9 L\testtext
+\test{\nimbus}{Nimbus Roman No9 L}
 
-\pt PT Serif\testtext
+\test{\pt}{PT Serif}
 
-\romand Romande ADF Std\testtext
+\test{\romand}{Romande ADF Std}
 
-\spectral Spectral\testtext
+\test{\spectral}{Spectral}
 
-\simonetta Simonetta\testtext
+\test{\simonetta}{Simonetta}
 
-\tribun Tribun ADF Std\testtext
+\test{\tribun}{Tribun ADF Std}
 
-\vollkorn Vollkorn\testtext
+\test{\vollkorn}{Vollkorn}
 
-\chaparral Chaparral Pro\testtext
+\test{\chaparral}{Chaparral Pro}
 
 \clearpage
 

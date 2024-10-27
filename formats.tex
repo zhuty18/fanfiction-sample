@@ -290,12 +290,12 @@
 \usepackage[bottom]{footmisc}
 
 \let\origpart\part
-\renewcommand*{\part}[2][]{%
+\renewcommand*{\part}[2][]{
     \ifx\\#1\\% optional argument not present?
-    \origpart{#2}%
-        \renewcommand*\parttitle{#2}%
+    \origpart{#2}
+        \renewcommand*\parttitle{#2}
     \else
-    \origpart[#1]{#2}%
-        \renewcommand*\parttitle{#1}%
+    \origpart[#1]{#2}
+        \renewcommand*\parttitle{#1}
     \fi
 }
