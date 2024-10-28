@@ -8,11 +8,14 @@
 \usepackage{hyperref}
 \hypersetup{hidelinks}
 
-% 调整行距为1.618
+% 调整行距
 \usepackage{setspace}
-\setstretch{1.618}
-% 段距增加弹性
-\setlength{\parskip}{0em plus .1\baselineskip}
+\newcommand{\mysetspacing}{
+    \setstretch{1.618}
+    % 段距增加弹性
+    \setlength{\parskip}{0em plus .1\baselineskip}
+}
+\mysetspacing
 
 % 页面配置
 \usepackage{geometry}
@@ -37,8 +40,8 @@
 \setlength{\pbottom}{21mm}
 \setlength{\pinner}{22mm}
 \setlength{\pouter}{13.5mm}
-\setlength{\phsep}{\baselineskip}
-\setlength{\pfskip}{2.3\baselineskip}
+\setlength{\phsep}{.8\baselineskip}
+\setlength{\pfskip}{2.2\baselineskip}
 \addtolength{\pfskip}{-1em}
 % 目录页布局
 \newcommand{\tocgeo}{}
@@ -69,11 +72,10 @@
     paperheight=\ph,
     top=\ptop,
     outer=\pouter,
-    textwidth=\charcount\ccwd,
-    textheight=\theight,
-    headsep=\phsep,
-    footskip=\pfskip,
-}
+    % inner=\pinner,
+    % bottom=\pbottom,
+    textwidth=\charcount\ccwd, textheight=\theight, headsep=\phsep,
+    footskip=\pfskip, }
 
 % 空白页
 \newcommand{\blankpage}{
@@ -98,25 +100,25 @@
 \newcommand{\myss}{\ssfont\S}
 % 目录标题
 \renewcommand{\contentsname}{
-    {\hspace{10mm}}目\hspace{0.75em}录
+    目\quad 录
 }
 % 目录内标题格式
 \titlecontents{part}
 [0em]
-{\vspace{1.2em}\LARGE\tocpart}
+{\vspace{1em}\Large\tocpart}
 {}
 {}
-{\hspace{4mm}\pagenumberfont\contentspage}[\vspace{0.8em}]
+{\hspace{4mm}\pagenumberfont\contentspage}[\vspace{0.5em}]
 
 \titlecontents{chapter}
-[2em]
-{\vspace{0.5em}\Large\tocchapter}
-{\makebox[10mm][l]{\myss\hspace{0.1em}\large\uppercase\expandafter{\romannumeral\thecontentslabel}}}
+[6mm]
+{\vspace{0.3em}\large\tocchapter}
+{\makebox[10mm][l]{\myss\hspace{0.1em}\normalsize\uppercase\expandafter{\romannumeral\thecontentslabel}}}
 {}
-{\hspace{4mm}\tocpage\large\contentspage}[\vspace{0.5em}]
+{\hspace{4mm}\tocpage\large\contentspage}[\vspace{0.3em}]
 
 \titlecontents{section}
-[21mm]
+[12mm]
 {\tocsection}
 {\tocsectlabel Ch \hspace{0.1em}\makebox[1em][c]{\thecontentslabel}\hspace{1,2em}}{}
 {\hspace{5mm}\tocpage\contentspage}[\vspace{0.1em}]
@@ -137,7 +139,7 @@
 \usepackage{titlesec}
 
 \titleformat{\part}[display]{\centering\huge\partfont}{\thepart}{1.5pc}{\thispagestyle{empty}}
-\titlespacing{\part}{0em}{7.5\baselineskip}{0em}
+\titlespacing{\part}{0em}{.3\textheight}{0em}
 \titleformat{\chapter}{\centering\Large\chapterfont}{}{0em}{}
 \titlespacing{\chapter}{0em}{.5\baselineskip}{2\baselineskip}
 \titleformat{\section}{\sectionfont}{Chapter~\thesection}{1em}{}
@@ -238,7 +240,7 @@
 
 % 扉页
 \newcommand{\mytitlepage}{
-    \
+    \null
     \vfill
     \thispagestyle{empty}
 
@@ -307,4 +309,5 @@
     \origpart[#1]{#2}
         \renewcommand*\parttitle{#1}
     \fi
+    \mysetspacing
 }

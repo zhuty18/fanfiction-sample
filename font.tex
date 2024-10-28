@@ -1,32 +1,33 @@
 \ifdefined\freefont
     \usepackage{fontspec}
     \setmainfont{EB Garamond 12 Regular}[Ligatures={Rare,Historic},Numbers=Lining]
-    \newfontfamily\sbien{Vollkorn Medium Italic}
-    \newfontfamily\mien{Cormorant Semi Italic}
+    \newfontfamily\ssfont{Vollkorn Medium Italic}
+    \newfontfamily\chenfont{Vollkorn Italic}
     \newfontfamily\pagenfont{Vollkorn Italic}
-    \newfontfamily\prenotefont{Alegreya}
+    \newfontfamily\prenotefont{EB Garamond 12 Regular}
     \newfontfamily\cpfont{Vollkorn}
     \newfontfamily\scfont{EB Garamond SmallCaps 12 Regular}
 
-    \newfontfamily\normal{Source Han Serif CN}
-    \newfontfamily\semib{Source Han Serif CN SemiBold} % 小标宋
-    \newfontfamily\bold{Source Han Serif CN Bold} % 大标宋
-    \newfontfamily\heavy{Source Han Serif CN Heavy} % 粗宋
+    \newfontfamily\songtien{Source Han Serif CN}
+    \newfontfamily\sbsongen{Source Han Serif CN SemiBold}
+    \newfontfamily\bsongen{Source Han Serif CN Bold}
 
     \newfontfamily\shusongen{FZShuSong-Z01} % 书宋
     \newfontfamily\kaitien{FZKai-Z03} % 楷体
     \newfontfamily\heitien{FZHei-B01} % 黑体
 
     \newfontfamily\titlefonten{Allura}[LetterSpace=1]
-    \newfontfamily\namefont{Scriptina}[LetterSpace=5]
 
     \usepackage[fontset=none]{ctex}
     \setCJKmainfont{Source Han Serif CN}[BoldFont={Source Han Serif CN SemiBold}, ItalicFont=FZFangSong-Z02]
 
+    \newCJKfontfamily\elsong{Source Han Serif CN ExtraLight}
+    \newCJKfontfamily\lsong{Source Han Serif CN Light}
     \newCJKfontfamily\songti{Source Han Serif CN}
-    \newCJKfontfamily\xbsong{Source Han Serif CN SemiBold} % 小标宋
-    \newCJKfontfamily\dbsong{Source Han Serif CN Bold} % 大标宋
-    \newCJKfontfamily\cusong{Source Han Serif CN Heavy} % 粗宋
+    \newCJKfontfamily\mediumsong{Source Han Serif CN Medium}
+    \newCJKfontfamily\sbsong{Source Han Serif CN SemiBold}
+    \newCJKfontfamily\bsong{Source Han Serif CN Bold}
+    \newCJKfontfamily\hsong{Source Han Serif CN Heavy}
 
     \newCJKfontfamily\shusong{FZShuSong-Z01}[ItalicFont=FZKai-Z03] % 书宋
     \newCJKfontfamily\fangsong{FZFangSong-Z02} % 仿宋
@@ -36,26 +37,25 @@
     \newcommand{\titlefont}{\titlefonten\fangsong}
     \newcommand{\signfont}{\writing}
 
-    \newcommand{\tocmain}{\dbsong}
-    \newcommand{\tocpart}{\xbsong\sbien}
-    \newcommand{\tocchapter}{\xbsong\mien}
+    \newcommand{\tocmain}{\bsong}
+    \newcommand{\tocpart}{\sbsong\ssfont}
+    \newcommand{\tocchapter}{\sbsong\chenfont}
     \newcommand{\tocchaplabel}{\itshape}
     \newcommand{\tocsection}{\songti}
     \newcommand{\tocsectlabel}{\scfont}
     \newcommand{\tocpage}{\pagenfont}
-    \newcommand{\ssfont}{\sbien}
 
-    \newcommand{\partfont}{\dbsong\bold}
-    \newcommand{\chapterfont}{\dbsong\bold}
-    \newcommand{\sectionfont}{\xbsong\semib}
-    \newcommand{\subsectionfont}{\songti\normal}
+    \newcommand{\partfont}{\bsong\bsongen}
+    \newcommand{\chapterfont}{\bsong\bsongen}
+    \newcommand{\sectionfont}{\sbsong\sbsongen}
+    \newcommand{\subsectionfont}{\songti\songtien}
     \newcommand{\pagenumberfont}{\tocpage}
     \newcommand{\headfont}{\kaiti\cpfont}
     \newcommand{\quotefont}{\itshape}
-    \newcommand{\writing}{\rmfamily\xbsong}
+    \newcommand{\writing}{\rmfamily\sbsong}
     \newcommand{\spellfont}{\quotefont}
     \newcommand{\dotfont}{\shusong}
-    \newcommand{\tempfont}{\normal}
+    \newcommand{\tempfont}{\songtien}
 \else
     \usepackage{ctex}
     \newcommand{\prenotefont}{\rmfamily}
