@@ -9,12 +9,12 @@
 \begin{document}
 
 \begin{multicols}{10}
-\multido{\i=0+1}{"10000}{% from U+0000 to U+FFFF
-  \iffontchar\font\i
-    \makebox[3em][l]{\i}%
-    \symbol{\i}\endgraf
-  \fi
-}
+    \multido{\i=0+1}{"10000}{% from U+0000 to U+FFFF
+        \iffontchar\font\i
+            \makebox[3em][l]{\i}%
+            \symbol{\i}\endgraf
+        \fi
+    }
 \end{multicols}
 
 \end{document}
