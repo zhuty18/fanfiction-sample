@@ -12,8 +12,8 @@
 \usepackage{setspace}
 \newcommand{\mysetspacing}{
     \setstretch{1.618}
-    % 段距增加弹性
-    \setlength{\parskip}{0em plus .1\baselineskip}
+    % 段距
+    \setlength{\parskip}{0em}
 }
 \mysetspacing
 
@@ -45,6 +45,11 @@
 \addtolength{\pfskip}{-1em}
 % 目录页布局
 \newcommand{\tocgeo}{}
+% 图片页布局
+\newcommand{\picgeo}{\newgeometry{top=\bleedlen,bottom=\bleedlen,inner=\bleedlen,outer=\bleedlen}}
+% 图片页布局
+\newcommand{\buindinpicgeo}{}
+
 \ifdefined\bleed
     \addtolength{\bleedlen}{3mm}
     \addtolength{\pw}{\bleedlen}
@@ -62,6 +67,7 @@
 
 \newcommand{\charcount}{32}
 \newcommand{\linecount}{25}
+
 \newlength{\theight}
 \setlength{\theight}{\linecount\baselineskip}
 \addtolength{\theight}{1em}
@@ -74,8 +80,11 @@
     outer=\pouter,
     % inner=\pinner,
     % bottom=\pbottom,
-    textwidth=\charcount\ccwd, textheight=\theight, headsep=\phsep,
-    footskip=\pfskip, }
+    textwidth=\charcount\ccwd,
+    textheight=\theight,
+    headsep=\phsep,
+    footskip=\pfskip
+}
 
 % 空白页
 \newcommand{\blankpage}{
@@ -137,12 +146,13 @@
 
 % 正文标题格式
 \usepackage{titlesec}
+\usepackage{needspace}
 
 \titleformat{\part}[display]{\centering\huge\partfont}{\thepart}{1.5pc}{\thispagestyle{empty}}
 \titlespacing{\part}{0em}{.3\textheight}{0em}
 \titleformat{\chapter}{\centering\Large\chapterfont}{}{0em}{}
 \titlespacing{\chapter}{0em}{.5\baselineskip}{2\baselineskip}
-\titleformat{\section}{\sectionfont}{Chapter~\thesection}{1em}{}
+\titleformat{\section}{\needspace{3\baselineskip}\sectionfont}{Chapter~\thesection}{1em}{}
 \titlespacing*{\section}{2em}{1.5\baselineskip}{.5\baselineskip}
 \titleformat{\subsection}{\subsectionfont}{0\thesubsection}{1em}{}
 \titlespacing*{\subsection}{2em}{.5\baselineskip}{.5\baselineskip}
@@ -178,6 +188,7 @@
 \usepackage{endnotes}
 \renewcommand{\notesname}{注：}
 \renewcommand{\enoteheading}{\section*{\notesname}\mbox{}\par\vskip-\baselineskip}
+\renewcommand{\theendnote}{\roman{endnote}}
 
 % 以下为非通用内容
 
@@ -185,16 +196,33 @@
 \newcommand{\storyend}[1][完]{
     \vspace{1.5\baselineskip}
 
-    \hfill {\bfseries #1} \hspace{5em}
+    \blankline
+
+    \hfill \textbf{#1} \hspace{5em}
 
     \vspace{2\baselineskip}
 
     \vfill
 }
 
-% 设置quote区中的字体
-\usepackage{etoolbox}
-\AtBeginEnvironment{quote}{\quotefont}
+\usepackage{changepage}
+\renewenvironment{quotation}{
+    \begin{adjustwidth}{2em}{2em}
+        \quotefont
+        }{
+    \end{adjustwidth}
+    \vspace{.5\baselineskip plus .5\baselineskip}
+}
+\renewenvironment{quote}{
+    \vspace{0pt plus .3\baselineskip}
+
+    \begin{adjustwidth}{2em}{2em}
+        \quotefont}{
+    \end{adjustwidth}
+
+    \vspace{.3\baselineskip}
+}
+
 
 % 设置署名
 \newcommand{\signature}{
@@ -221,22 +249,21 @@
 
 \newcommand{\tempsymbol}{{\tempfont℃}}
 
-\newcommand{\chsline}{\hspace{0.15em}\rule[0.35em]{1.7em}{0.03em}\hspace{0.15em}}
-
-% 章前注的参数
-\newlength{\chapterblank}
-\setlength{\chapterblank}{3cm}
-\newcommand{\prenoteblank}{\vspace{1\baselineskip}}
+\newcommand{\chsline}{\makebox[2em]{——}}
 
 % 章前注
 \newcommand{\prenotes}[1]{
-    {\prenotefont #1}\prenoteblank
-}
-\newcommand{\prenoteswith}[2]{
+    \vspace{2em}
     {\prenotefont #1}
-
-        {\rmfamily}#2\prenoteblank
+    % #1
+    \vspace{0.5em}
 }
+% 章前注的参数
+\newlength{\chapterblank}
+\setlength{\chapterblank}{3cm}
+\newlength{\prenoteblank}
+\setlength{\prenoteblank}{3em}
+\newcommand{\doublelinechapter}{{\huge\vspace{-\baselineskip}}}
 
 % 扉页
 \newcommand{\mytitlepage}{
@@ -296,8 +323,8 @@
 
 % 插入图片
 \usepackage{graphicx}
-\usepackage{float}
 
+% 让脚注不影响上文的行距
 \usepackage[bottom]{footmisc}
 
 \let\origpart\part
