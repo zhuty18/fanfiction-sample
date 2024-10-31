@@ -12,10 +12,11 @@
 \usepackage{setspace}
 \newcommand{\mysetspacing}{
     \setstretch{1.618}
-    % 段距
-    \setlength{\parskip}{0em}
 }
 \mysetspacing
+
+% 段距
+\setlength{\parskip}{0pt}
 
 % 页面配置
 \usepackage{geometry}
@@ -147,15 +148,16 @@
 % 正文标题格式
 \usepackage{titlesec}
 \usepackage{needspace}
+\AddToHook{cmd/section/before}{\needspace{3\baselineskip}}
 
 \titleformat{\part}[display]{\centering\huge\partfont}{\thepart}{1.5pc}{\thispagestyle{empty}}
 \titlespacing{\part}{0em}{.3\textheight}{0em}
 \titleformat{\chapter}{\centering\Large\chapterfont}{}{0em}{}
 \titlespacing{\chapter}{0em}{.5\baselineskip}{2\baselineskip}
-\titleformat{\section}{\needspace{3\baselineskip}\sectionfont}{Chapter~\thesection}{1em}{}
-\titlespacing*{\section}{2em}{1.5\baselineskip}{.5\baselineskip}
+\titleformat{\section}{\sectionfont}{Chapter~\thesection}{1em}{}
+\titlespacing{\section}{2em}{1.4\baselineskip}{.65\baselineskip}
 \titleformat{\subsection}{\subsectionfont}{0\thesubsection}{1em}{}
-\titlespacing*{\subsection}{2em}{.5\baselineskip}{.5\baselineskip}
+\titlespacing{\subsection}{2em}{.5\baselineskip}{.5\baselineskip}
 
 \newcommand{\parttitle}{部名}
 
@@ -326,6 +328,18 @@
 
 % 让脚注不影响上文的行距
 \usepackage[bottom]{footmisc}
+% 脚注上方高度
+\setlength{\footnotesep}{8pt}
+% 脚注上方横线
+\renewcommand{\footnoterule}{
+    \kern -2pt
+    \hrule width .25\textwidth height 0.5pt
+    \kern 1.5pt
+}
+
+% section上方弹性换页
+\usepackage{needspace}
+\AddToHook{cmd/section/before}{\needspace{3\baselineskip}}
 
 \let\origpart\part
 \renewcommand*{\part}[2][]{
