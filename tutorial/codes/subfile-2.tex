@@ -1,0 +1,14 @@
+% 以main.tex为主文档
+% 在同层级的Chapter文件夹内，创建ch1.tex为子文档
+
+% 子文档
+\documentclass[../main]{subfiles}
+\begin{document}
+文档内容
+\end{document}
+
+% 主文件，main.tex
+\usepackage{subfiles}
+\begin{document}
+\subfile{Chapter/ch1}
+\end{document}

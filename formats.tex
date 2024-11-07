@@ -1,5 +1,5 @@
 % 字体配置
-\input{font}
+\input{font.tex}
 
 % 首段缩进
 \usepackage{indentfirst}
@@ -96,7 +96,7 @@
 }
 
 % 空白段
-\newcommand{\blankline}{
+\newcommand{\blankpar}{
     ~\
 }
 
@@ -130,7 +130,7 @@
 \titlecontents{section}
 [12mm]
 {\tocsection}
-{\tocsectlabel Ch \hspace{0.1em}\makebox[1em][c]{\thecontentslabel}\hspace{1,2em}}{}
+{\tocsectlabel Ch \hspace{0.1em}\makebox[1em][c]{\thecontentslabel}\hspace{1em}}{}
 {\hspace{5mm}\tocpage\contentspage}[\vspace{0.1em}]
 
 \makeatletter
@@ -139,6 +139,7 @@
 \renewcommand{\@pnumwidth}{9mm}
 % 每章重置尾注编号
 \@addtoreset{endnote}{chapter}  % Reset endnote numbering every new chapter
+\@addtoreset{subsection}{section} % Reset subsection numbering every new section
 \@addtoreset{section}{chapter} % Reset section numbering every new chapter
 \@addtoreset{chapter}{part}  % Reset chapter numbering every new part
 \makeatother
@@ -147,23 +148,25 @@
 
 % 正文标题格式
 \usepackage{titlesec}
-\usepackage{needspace}
-\AddToHook{cmd/section/before}{\needspace{3\baselineskip}}
 
 \titleformat{\part}[display]{\centering\huge\partfont}{\thepart}{1.5pc}{\thispagestyle{empty}}
 \titlespacing{\part}{0em}{.3\textheight}{0em}
+
 \titleformat{\chapter}{\centering\Large\chapterfont}{}{0em}{}
 \titlespacing{\chapter}{0em}{.5\baselineskip}{2\baselineskip}
+
 \titleformat{\section}{\sectionfont}{Chapter~\thesection}{1em}{}
-\titlespacing{\section}{2em}{1.4\baselineskip}{.65\baselineskip}
+\titlespacing{\section}{2em}{1.4\baselineskip plus 2pt minus 2pt}{.5\baselineskip plus 2pt minus 2pt}
+
 \titleformat{\subsection}{\subsectionfont}{0\thesubsection}{1em}{}
-\titlespacing{\subsection}{2em}{.5\baselineskip}{.5\baselineskip}
+\titlespacing{\subsection}{2em}{.5\baselineskip plus 2pt minus 2pt}{.5\baselineskip plus 2pt minus 2pt}
 
 \newcommand{\parttitle}{部名}
 
 \usepackage{fancyhdr}
-% 章标记不出现chapter和序号
+% 章节标记不出现chapter和序号
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
 % 去除页眉横线
 \renewcommand{\headrulewidth}{0pt}
 % 页脚溢出一点
@@ -198,7 +201,7 @@
 \newcommand{\storyend}[1][完]{
     \vspace{1.5\baselineskip}
 
-    \blankline
+    \blankpar
 
     \hfill \textbf{#1} \hspace{5em}
 

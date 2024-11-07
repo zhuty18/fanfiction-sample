@@ -1,0 +1,14 @@
+% 建立长度变量
+\newlength{\theight}
+% 输入行数
+\setlength{\theight}{期待行数\baselineskip}
+% 删除一个多余的行距
+\addtolength{\theight}{1em}
+\addtolength{\theight}{-\baselineskip}
+% 计算好后定义版式
+\geometry{
+    % ...
+    textwidth=每行字数\ccwd,
+    textheight=\theight,
+    % ...
+}

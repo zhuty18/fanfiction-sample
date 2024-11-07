@@ -15,6 +15,7 @@
 % \def\bleed{} % 出血
 
 \input{formats}
+\hypersetup{colorlinks}
 \usepackage{subfiles}
 
 \begin{document}
@@ -41,29 +42,31 @@
 
 \section{基本内容}
 
-main.tex第3-10行，定义了一些基础信息，包括标题、作者、CP，视情况修改即可。
+\texttt{main.tex}第3--10行，定义了一些基础信息，包括标题、作者、CP，视情况修改即可。
 
 \section{基础定义}
 
-main.tex第12-15行，使用定义的方式进行了基础定义。
+\texttt{main.tex}第12--15行，使用定义的方式进行了基础定义。
 
-\textbackslash freefont，启用代表使用免费商用字体（需要自行安装）。
+\texttt{\textbackslash freefont}，启用代表使用免费商用字体（需要自行安装）。
 
 本模版配置字体如下：
 
-英文：\href{https://www.1001fonts.com/eb-garamond-font.html}{\underline{EB Garamond}}，\href{https://www.1001fonts.com/vollkorn-font.html}{\underline{Vollkorn}}，\href{https://www.1001fonts.com/allura-font.html}{\underline{Allura}}，点击字体名跳转下载。更多拉丁文免费字体可在1001Font（\href{https://1001fonts.com}{\underline{https://1001fonts.com}}）上获取。
+英文：\href{https://www.1001fonts.com/eb-garamond-font.html}{EB Garamond}，\href{https://www.1001fonts.com/vollkorn-font.html}{Vollkorn}，\href{https://www.1001fonts.com/allura-font.html}{Allura}，点击字体名跳转下载。更多拉丁文免费字体可在\href{https://1001fonts.com}{1001 Fonts (https://1001fonts.com)}上获取。
 
-中文：方正书宋、方正黑体、方正楷体、方正仿宋、思源宋体。再加上思源黑体，即为六种商用免费的中文正文字体，建议自行寻找。我打包了一份在GitHub上，\href{https://github.com/zhuty18/fanfiction-sample/releases/latest/download/fonts.zip}{\underline{点此下载}}，该服务器时不时出现一些连接不良，属正常现象。
+中文：方正书宋、方正黑体、方正楷体、方正仿宋、思源宋体。再加上思源黑体，即为六种商用免费的中文正文字体。我打包了一份在GitHub上，\href{https://github.com/zhuty18/fanfiction-sample/releases/latest/download/fonts.zip}{点此下载}，该服务器时不时出现一些连接不良，属正常现象。
 
-\textbackslash costomizetitlepage，启用代表使用独立扉页设计（titlepage.tex，模版自带了一版设计），禁用则使用\LaTeX 内置的扉页。
+代码展示使用\href{https://www.1001fonts.com/inconsolata-font.html}{Inconsolata}。
 
-\textbackslash bleed，启用代表增设出血（上下左右各3mm），禁用则代表按A5（148*210mm）输出\textbf{效果图}，不适宜直接用于打印。
+\texttt{\textbackslash costomizetitlepage}，启用代表使用独立扉页设计（\texttt{titlepage.tex}，模版自带了一版设计），禁用则使用\LaTeX 内置的扉页。
+
+\texttt{\textbackslash bleed}，启用代表增设出血（上下左右各3mm），禁用则代表按A5（148*210mm）输出\textbf{效果图}，不适宜直接用于打印。
 
 \chapter{进阶设置}
 
-本文的字体全部配置在font.tex文件中；格式全部设定在formats.tex文件中。如果对某处设定不满意的话，可以自行修改模板。
+本文的字体配置在\texttt{font.tex}文件中；格式设定在\texttt{formats.tex}文件中。如果对某处设定不满意的话，可以自行修改模板。
 
-模版中有一些注释，但不是很全面。如果有地方不能理解，或者需要其他的功能，推荐阅读我写的这篇\href{https://zhuty18.github.io/docs/%E5%90%8C%E4%BA%BA%E6%96%87%E6%9C%ACLaTeX%E6%8E%92%E7%89%88%E6%95%99%E7%A8%8B}{\underline{排版教程}}。这个教程随时可能进行调整和补充。由于内容不断变化，就不放在这里了。
+模版中有一些注释，但不是很全面。如果有地方不能理解，或者需要其他的功能，推荐阅读我写的这篇\href{https://zhuty18.github.io/docs/%E5%90%8C%E4%BA%BA%E6%96%87%E6%9C%ACLaTeX%E6%8E%92%E7%89%88%E6%95%99%E7%A8%8B}{排版教程}。这个教程随时可能进行调整和补充。由于内容不断变化，就不放在这里了。
 
 本文的拉丁正文字体启用了Rare (Discretionary)和Historic两类连字（ligature），因此ct、st、Th三个字母组合看起来会有点特别。不用疑惑，我故意的。
 
@@ -73,7 +76,7 @@ main.tex第12-15行，使用定义的方式进行了基础定义。
 
 \chapter{混合排版}
 
-由于目前没有中英文混合的Lorem Ipsum包\footnote{对此深感遗憾}可用，直接引用了一篇科普来作为中英文混合的内容填充样例\endnote{本文来源于\href{https://cn.lipsum.com/}{\underline{https://cn.lipsum.com/}}}。
+由于目前没有中英文混合的Lorem Ipsum包\footnote{对此深感遗憾}可用，直接引用了一篇科普来作为中英文混合的内容填充样例\endnote{本文来源于\href{https://cn.lipsum.com/}{https://cn.lipsum.com/}}。
 
 \section*{正文}
 

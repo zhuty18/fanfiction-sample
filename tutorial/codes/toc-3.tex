@@ -1,0 +1,13 @@
+% 代码
+\titlecontents{标题名}[左距离]{上方代码}
+{序号格式}{无序号的标题格式}
+{页码格式}[下方代码]
+
+% 样例
+\titlecontents{chapter}
+[0em]
+{\vspace{1em}\Large\tocchapterfont}
+{\makebox[10mm][l]{\S\hspace{0.1em}\large\uppercase\expandafter{\romannumeral\thecontentslabel}}}
+{}
+{\hspace{4mm}\tocpagefont\large\contentspage}
+[\vspace{0.5em}]

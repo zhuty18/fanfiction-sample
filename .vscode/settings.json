@@ -12,5 +12,9 @@
         "*.toc":true,
         "*.fot":true,
         "*.ent":true,
+        "*.ptc":true,
+        "*.lof":true,
+        "*.lol":true,
+        "*.lot":true
     }
 }

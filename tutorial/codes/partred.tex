@@ -1,0 +1,10 @@
+% 重载part宏
+\let\origpart\part
+\renewcommand*{\part}[2][]{
+    \ifx\\#1\\
+    \origpart{#2}
+    \else
+    \origpart[#1]{#2}
+    \fi
+    % 写这里就行
+}
