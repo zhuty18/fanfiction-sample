@@ -7,40 +7,14 @@
 \usepackage{xcolor}
 
 \setCJKmainfont{Source Han Serif CN}[ItalicFont=FZFangSong-Z02]
-\newfontfamily{\songti}{Source Han Serif CN}[ItalicFont=FZFangSong-Z02]
 
-\newfontfamily{\accanthis}{Accanthis ADF Std No3}[Ligatures=Rare]
-\newfontfamily{\alegreya}{Alegreya}
-\newfontfamily{\andada}{Andada}
-\newfontfamily{\baskervald}{Baskervald ADF Std}
-\newfontfamily{\cormorant}{Cormorant Medium}[Ligatures=Rare]
-\newfontfamily{\crimson}{Crimson Roman}
-\newfontfamily{\droid}{Droid Serif}
-\newfontfamily{\eb}{EB Garamond 12 Regular}[Ligatures=Rare]
-\newfontfamily{\irianis}{Irianis ADF Std}[Ligatures=Rare]
-\newfontfamily{\komika}{Komika Hand}
-\newfontfamily{\basker}{Libre Baskerville}[Ligatures=Rare]
-\newfontfamily{\litos}{Litos Script}
-\newfontfamily{\mekanus}{Mekanus ADF Std}[Ligatures=Rare]
-\newfontfamily{\neuton}{Neuton}
-\newfontfamily{\nimbus}{Nimbus Roman No9 L}
-\newfontfamily{\pt}{PT Serif}
-\newfontfamily{\romand}{Romande ADF Std}[Ligatures=Rare]
-\newfontfamily{\simonetta}{Simonetta}
-\newfontfamily{\spectral}{Spectral}[Ligatures=Rare]
-\newfontfamily{\tribun}{TribunADFStd-Cond.otf}[ItalicFont=TribunADFStd-CondItalic.otf]
-\newfontfamily{\vollkorn}{Vollkorn}[Ligatures=Rare]
+% \newcommand{\testtext}{
 
-\newfontfamily{\chaparral}{Chaparral Pro}
+% 处于发情期的Alpha小红咬住Omega小明的腺体，开始在心里默数30秒。}
 
-\newfontfamily{\allura}{Allura}
-\newfontfamily{\black}{BlackChancery}
-\newfontfamily{\condiment}{Condiment}
-\newfontfamily{\italianno}{Italianno}
-\newfontfamily{\precious}{Precious}
-\newfontfamily{\scriptina}{Scriptina}
+\setlength{\parindent}{0pt}
 
-\newcommand{\testtext}{
+\newcommand{\test}[2][]{\fontspec[#1]{#2} #2
 
 中文Alpha与Omega对比2814中文ctspst对比Gryffin中文
 
@@ -48,11 +22,7 @@
 
 \null}
 
-% \newcommand{\testtext}{
-
-% 处于发情期的Alpha小红咬住Omega小明的腺体，开始在心里默数30秒。}
-
-\newcommand{\testtexts}{\null
+\newcommand{\testtitle}[2][]{\fontspec[#1]{#2} #2
 
 Detective Bruce Wayne II
 
@@ -60,86 +30,72 @@ Hal Jordan of 2814
 
 \null}
 
-\setlength{\parindent}{0pt}
-
-\newcommand{\test}[2]{#1 #2
-
-\testtext}
-
 \begin{document}
 
 \pagestyle{empty}
 
-% \test{\songti}{思源宋体}
+\test[ItalicFont=FZFangSong-Z02]{Source Han Serif CN}
 
-% \test{\neuton}{Neuton}
+\test[Ligatures=Rare]{Accanthis ADF Std No3}
 
-% \test{\eb}{EB Garamond 12 Regular}
+\test{Alegreya}
 
-% \test{\spectral}{Spectral}
+\test{Andada}
 
-% \clearpage
+\test{Baskervald ADF Std}
 
-\test{\songti}{思源宋体}
+\test{Baskervville}
 
-\test{\accanthis}{Accanthis ADF Std No3}
+\test[Ligatures=Rare]{Cormorant Medium}
 
-\test{\alegreya}{Alegreya}
+\test{Crimson Roman}
 
-\test{\andada}{Andada}
+\test{Droid Serif}
 
-\test{\baskervald}{Baskervald}
+\test[Ligatures=Rare,ItalicFont=EB Garamond 12 Italic]{EB Garamond 12 Regular}
 
-\test{\cormorant}{Cormorant}
+\test[Ligatures=Rare]{Irianis ADF Std}
 
-\test{\crimson}{Crimson}
+% \test{Komika Hand}
 
-\test{\droid}{Droid Serif}
+\test[Ligatures=Rare]{Libre Baskerville}
 
-\test{\eb}{EB Garamond 12 Regular}
+{\color{red}\test{Litos Script}}
 
-\test{\irianis}{Irianis ADF Std}
+\test[Ligatures=Rare]{Mekanus ADF Std}
 
-% \komika Komika Hand\testtext
+\test{Neuton}
 
-\test{\basker}{Libre Baskerville}
+\test{Nimbus Roman No9 L}
 
-{\color{red}\test{\litos}{Litos Script}}
+\test{PT Serif}
 
-\test{\mekanus}{Mekanus ADF Std}
+\test[Ligatures=Rare]{Romande ADF Std}
 
-\test{\neuton}{Neuton}
+\test{Simonetta}
 
-\test{\nimbus}{Nimbus Roman No9 L}
+\test[Ligatures=Rare]{Spectral}
 
-\test{\pt}{PT Serif}
+\test{Tribun ADF Std}
 
-\test{\romand}{Romande ADF Std}
+\test[Ligatures=Rare]{Vollkorn}
 
-\test{\spectral}{Spectral}
-
-\test{\simonetta}{Simonetta}
-
-\test{\tribun}{Tribun ADF Std}
-
-\test{\vollkorn}{Vollkorn}
-
-\test{\chaparral}{Chaparral Pro}
+\test{Chaparral Pro}
 
 \clearpage
 
 \huge
 
-\allura Allura \testtexts
+\testtitle{Allura}
 
-\black BlackChancery \testtexts
+\testtitle{BlackChancery}
 
-\condiment Condiment \testtexts
+\testtitle{Condiment}
 
-\italianno Italianno \testtexts
+\testtitle{Italianno}
 
-\precious Precious \testtexts
+\testtitle{Precious}
 
-\scriptina Scriptina \testtexts
+\testtitle{Scriptina}
 
 \end{document}
