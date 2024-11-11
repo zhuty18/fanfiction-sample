@@ -121,6 +121,10 @@
 {}
 {\hspace{4mm}\tocpage\large\contentspage}[\vspace{0.3em}]
 
+\renewcommand{\tocsectlabel}{\fontspec{EB Garamond SmallCaps 12 Regular}[Numbers=Lining]}
+\renewcommand{\sectionfont}{\tocsectlabel\sbsong}
+\renewcommand{\subsectionfont}{\tocsubsection\sbsong}
+\renewcommand{\tocsubsectlabel}{\subsectionfont}
 \titlecontents{section}
 [12mm]
 {\tocsection}
@@ -130,8 +134,9 @@
 \titlecontents{subsection}
 [18mm]
 {\tocsubsection}
-{\small\tocsubsectlabel\hspace{0.2em}\makebox[1em][c]{\thecontentslabel}\hspace{0.8em}}{}
+{\small\tocsubsectlabel\hspace{0.2em}\makebox[1em][c]{\expandafter{\romannumeral\thecontentslabel}}\hspace{0.8em}}{}
 {\hspace{7mm}\small\tocpage\contentspage}{}
 
 \titleformat{\chapter}{\centering\Large\chapterfont}{\uppercase\expandafter{\romannumeral\thechapter}}{1em}{}
 \titleformat{\section}{\sectionfont}{\S~\thesection}{1em}{}
+\titleformat{\subsection}{\subsectionfont}{\expandafter{\romannumeral\thesubsection}}{1em}{}

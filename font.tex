@@ -8,13 +8,9 @@
     \newfontfamily\cpfont{Vollkorn}
     \newfontfamily\scfont{EB Garamond SmallCaps 12 Regular}
 
-    \newfontfamily\songtien{Source Han Serif CN}
-    \newfontfamily\sbsongen{Source Han Serif CN SemiBold}
-    \newfontfamily\bsongen{Source Han Serif CN Bold}
-
-    \newfontfamily\shusongen{FZShuSong-Z01} % 书宋
-    \newfontfamily\kaitien{FZKai-Z03} % 楷体
-    \newfontfamily\heitien{FZHei-B01} % 黑体
+    \newfontfamily\mainreg{EB Garamond 12 Regular}[Numbers=Lining,Scale=1.2]
+    \newfontfamily\mainsb{Vollkorn}[Numbers=Lining,Scale=1.15]
+    \newfontfamily\mainb{Vollkorn Medium}[Scale=1.15,LetterSpace=-1]
 
     \newfontfamily\titlefonten{Allura}[LetterSpace=1]
 
@@ -47,17 +43,17 @@
     \newcommand{\tocsubsectlabel}{\tocsectlabel}
     \newcommand{\tocpage}{\pagenfont}
 
-    \newcommand{\partfont}{\bsong\bsongen}
-    \newcommand{\chapterfont}{\bsong\bsongen}
-    \newcommand{\sectionfont}{\sbsong\sbsongen}
-    \newcommand{\subsectionfont}{\songti\songtien}
+    \newcommand{\partfont}{\bsong\mainb}
+    \newcommand{\chapterfont}{\bsong\mainb}
+    \newcommand{\sectionfont}{\sbsong\mainsb}
+    \newcommand{\subsectionfont}{\songti\mainreg}
     \newcommand{\pagenumberfont}{\tocpage}
     \newcommand{\headfont}{\kaiti\cpfont}
     \newcommand{\quotefont}{\itshape}
     \newcommand{\writing}{\rmfamily\sbsong}
     \newcommand{\spellfont}{\quotefont}
     \newcommand{\dotfont}{\shusong}
-    \newcommand{\tempfont}{\songtien}
+    \newcommand{\tempfont}{\mainreg}
 \else
     \usepackage{ctex}
     \newcommand{\prenotefont}{\rmfamily}

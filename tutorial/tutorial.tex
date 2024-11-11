@@ -257,7 +257,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
 \LaTeX 的字体配置默认是\textbf{只对部分字符生效}的，需要分别配置，混排时可以叠加指定。
 
-我们先说外语字符。\texttt{ctex}包只对中日韩三语起效，其他语言的字符（不止为ASCII，还包括章节符\S 和摄氏度{\songtien℃}等符号）是默认使用基础字体渲染的，只有\texttt{fontspec}包配置的字体才能起效。
+我们先说外语字符。\texttt{ctex}包只对中日韩三语起效，其他语言的字符（不止为ASCII，还包括章节符\S 和摄氏度{\tempfont℃}等符号）是默认使用基础字体渲染的，只有\texttt{fontspec}包配置的字体才能起效。
 
 \lstinputlisting[style=TeX,caption=配置默认字体]{codes/font-1.tex}
 
@@ -352,7 +352,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 \begin{adjustwidth}{2em}{2em}
     \blankpar
 
-    \songtien 思源宋体\testtext
+    \fontspec{Source Han Serif CN}思源宋体\testtext
 
     \fontspec{Neuton}Neuton\testtext
 
