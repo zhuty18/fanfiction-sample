@@ -177,7 +177,7 @@
     \end{longtable}
 \end{center}
 
-破折号有点复杂，见后文\underline{\textit{\nameref{chsline}}}。
+破折号有点复杂，见后文\textit{\nameref{chsline}}。
 
 \section{{\LaTeX}正文语法入门}
 
@@ -218,6 +218,8 @@
 波浪号（\texttt{\textasciitilde{}}），默认按硬空格（不可在此处换行）理解。在正文中使用时，请用\texttt{\textbackslash{}textasciitilde}。
 
 \subsection{标题}
+
+各级标题见\textit{\nameref{title}}。
 
 有序标题的标记方法是\texttt{\textbackslash{}级别\{标题内容\}}。序号标记会自动处理，不用写进正文文档区。
 
@@ -296,6 +298,7 @@
 \textbf{在正文排版没有bug的情况下}，这样的修改可以在效果图四周都增加\texttt{3mm}的白边，中心对齐检阅时，文字位置完全不变。如果修改后有页面发生了移动，那么请在该页的写法上寻找问题。
 
 \section{各级标题}
+\label{title}
 
 \texttt{book}类可以使用所有种类的标题，直观地说，可以理解为一本大部头学术书籍能涵盖的级别。对于小说，不建议使用超过两级的标题，只选用\texttt{part+chapter}或\texttt{chapter+section}即可。
 
@@ -536,7 +539,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
 第四步，在字体专属名外面加个中括号。别问为什么，我也不懂，总而言之亲测有时候是有效的。
 
-\lstinputlisting[style=TeX,caption=找不到字体的处理方案2]{codes/font-10.tex}
+\lstinputlisting[style=TeX,caption=找不到字体的处理方案]{codes/font-9.tex}
 
 第五步，改用文件名配置。
 
@@ -546,7 +549,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
  {\LaTeX}的字体配置默认是\textbf{只对部分字符生效}的，需要分别配置，混排时可以叠加指定。默认配置使用\texttt{fontspec}包，\texttt{ctex}包只对中日韩三语起效，与\texttt{fontspec}包的语法非常类似。
 
-非CJK字符（不止为ASCII，还包括章节符\(\S\)和摄氏度℃等国际通用符号），是默认使用基础字体渲染的，只有\texttt{fontspec}包配置的字体才能起效。
+非CJK字符（不止为ASCII，还包括章节符{\S}和摄氏度{\tempfont ℃}等国际通用符号），是默认使用基础字体渲染的，只有\texttt{fontspec}包配置的字体才能起效。
 
 \lstinputlisting[style=TeX,caption=配置默认字体]{codes/font-1.tex}
 
@@ -676,8 +679,6 @@ SumatraPDF的配置方式为\texttt{目录-设置-高级选项}，在配置文�
 
 思源系列是全语言支持，但是需缩小一点并降低字母间距，才适用于正文混排。默认比例适合于形如“Chapter 1 节俭”这样多语言分隔的格式，或极少量穿插其他语言的大段文本。
 
-方正系列虽然覆盖了字母的字符，但只做了中文字形设计，对外语的支持仅能当做显示保底，并不能看。四种免费字体内除ASCII外的全部字符，均与中文字符等宽。
-
 调整后即可达到这样的混排效果。
 
 \begin{adjustwidth}{2em}{2em}
@@ -693,6 +694,8 @@ SumatraPDF的配置方式为\texttt{目录-设置-高级选项}，在配置文�
 
     \blankpar
 \end{adjustwidth}
+
+方正系列虽然覆盖了字母的字符，但只做了中文字形设计，对外语的支持仅能当做显示保底，并不能看。四种免费字体内除ASCII外的全部字符，均与中文字符等宽。
 
 \chapter{页面排版}
 
@@ -849,7 +852,7 @@ SumatraPDF的配置方式为\texttt{目录-设置-高级选项}，在配置文�
 
 \lstinputlisting[style=TeX,caption={修改尾注标题}]{codes/note-5.tex}
 
-尾注标题默认影响\texttt{\textbackslash{}leftmark}（该命令的用处见页眉页脚一节），可以用以下命令规避。
+尾注标题默认影响\texttt{\textbackslash{}leftmark}（该命令的用处见\textit{\nameref{hf}}），可以用以下命令规避。
 
 \lstinputlisting[style=TeX,caption={尾注不改标记}]{codes/note-6.tex}
 
@@ -928,6 +931,8 @@ SumatraPDF的配置方式为\texttt{目录-设置-高级选项}，在配置文�
 \lstinputlisting[style=TeX,caption={手动增加换页符}]{codes/toc-8.tex}
 
 \chapter{页眉页脚}
+
+\label{hf}
 
 一般使用\texttt{fancyhdr}包来自定义页眉页脚。
 
