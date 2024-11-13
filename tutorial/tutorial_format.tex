@@ -23,7 +23,7 @@
 \definecolor{darkgreen}{RGB}{31,138,35}
 \hypersetup{colorlinks,linkcolor=black,urlcolor=darkgreen}
 \usepackage{metalogo}
-\setmonofont{Inconsolata}
+\setmonofont{Fira Code Regular}
 \setCJKmonofont{FZHei-B01}
 \usepackage{enumitem}
 \usepackage{ulem}
@@ -140,3 +140,5 @@
 \titleformat{\chapter}{\centering\Large\chapterfont}{\uppercase\expandafter{\romannumeral\thechapter}}{1em}{}
 \titleformat{\section}{\sectionfont}{\S~\thesection}{1em}{}
 \titleformat{\subsection}{\subsectionfont}{\expandafter{\romannumeral\thesubsection}}{1em}{}
+
+\newcommand{\jumpto}[2]{\href{#2}{#1\footnote{#2}}}

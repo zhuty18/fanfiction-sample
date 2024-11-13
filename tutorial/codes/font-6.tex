@@ -1,11 +1,18 @@
 % 主字体
 \setCJKmainfont{Source Han Serif}[BoldFont=Source Han Serif SemiBold, ItalicFont=FZKai-Z03]
-% 以下是六种常用的GBK免费商用中文字体
+
+% 以下是六种常用的GBK免费商用中文字体名
+
 % 思源系列字体有Source Han和Noto两个名字，是一样的
-% 通常有语言后缀，CN（中文）或SC（Simplified Chinese）都可以用
-\newCJKfontfamily\songti{Source Han Serif} % 思源宋体
-\newCJKfontfamily\sheiti{Source Han Sans} % 思源黑体
-% 可能会有S（简体）T（繁体）两种后缀，对应GB2312字符集，不建议用
+% 不同国家和地区使用的同一汉字具有同一Unicode编码，但字形不同，用后缀区分使用情况
+% 语言包后缀：J（日语），K（韩语），SC（简体中文），HK（繁体中文-香港），TW（繁体中文-台湾）
+% 国家/地区后缀：JP（日本），KR（韩国），CN（中国），HK（香港地区），TW（台湾地区）
+% CN通常足够使用，SC较CN覆盖范围要更高一些
+\newCJKfontfamily\songti{Source Han Serif CN} % 思源宋体 CN
+\newCJKfontfamily\sheiti{Source Han Sans SC} % 思源黑体
+
+% 方正系列，GBK字符集
+% 有S（简体）T（繁体）两种后缀的字体，对应的是GB2312字符集，不建议用
 \newCJKfontfamily\shusong{FZShuSong-Z01}% 方正书宋
 \newCJKfontfamily\fangsong{FZFangSong-Z02} % 方正仿宋
 \newCJKfontfamily\heiti{FZHei-B01} % 方正黑体
