@@ -3,10 +3,12 @@
 \newcommand{\mytitleen}{Typesetting Tutorial for \LaTeX}
 \newcommand{\mytitle}{\LaTeX 排版教程}
 \newcommand{\myauthor}{兔子草}
-\newcommand{\mycp}{}
+\newcommand{\myquote}{\hfill ——排同人本，只需要一个浏览器\hspace{15mm}}
 
 \input{../font.tex}
-\input{../formats.tex}
+% \input{../formats.tex}
+
+\usepackage{setspace}
 
 % 这部分设定纯为教程服务 
 \usepackage{xcolor}
@@ -21,6 +23,7 @@
 \definecolor{yellow}{RGB}{241, 250, 140}
 \definecolor{myblack}{RGB}{32, 34, 39}
 \definecolor{darkgreen}{RGB}{31,138,35}
+\usepackage{hyperref}
 \hypersetup{colorlinks,linkcolor=black,urlcolor=darkgreen}
 \usepackage{metalogo}
 \setmonofont{Fira Code Regular}
@@ -73,8 +76,15 @@
 
 \newcommand{\testtext}{
 
-    发情期的Alpha小红咬住Omega小明的腺体，开始默数30秒。}
+    Hal低低地笑了：“我希望你把蝙蝠车留给Tim，然后回家。……他说愿意替你7个小时的班，让你休息一下。”}
 \usepackage{float}
+\usepackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+% 去除页眉横线
+\renewcommand{\headrulewidth}{0pt}
+% 页脚溢出一点
+\fancyfootoffset[RO,LE]{1.5em}
 \fancypagestyle{mystyle}{
     \fancyhf{}
     \fancyhead[CE]{\headfont\mytitle}
@@ -92,13 +102,30 @@
     \fancyfoot[CE]{\hspace{1.5em}\rule[-4pt]{0.3pt}{20pt}\qquad\headfont\uppercase\expandafter{\romannumeral\thechapter}\hfill}
 }
 
-\renewcommand{\charcount}{40}
-\renewcommand{\linecount}{32}
+\newlength{\ptop}
+\newlength{\pbottom}
+\newlength{\pinner}
+\newlength{\pouter}
+\newlength{\phsep}
+\newlength{\pfskip}
 
+\setlength{\ptop}{21mm}
+\setlength{\pbottom}{21mm}
+\setlength{\pinner}{22mm}
+\setlength{\pouter}{13.5mm}
+\setlength{\phsep}{.8\baselineskip}
+\setlength{\pfskip}{2.2\baselineskip}
+\addtolength{\pfskip}{-1em}
+
+\newcommand{\charcount}{40}
+\newcommand{\linecount}{40}
+
+\newlength{\theight}
 \setlength{\theight}{\linecount\baselineskip}
 \addtolength{\theight}{1em}
 \addtolength{\theight}{-\baselineskip}
 
+\usepackage{geometry}
 \geometry{
     paperwidth=6.625in,
     paperheight=10.25in,
@@ -112,10 +139,19 @@
     footskip=\pfskip,
 }
 
-\setstretch{1.3}
+\counterwithout{section}{chapter}
+\counterwithout{subsection}{section}
+\makeatletter
+\@addtoreset{section}{chapter}
+\@addtoreset{subsection}{section}
+\makeatother
+
+\usepackage{titletoc}
+\usepackage{titlesec}
+\renewcommand{\contentsname}{目\quad 录}
 
 \titlecontents{chapter}
-[6mm]
+[4mm]
 {\vspace{0.3em}\large\tocchapter}
 {\makebox[10mm][l]{\normalsize\uppercase\expandafter{\romannumeral\thecontentslabel}}}
 {}
@@ -126,19 +162,83 @@
 \renewcommand{\subsectionfont}{\tocsubsection\sbsong}
 \renewcommand{\tocsubsectlabel}{\subsectionfont}
 \titlecontents{section}
-[12mm]
+[8mm]
 {\tocsection}
 {\tocsectlabel \S \hspace{0.1em}\makebox[1.2em][c]{\thecontentslabel}\hspace{1em}}{}
-{\hspace{5mm}\tocpage\contentspage}[\vspace{0.1em}]
+{\hspace{5mm}\tocpage\contentspage}
 
 \titlecontents{subsection}
-[18mm]
+[12mm]
 {\tocsubsection}
 {\small\tocsubsectlabel\hspace{0.2em}\makebox[1em][c]{\expandafter{\romannumeral\thecontentslabel}}\hspace{0.8em}}{}
 {\hspace{7mm}\small\tocpage\contentspage}{}
 
 \titleformat{\chapter}{\centering\Large\chapterfont}{\uppercase\expandafter{\romannumeral\thechapter}}{1em}{}
+\titlespacing{\chapter}{0em}{.5\baselineskip}{2\baselineskip}
 \titleformat{\section}{\sectionfont}{\S~\thesection}{1em}{}
+\titlespacing{\section}{2em}{1.4\baselineskip plus 2pt minus 2pt}{.5\baselineskip plus 2pt minus 2pt}
 \titleformat{\subsection}{\subsectionfont}{\expandafter{\romannumeral\thesubsection}}{1em}{}
+\titlespacing{\subsection}{2em}{.5\baselineskip plus 2pt minus 2pt}{.5\baselineskip plus 2pt minus 2pt}
 
-\newcommand{\jumpto}[2]{\href{#2}{#1\footnote{#2}}}
+\newcommand{\jumpto}[2]{\href{#1}{#2\footnote{#1}}}
+
+\newcommand{\signature}{
+    \vspace{2\baselineskip}
+    \hfill\begin{minipage}[b]{6em}
+        \begin{center}
+            \includegraphics[width=2.8em]{../headshot.png}\hspace{5.1em}
+            \subsectionfont
+            by\myauthor
+
+            \emoji{"1F427} 3440950898
+        \end{center}
+    \end{minipage}\hspace{4em}
+
+    \vspace{2\baselineskip}
+}
+
+\newfontfamily\bcfont{BlackChancery}
+\renewcommand{\titlefont}{\bcfont\bsong}
+\newcommand{\mytitlepage}{
+    \null
+    \vfill
+    \thispagestyle{empty}
+
+    \begin{center}
+        \Huge
+
+        \titlefont
+
+        {\mytitleen}
+
+        \vspace{2mm}
+
+        {\mytitle}
+
+        \vspace{5mm}
+
+        {\large\fangsong\myquote}
+
+        \vspace{.3\textheight}
+
+        \Large
+
+        {\signfont BY \myauthor}
+    \end{center}
+
+    \vfill
+
+    \clearpage
+}
+
+\usepackage{changepage}
+
+\newcommand{\blankpar}{
+    ~\
+}
+
+\usepackage{indentfirst}
+
+\usepackage{footnpag}
+
+\usepackage{emptypage}
