@@ -1,35 +1,73 @@
 \ifdefined\freefont
     \usepackage{fontspec}
-    \setmainfont{EB Garamond 12 Regular}[Ligatures={Rare,Historic},Numbers=Lining,BoldFont=[EBGaramond08-Regular.otf]]
-    \newfontfamily\ssfont{Vollkorn Medium Italic}
-    \newfontfamily\chenfont{Vollkorn Italic}
-    \newfontfamily\pagenfont{Vollkorn Italic}
-    \newfontfamily\prenotefont{EB Garamond 12 Regular}
-    \newfontfamily\cpfont{Vollkorn}
-    \newfontfamily\scfont{EB Garamond SmallCaps 12 Regular}
-
-    \newfontfamily\mainreg{EB Garamond 12 Regular}[Numbers=Lining,Scale=1.2]
-    \newfontfamily\mainsb{Vollkorn}[Numbers=Lining,Scale=1.15]
-    \newfontfamily\mainb{Vollkorn Medium}[Scale=1.15,LetterSpace=-1]
-
-    \newfontfamily\titlefonten{Allura}[LetterSpace=1]
-    \newfontfamily\tempfont{Source Han Serif CN}
-
     \usepackage[fontset=none]{ctex}
-    \setCJKmainfont{Source Han Serif CN}[BoldFont={Source Han Serif CN SemiBold}, ItalicFont=FZFangSong-Z02]
+    \ifdefined\fontpath
+        \setmainfont{EBGaramond12-Regular}[Ligatures={Rare,Historic},Numbers=Lining,BoldFont=EBGaramond08-Regular, ItalicFont=EBGaramond12-Italic,BoldItalicFont=EBGaramond08-Italic,Path=\fontpath]
+        \setmonofont{FiraCode-Regular}[Path=\fontpath]
 
-    \newCJKfontfamily\elsong{Source Han Serif CN ExtraLight}
-    \newCJKfontfamily\lsong{Source Han Serif CN Light}
-    \newCJKfontfamily\songti{Source Han Serif CN}
-    \newCJKfontfamily\mediumsong{Source Han Serif CN Medium}
-    \newCJKfontfamily\sbsong{Source Han Serif CN SemiBold}
-    \newCJKfontfamily\bsong{Source Han Serif CN Bold}
-    \newCJKfontfamily\hsong{Source Han Serif CN Heavy}
+        \newfontfamily\ssfont{Vollkorn-MediumItalic}[Path=\fontpath]
+        \newfontfamily\chenfont{Vollkorn-Italic}[Path=\fontpath]
+        \newfontfamily\pagenfont{Vollkorn-Italic}[Path=\fontpath]
+        \newfontfamily\prenotefonten{EBGaramond12-Regular}[Path=\fontpath]
+        \newfontfamily\cpfont{Vollkorn-Regular}[Path=\fontpath]
+        \newfontfamily\scfont{EBGaramondSC12-Regular}[Path=\fontpath]
 
-    \newCJKfontfamily\shusong{FZShuSong-Z01}[ItalicFont=FZKai-Z03] % 书宋
-    \newCJKfontfamily\fangsong{FZFangSong-Z02} % 仿宋
-    \newCJKfontfamily\heiti{FZHei-B01} % 黑体
-    \newCJKfontfamily\kaiti{FZKai-Z03} % 楷体
+        \newfontfamily\mainreg{EBGaramond12-Regular}[Numbers=Lining,Scale=1.2,Path=\fontpath]
+        \newfontfamily\mainsb{Vollkorn-Regular}[Numbers=Lining,Scale=1.15,Path=\fontpath]
+        \newfontfamily\mainb{Vollkorn-Medium}[Scale=1.15,LetterSpace=-1,Path=\fontpath]
+
+        \newfontfamily\titlefonten{Allura-Regular}[LetterSpace=1,Path=\fontpath]
+        \newfontfamily\tempfont{SourceHanSerifCN-Regular}[Path=\fontpath]
+
+        \setCJKmainfont{SourceHanSerifCN-Regular}[BoldFont=SourceHanSerifCN-SemiBold, ItalicFont=FZFangSong-Z02_GBK,BoldItalicFont=SourceHanSerifCN-Bold, Path=\fontpath]
+        \setCJKmonofont{FZHei-B01_GBK}[Path=\fontpath]
+
+        \newCJKfontfamily\elsong{SourceHanSerifCN-ExtraLight}[Path=\fontpath]
+        \newCJKfontfamily\lsong{SourceHanSerifCN-Light}[Path=\fontpath]
+        \newCJKfontfamily\songti{SourceHanSerifCN-Regular}[Path=\fontpath]
+        \newCJKfontfamily\mediumsong{SourceHanSerifCN-Medium}[Path=\fontpath]
+        \newCJKfontfamily\sbsong{SourceHanSerifCN-SemiBold}[Path=\fontpath]
+        \newCJKfontfamily\bsong{SourceHanSerifCN-Bold}[Path=\fontpath]
+        \newCJKfontfamily\hsong{SourceHanSerifCN-Heavy}[Path=\fontpath]
+
+        \newCJKfontfamily\shusong{FZShuSong-Z01_GBK}[ItalicFont=FZKai-Z03_GBK, Path=\fontpath] % 书宋
+        \newCJKfontfamily\fangsong{FZFangSong-Z02_GBK}[Path=\fontpath] % 仿宋
+        \newCJKfontfamily\heiti{FZHei-B01_GBK}[Path=\fontpath] % 黑体
+        \newCJKfontfamily\kaiti{FZKai-Z03_GBK}[Path=\fontpath] % 楷体
+    \else
+        \setmainfont{EB Garamond 12 Regular}[Ligatures={Rare,Historic},Numbers=Lining,BoldFont=EB Garamond 08 Regular, ItalicFont=EB Garamond 12 Italic,BoldItalicFont=EB Garamond 08 Italic]
+        \setmonofont{Fira Code Regular}
+
+        \newfontfamily\ssfont{Vollkorn Medium Italic}
+        \newfontfamily\chenfont{Vollkorn Italic}
+        \newfontfamily\pagenfont{Vollkorn Italic}
+        \newfontfamily\prenotefonten{EB Garamond 12 Regular}
+        \newfontfamily\cpfont{Vollkorn}
+        \newfontfamily\scfont{EB Garamond SmallCaps 12 Regular}
+
+        \newfontfamily\mainreg{EB Garamond 12 Regular}[Numbers=Lining,Scale=1.2]
+        \newfontfamily\mainsb{Vollkorn}[Numbers=Lining,Scale=1.15]
+        \newfontfamily\mainb{Vollkorn Medium}[Scale=1.15,LetterSpace=-1]
+
+        \newfontfamily\titlefonten{Allura}[LetterSpace=1]
+        \newfontfamily\tempfont{Source Han Serif CN}
+
+        \setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Serif CN SemiBold, ItalicFont=FZFangSong-Z02,BoldItalicFont=Source Han Serif CN Bold]
+        \setCJKmonofont{FZHei-B01}
+
+        \newCJKfontfamily\elsong{Source Han Serif CN ExtraLight}
+        \newCJKfontfamily\lsong{Source Han Serif CN Light}
+        \newCJKfontfamily\songti{Source Han Serif CN}
+        \newCJKfontfamily\mediumsong{Source Han Serif CN Medium}
+        \newCJKfontfamily\sbsong{Source Han Serif CN SemiBold}
+        \newCJKfontfamily\bsong{Source Han Serif CN Bold}
+        \newCJKfontfamily\hsong{Source Han Serif CN Heavy}
+
+        \newCJKfontfamily\shusong{FZShuSong-Z01}[ItalicFont=FZKai-Z03] % 书宋
+        \newCJKfontfamily\fangsong{FZFangSong-Z02} % 仿宋
+        \newCJKfontfamily\heiti{FZHei-B01} % 黑体
+        \newCJKfontfamily\kaiti{FZKai-Z03} % 楷体
+    \fi
 
     \newcommand{\titlefont}{\titlefonten\fangsong}
     \newcommand{\signfont}{\writing}
@@ -51,6 +89,7 @@
     \newcommand{\pagenumberfont}{\tocpage}
     \newcommand{\headfont}{\kaiti\cpfont}
     \newcommand{\quotefont}{\itshape}
+    \newcommand{\prenotefont}{\prenotefonten\sbsong}
     \newcommand{\writing}{\rmfamily\sbsong}
     \newcommand{\spellfont}{\quotefont}
     \newcommand{\dotfont}{\shusong}

@@ -13,6 +13,7 @@
 \def\freefont{} % 使用免费商业字体
 \def\costomizetitlepage{} % 使用自定义扉页titlepage.tex
 % \def\bleed{} % 出血
+\def\fontpath{fonts/} % 字体所在路径
 
 % 字体配置
 \input{font.tex}
@@ -48,21 +49,41 @@
 
 \section{基础定义}
 
-\texttt{main.tex}第12--15行，使用定义的方式进行了基础定义。
+\texttt{main.tex}第12--16行，使用定义的方式进行了基础定义。
 
 \texttt{\textbackslash freefont}，启用代表使用免费商用字体（需要自行安装）。
 
+\texttt{\textbackslash fontpath}，字体文件路径，定义后即从路径加载字体
+
 本模版配置字体如下：
 
-英文：\href{https://www.1001fonts.com/eb-garamond-font.html}{EB Garamond}，\href{https://www.1001fonts.com/vollkorn-font.html}{Vollkorn}，\href{https://www.1001fonts.com/allura-font.html}{Allura}，点击字体名跳转下载。更多拉丁文免费字体可在\href{https://1001fonts.com}{1001 Fonts (https://1001fonts.com)}上获取。
+英文：\href{https://www.1001fonts.com/eb-garamond-font.html}{EB Garamond}，\href{https://www.1001fonts.com/vollkorn-font.html}{Vollkorn}，\href{https://www.1001fonts.com/allura-font.html}{Allura}，点击字体名跳转下载。更多拉丁文免费字体可在\href{https://1001fonts.com}{1001 Fonts (https://1001fonts.com)}上获取。代码使用\href{https://github.com/tonsky/FiraCode/releases/latest}{Fira Code}。
 
 中文：\href{https://www.fonts.net.cn/font-31610316242.html}{方正书宋}、\href{https://www.fonts.net.cn/font-31609167689.html}{方正黑体}、\href{https://www.fonts.net.cn/font-31607222283.html}{方正楷体}、\href{https://www.fonts.net.cn/font-31602268591.html}{方正仿宋}、\href{https://github.com/adobe-fonts/source-han-serif/releases/latest}{思源宋体}、\href{https://github.com/adobe-fonts/source-han-sans/releases/latest}{思源黑体}，即为六种常用的商用免费中文正文字体。此处给出的思源系列为官方GitHub下载地址，可能出现一些连接不良，属正常现象。方正官方渠道需要登录，因此给出的是第三方下载链接。如果失效，自行找GBK后缀（书宋字体文件8.87M）的使用即可。GB2312或简体后缀（书宋字体文件2.63M）容易出现缺字。
 
-代码展示使用\href{https://www.1001fonts.com/inconsolata-font.html}{Inconsolata}。
+\texttt{\textbackslash costomizetitlepage}，启用代表使用独立扉页设计，禁用则使用\LaTeX 内置的扉页。
 
-\texttt{\textbackslash costomizetitlepage}，启用代表使用独立扉页设计（\texttt{titlepage.tex}，模版自带了一版设计），禁用则使用\LaTeX 内置的扉页。
+独立扉页文件为\texttt{titlepage.tex}，模版自带了一版设计。
 
 \texttt{\textbackslash bleed}，启用代表增设出血（上下左右各3mm），禁用则代表按A5（148*210mm）输出\textbf{效果图}，不适宜直接用于打印。
+
+\section{可用命令}
+
+\texttt{\textbackslash blankpar} 此处为空白段
+
+\texttt{\textbackslash blankpage} 插入空白页
+
+\texttt{\textbackslash storyend[]} 完结，可选参数为打印内容，默认为“完”，格式如下
+
+\storyend
+
+\texttt{\textbackslash splitdot} 插入1字宽的分隔号{\splitdot}
+
+\texttt{\textbackslash chsline}插入2字宽的破折号{\chsline}
+
+\texttt{\textbackslash tempsymbol}插入摄氏度符号{\tempsymbol}
+
+\texttt{\textbackslash prenotes{标题}}一种和\texttt{\textbackslash section*}不太一样的无序号小标题
 
 \chapter{进阶设置}
 
@@ -72,12 +93,13 @@
 
 本文的拉丁正文字体启用了Rare (Discretionary)和Historic两类连字（ligature），因此ct、st、Th三个字母组合看起来会有点特别。不用疑惑，我故意的。
 
-
 \signature
 
 \part{假文}
 
 \chapter{混合排版}
+
+\prenotes{说明}
 
 由于目前没有中英文混合的Lorem Ipsum包\footnote{对此深感遗憾}可用，直接引用了一篇科普来作为中英文混合的内容填充样例\endnote{本文来源于\href{https://cn.lipsum.com/}{https://cn.lipsum.com/}}。
 
@@ -173,6 +195,8 @@ Nam lacus nisl, semper in metus sed, malesuada laoreet leo. In urna elit, lacini
 Aliquam iaculis metus a tellus aliquam aliquet. Aliquam accumsan ornare erat. Suspendisse at est a metus consectetur scelerisque eu eget purus. Nam tempus sollicitudin nulla, quis semper purus. Praesent gravida, mi id egestas facilisis, elit nisi viverra dolor, quis tempor tellus justo a nibh. Nulla facilisi. In vitae dui eget mi sagittis eleifend. Sed vitae lobortis nisl. Aenean nec velit dolor. Vestibulum ut tellus dictum, iaculis quam vitae, mattis nibh. Sed hendrerit dolor quis quam dapibus volutpat id a orci. Donec sed condimentum nisl. Duis tempus est augue, nec hendrerit quam elementum ac.
 
 Praesent mollis faucibus felis vitae finibus. Nullam gravida risus nulla, in tempor risus venenatis id. Nullam varius tellus vitae nulla lobortis congue a vel velit. In in arcu at ligula ornare sagittis sed et ante. Phasellus auctor quam nisi, sed vehicula enim accumsan ac. Etiam tempus id felis tincidunt rhoncus. Ut suscipit augue quis tempus eleifend. Suspendisse potenti. Suspendisse potenti. Sed id arcu vel quam blandit rutrum. \endnote{Generated from https://www.lipsum.com/}
+
+\storyend[Ultimus]
 
 \vfill
 

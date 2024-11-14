@@ -18,6 +18,6 @@
 
 字体内容打印工具（不建议对中文字体用这个）
 
-## tutorial/tutorial.pdf
+## tutorial.pdf
 
 教程（更新可能赶不上在线版）
