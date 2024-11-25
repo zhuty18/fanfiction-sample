@@ -12,21 +12,36 @@
 
     \mytitlepage
 
-    \null\vfill
+    \clearpage
 
-    本文为懂得{\LaTeX}基础命令、语法，准备以此为排版工具，制作\textbf{书籍类同人本}的玩家撰写。考虑了等宽文字与不等宽文字（通常就是中英文）掺杂的情况。有少量场景与操作系统有关，本文暂只包括Windows下的处理方案。
+    \chapter*{前言}
+    \addcontentsline{toc}{chapter}{前言}
 
-    推荐新手使用在线工具，因此其中不包含{\LaTeX}安装等入门内容。如果想要安装在本地的话，这部分教程在网上已经很多，不需要我再抄一遍。
+    本文为准备制作\textbf{书籍类同人本}的玩家撰写。
 
-    我创立了一个模板，欢迎直接\jumpto{https://github.com/zhuty18/fanfiction-sample}{下载使用}。如果本文或者本模板对你出本有帮助，你出本时感谢我一句也挺好的。
+    最低配置：一个浏览器。
+
+    推荐配置：一个电脑上的浏览器。
+
+    \section*{}
+
+    考虑了等宽文字与不等宽文字（通常就是中英文）掺杂的情况。有少量场景与操作系统有关，暂只包括Windows下的处理方案。
+
+    推荐新手使用在线工具，因此文中不包含{\LaTeX}安装等内容。如果需要在本地运行的话，这部分教程网上已经很多，可以自行寻找。
+
+    我创立了一个模板，欢迎直接\jumpto{https://github.com/zhuty18/fanfiction-sample}{下载使用}。如果本文或者本模板对你出本有帮助，你感谢我一句也挺好的。
 
     本教程包含一些高投入低回报的内容，标注了“（进阶）”的字样。
 
     \signature
 
-    \vfill\vfill
+    \newpage
 
-    \tableofcontents
+    \begin{multicols}{2}
+        \addcontentsline{toc}{chapter}{目录}
+        \tableofcontents
+        \clearpage
+    \end{multicols}
 
     \cleardoublepage
 
@@ -41,17 +56,17 @@
 
     \section{简单易上手}
 
-    \jumpto{https://cn.overleaf.com/}{\textit{Overleaf}}是{\LaTeX}的在线IDE，全网页端，只需注册一个账号就可免费使用。使用时，在工作区左侧先点击目录（Menu），将编译引擎换成{\XeLaTeX}（\texttt{XeLaTeX}）或{\LuaLaTeX}（\texttt{LuaLaTeX}），才可正常处理中文。拼写检查系统不支持中文，建议关掉，不然中文全篇都是拼写警告。
+    \jumpto{https://cn.overleaf.com/}{\emph{Overleaf}}是{\LaTeX}的在线IDE，全网页端，只需注册一个账号就可免费使用。使用时，在工作区左侧先点击目录（Menu），将编译引擎换成{\XeLaTeX}（\texttt{XeLaTeX}）或{\LuaLaTeX}（\texttt{LuaLaTeX}），才可正常处理中文。拼写检查系统不支持中文，建议关掉，不然中文全篇都是拼写警告。
 
-    截止到写这篇文档的\today，\textit{Overleaf}为免费用户提供20秒的编译时间，不放图绝对够用了。（编译一个370页，20万字的本大概需要10秒）。
+    截止到写这篇文档的\today，\emph{Overleaf}为免费用户提供20秒的编译时间，不放图绝对够用了。（编译一个370页，20万字的本大概需要10秒）。
 
-    不过，如果想自定义字体的话，\textit{Overleaf}无能为力，还是需要自己安装\textit{TeXLive}\footnote{\textit{TeXLive}：{\LaTeX}的编译器，仅能通过命令行使用，建议搭配\textit{VSCode}或\textit{TeXstudio}等工具。}，在本地进行工作。
+    不过，如果想自定义字体的话，\emph{Overleaf}无能为力，还是需要自己安装\emph{TeXLive}\footnote{\emph{TeXLive}：{\LaTeX}的编译器，仅能通过命令行使用，建议搭配\emph{VSCode}或\emph{TeXstudio}等工具。}，在本地进行工作。
 
-    我的模板传到了\textit{Overleaf}上，但是公开模板需要等待审核检查，等通过了我会在这里放出链接。
+    我的模板传到了\emph{Overleaf}上，但是公开模板需要等待审核检查，等通过了我会在这里放出链接。
 
     \section{纯粹的排版工具}
 
-    目前的DIY出本教程里面，排版这一步都是用\textit{InDesign}。但\textit{InDesign}本质上是\textbf{版式设计}软件，面向市场是杂志、画册、报纸等类型。目标情景是一页上要分若干区，有的区填字、有的区放图，设计者主要研究这些区域如何分配面积、如何摆放、如何提升信息传达率、如何保持美观。
+    目前的DIY出本教程里面，排版这一步都是用\emph{InDesign}。但\emph{InDesign}本质上是\textbf{版式设计}软件，面向市场是杂志、画册、报纸等类型。目标情景是一页上要分若干区，有的区填字、有的区放图，设计者主要研究这些区域如何分配面积、如何摆放、如何提升信息传达率、如何保持美观。
 
     那么问题来了，\emph{你真的需要这些功能吗？}还是说，其实你需要的只是一个“能把我想印的那点东西\textbf{漂亮又简单地打包成印刷用pdf}”的工具呢？
 
@@ -99,7 +114,7 @@
 
     这些细碎的设定，在{\LaTeX}的\texttt{ctex}包中默认就会满足。不需要自己进行任何选择或调整\texttt{ctex}包默认就提供最美观的排版。（破折号略有些问题，我在后文里附了解决方案）
 
-    字母类文字排版时会遇到的关键问题是，一行文字几乎不可能在换行处恰好断开。{\TeX}对此的默认处理方案可谓是视觉上最美观的。\textit{Knuth-Plass}算法通过断字和拉伸，使得一段文本每行左右两侧都能对齐，且肉眼基本无法看出每行空格宽度的区别。
+    字母类文字排版时会遇到的关键问题是，一行文字几乎不可能在换行处恰好断开。{\TeX}对此的默认处理方案可谓是视觉上最美观的。\emph{Knuth-Plass}算法通过断字和拉伸，使得一段文本每行左右两侧都能对齐，且肉眼基本无法看出每行空格宽度的区别。
 
     正因有如此基础，{\LaTeX}处理混合文本时的便捷程度天下无双。
 
@@ -127,7 +142,7 @@
 
     具体选择什么样的参数，建议按自己的需求来决定。决定一个本子气质的是单页信息量（可以简单用行数*单行字数来量化）。同字号下，单页信息量越大，阅读体验越严肃；越小体验越活泼。比方说，一行18个字，2倍行高就可以轻松打造移动端的阅读体验。
 
-    但请注意，\textbf{排版越疏松，本子越厚}。\textbf{\textit{本子越厚，成本越高}}。印厂算钱的时候只看页数，不看油墨密度，页数越多就越贵。并且，对于字数较多的本，不紧凑一点真的会印成砖头的。
+    但请注意，\textbf{排版越疏松，本子越厚}。\textbf{\emph{本子越厚，成本越高}}。印厂算钱的时候只看页数，不看油墨密度，页数越多就越贵。并且，对于字数较多的本，不紧凑一点真的会印成砖头的。
 
     一个更直观的算法：\texttt{每页行数*每行字数}得到\texttt{理论每页字数}，是一页纸理论上能印的字数，但实际上不可能印满（出版物上标注的字数是版面字数，约等于理论字数乘页数，所以给人的感觉很注水）。理论值乘上\texttt{0.6\textasciitilde{}0.65}才是实际上的\texttt{平均每页字数}。整个本的字数除以\texttt{平均每页字数}可以得到大约的正文页数（排版增加的留白已经考虑在内）。最通用的80g纸，厚度是0.11毫米。
 
@@ -135,11 +150,11 @@
 
     \section{全网格化（进阶）}
 
-    在正式出版物中，还有其他\sout{强迫症发作的}进阶规则。
+    在正式出版物中，还有其他\xout{强迫症发作的}进阶规则。
 
     \begin{tightenum}
-        \item   行宽是整数个字的宽\\即一排汉字能将一行恰好排满，提升每页纸上的网格感。
-        \item   标题所占高度是整数个行的高\\使得不同页面格式中，正文都能实现跨页行对齐。
+        \item   行宽是整数个字的宽\\  即一排汉字能将一行恰好排满，提升每页纸上的网格感。
+        \item   标题所占高度是整数个行的高\\  使得不同页面格式中，正文都能实现跨页行对齐。
     \end{tightenum}
 
     这些规则本质上都是令阅读体验更接近于排字印刷时代，但是到了现代，出版社也不是一定遵守这些规矩，姑且看看，了解一下即可。除非有很强的强迫症，不然不需要应用。
@@ -179,11 +194,13 @@
         \end{longtable}
     \end{center}
 
-    破折号有点复杂，见后文\textit{\nameref{chsline}}。
+    破折号有点复杂，见后文\emph{\nameref{chsline}}。
+
+    另外，自动化转换工具可能会将斜体转为\texttt{\textbackslash{}emph\{斜体内容\}}，\texttt{\textbackslash{}emph}意为强调（emphasis），并不完全等同于斜体，见\emph{\nameref{bfit}}。
 
     \section{{\LaTeX}正文语法入门}
 
-    对于txt文件，需要手动写一下格式。{\LaTeX}内容写作语法复杂度只在公式上，普通文本只比txt复杂一点点。如果嫌我写得太抽象了，在\textit{Overleaf}上找点模板玩玩即可理解。
+    对于txt文件，需要手动写一下格式。{\LaTeX}内容写作语法复杂度只在公式上，普通文本只比txt复杂一点点。如果嫌我写得太抽象了，在\emph{Overleaf}上找点模板玩玩即可理解。
 
     \subsection{文件结构}
 
@@ -197,7 +214,9 @@
 
     正文分段需要使用两个回车（即空一行），连用额外的回车视作无效。
 
-    空一段的方法见后文\textit{\nameref{blankpar}}。
+    可以通过加一个空白段落的方式空一段，如下。
+
+    \lstinputlisting[style=TeX,caption={空白段}]{codes/blankpar.tex}
 
     单个回车在排版时会视作空格。
 
@@ -206,6 +225,9 @@
     加粗方法：\texttt{\textbackslash{}textbf\{加粗内容\}}
 
     斜体方法：\texttt{\textbackslash{}textit\{斜体内容\}}
+
+    强调方法：\texttt{\textbackslash{}emph\{强调内容\}}，默认使用斜体进行强调，如果强调中再强调一次，则会把二次强调的内容换回正体。
+    \label{bfit}
 
     \subsection{特殊字符}
 
@@ -221,7 +243,7 @@
 
     \subsection{标题}
 
-    各级标题见\textit{\nameref{title}}。
+    各级标题的名称见\emph{\nameref{title}}。
 
     有序标题的标记方法是\texttt{\textbackslash{}级别\{标题内容\}}。序号标记会自动处理，不用写进正文文档区。
 
@@ -265,7 +287,11 @@
         \caption{字号（出自\texttt{ctex}文档）}
     \end{figure}
 
-    在文档字号不同时，各个字号命令对应的字号如上图。此外，可以用\texttt{\textbackslash{}fontsize}命令手动定义文字大小，如下。
+    在文档字号不同时，各个字号命令对应的字号如上图。
+
+    字号命令一次使用对后文全部生效，局部使用时，应用\texttt{\{\}}将对应区域括起，其中包含字号命令和改变字号的内容。
+
+    此外，可以用\texttt{\textbackslash{}fontsize}命令手动定义文字大小，如下。
 
     \lstinputlisting[style=TeX,caption={自定义字号}]{codes/fontsize-1.tex}
 
@@ -280,7 +306,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{data/paper.png}
-        \caption{纸面布局（出自\texttt{geometry}文档}
+        \caption{纸面布局（出自\texttt{geometry}文档）}
     \end{figure}
 
     注意水平方向\texttt{left,\ right}和\texttt{inner,\ outer}这两组是二选一的关系。双页印刷应当使用\texttt{inner,\ outer}这组参数，能根据页面单双自动调整文字区域位置。
@@ -341,7 +367,7 @@
 
     \lstinputlisting[style=TeX,caption={配置标题间距}]{codes/title-2.tex}
 
-    标题上的编号默认为\textit{1.1.1}类，即子级编号会带上上级，用以下命令来去除子级的上级编号。
+    标题上的编号默认为\emph{1.1.1}类，即子级编号会带上上级，用以下命令来去除子级的上级编号。
 
     \lstinputlisting[style=TeX,caption={编号独立}]{codes/title-3.tex}
 
@@ -448,11 +474,11 @@
         \end{longtable}
     \end{center}
 
-    \textit{TeXLive}自带字库中包含\textit{Fandol}系列，各平台均可\texttt{{[}fontset=fandol{]}}加载全套\textit{Fandol}字体配置，简单达到跨平台统一。但是它只含GB2312内的字符，可能会出现缺字。如果出现这种问题的话，还是只能自行配置字体。
+    \emph{TeXLive}自带字库中包含\emph{Fandol}系列，各平台均可\texttt{{[}fontset=fandol{]}}加载全套\emph{Fandol}字体配置，简单达到跨平台统一。但是它只含GB2312内的字符，可能会出现缺字。如果出现这种问题的话，还是只能自行配置字体。
 
     \section{常用字体获取}
 
-    外语字体可在\jumpto{https://www.1001fonts.com/}{1001 Fonts}上挑选。我推荐\jumpto{https://www.1001fonts.com/eb-garamond-font.html}{EB Garamond}，该字体实现了拉丁、希腊、西里尔字母的全覆盖，用起来很省心。
+    外语字体可在\jumpto{https://www.1001fonts.com/}{1001 Fonts}上挑选。我推荐\jumpto{https://www.1001fonts.com/eb-garamond-font.html}{EB Garamond 12}，该字体实现了拉丁、希腊、西里尔字母的全覆盖，用起来很省心。
 
     思源系列开源，这是官方地址：\jumpto{https://github.com/adobe-fonts/source-han-serif/releases/latest}{思源宋体}，\jumpto{https://github.com/adobe-fonts/source-han-sans/releases/latest}{思源黑体}。
 
@@ -470,9 +496,9 @@
 
     可以用系统命令\texttt{fc-list\ \textgreater{}\textgreater{}\ fonts.txt}生成一个字体表文件，包括系统上的可用字体。增加\texttt{:lang-zh}参数可以指定过滤筛选中文字体。注意一些字体虽然使用时是中文，但其字体文件会被识别为日文或韩文，不会出现在结果中。确定\textbf{英文系列名}时，可以用\texttt{fc-list\ \textbar{}\ Select-String\ "系列名"}来筛选字体列表。中文名可能会是乱码，建议只用英文名进行此项操作。
 
-    得出的结果中包含字体名，这里使用开源字体\textit{Vollkorn}系列举例，\texttt{fc-list\ \textbar{}\ Select-String\ "Vollkorn"}得到的结果如下
+    得出的结果中包含字体名，这里使用开源字体\emph{Vollkorn}系列举例，\texttt{fc-list\ \textbar{}\ Select-String\ "Vollkorn"}得到的结果如下
 
-    \begin{lstlisting}[title=\textit{Vollkorn}查询结果]
+    \begin{lstlisting}[title=\emph{Vollkorn}查询结果]
 C:/Windows/fonts/Vollkorn-Medium.otf: Vollkorn,Vollkorn Medium:style=Medium,Regular
 C:/Windows/fonts/Vollkorn-Italic.otf: Vollkorn:style=Italic
 C:/Windows/fonts/Vollkorn-Bold.otf: Vollkorn:style=Bold
@@ -487,7 +513,7 @@ C:/Windows/fonts/Vollkorn-Semibold.otf: Vollkorn,Vollkorn Semibold:style=Semibol
 
     注：一些字体名中含有\texttt{-}，在打印时会增加转义符显示为\texttt{\textbackslash{}-}，使用这些字体时输入\texttt{-}即可。
 
-    另外，也可以使用\jumpto{https://fontdrop.info}{FontDrop!}网站解析单个字体文件，获得字体名。解析样例字体\textit{EBGaramondSC12-Regular.otf}时结果如下。
+    另外，也可以使用\jumpto{https://fontdrop.info}{FontDrop!}网站解析单个字体文件，获得字体名。解析样例字体\emph{EBGaramondSC12-Regular.otf}时结果如下。
 
     \begin{lstlisting}[title=FontDrop!解析结果]
 You see EB Garamond SC
@@ -499,7 +525,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \section{字体配置}
 
-    这里介绍两种字体配置方法。路径法适用于在多个工作环境中使用同一项目，安装法适用于在单一工作环境下维护多个项目。\textit{Overleaf}\textbf{仅支持路径法。}
+    这里介绍两种字体配置方法。路径法适用于在多个工作环境中使用同一项目，安装法适用于在单一工作环境下维护多个项目。\emph{Overleaf}\textbf{仅支持路径法。}
 
     \subsection{路径法}
 
@@ -523,7 +549,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \subsection{安装法}
 
-    安装法即为将字体安装进系统中，通过字体名称调用。{\LaTeX}可以自动检索系统路径\texttt{C:\textbackslash{}Windows\textbackslash{}Fonts\textbackslash{}}下的字体和\textit{TeXLive}安装时带的字体。如需自定义字体，安装时需要选择\textbf{为所有用户安装}。
+    安装法即为将字体安装进系统中，通过字体名称调用。{\LaTeX}可以自动检索系统路径\texttt{C:\textbackslash{}Windows\textbackslash{}Fonts\textbackslash{}}下的字体和\emph{TeXLive}安装时带的字体。如需自定义字体，安装时需要选择\textbf{为所有用户安装}。
 
     由于安装法的字体名检查起来较为不易，推荐使用专属名。（用Everything的话可以无视这句）
 
@@ -531,7 +557,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \lstinputlisting[style=TeX,caption=安装法配置主字体]{codes/font-12.tex}
 
-    \subsection{安装法配置的字体找不到怎么办？}
+    \subsection{配置的字体找不到？}
 
     第一步，确定字体确实安装在了\texttt{C:\textbackslash{}Windows\textbackslash{}Fonts}文件夹里。
 
@@ -547,9 +573,9 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     第六步，天涯何处无芳草，字体到处都是，换一个吧。
 
-    \section{\texorpdfstring{\texttt{fontspec}包字符字体配置}{fontspec包字符字体配置}}
+    \subsection{\texttt{fontspec}包字体配置}
 
-     {\LaTeX}的字体配置默认是\textbf{只对部分字符生效}的，需要分别配置，混排时可以叠加指定。默认配置使用\texttt{fontspec}包，\texttt{ctex}包只对中日韩三语起效，与\texttt{fontspec}包的语法非常类似。
+    {\LaTeX}的字体配置默认是\textbf{只对部分字符生效}的，需要分别配置，混排时可以叠加指定。默认配置使用\texttt{fontspec}包，\texttt{ctex}包只对中日韩三语起效，与\texttt{fontspec}包的语法非常类似。
 
     非CJK字符（不止为ASCII，还包括章节符{\S}和摄氏度{\tempfont ℃}等国际通用符号），是默认使用基础字体渲染的，只有\texttt{fontspec}包配置的字体才能起效。
 
@@ -573,19 +599,19 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \lstinputlisting[style=TeX,caption=指定加粗和斜体]{codes/font-3.tex}
 
-    使用非主字体时，只需要输入配置时设定的字体名即可。
+    使用非主字体时，只需要输入配置时设定的字体名即可。与字号类似，字体命令一次使用也对后文全部生效，局部使用时，应用\texttt{\{\}}将对应区域括起，其中包含字体命令和改变字体的内容。
 
     \lstinputlisting[style=TeX,caption=使用自定义字体]{codes/font-4.tex}
 
-    \subsection{连字（进阶）}
+    \subsection{外语连字（进阶）}
 
-    英文衬线字体中存在连字（ligature），通过设计优化某些字符串的显示方式来提升易读性。最经典的三个案例如下图（字体为\textit{Vollkorn}）。
+    外语衬线字体中存在连字（ligature），通过设计优化某些字符串的显示方式来提升易读性。最经典的三个案例如下图（字体为\emph{Vollkorn}）。
 
     \begin{minipage}[c][3\baselineskip]{30\ccwd}
         \centering\fontspec{Vollkorn}\Huge f i l fi fl ff
     \end{minipage}
 
-    {\LaTeX}默认载入一部分通用连字（OTF中tag为liga），能提升英文文本的易读性。而一些字体对连字的设计比较充分，还使用了其他的连字tag。通常类别有：clig指上下文连字（contextual），能使手写体中产生连笔；dlig指自由连字（discretionary），会使文字更花俏；hlig指历史连字（historical）能令文字看起来较为复古；rlig标记必需连字（Required），可以实现“将英语字母拼合得到其他字母”，例如ae拼合为æ。
+    {\LaTeX}默认载入一部分通用连字（OTF中tag为liga），能提升外文文本的易读性。而一些字体对连字的设计比较充分，还使用了其他的连字tag。通常类别有：clig指上下文连字（contextual），能使手写体中产生连笔；dlig指自由连字（discretionary），会使文字更花俏；hlig指历史连字（historical）能令文字看起来较为复古；rlig标记必需连字（Required），可以实现“将英语字母拼合得到其他字母”，例如ae拼合为æ。
 
     本教程的正文字体启用了历史连字，因此ct，st上面有一笔勾连；启用了自由连字，因此Th上端出现了融合。
 
@@ -599,7 +625,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     可以用\jumpto{https://fontdrop.info}{FontDrop!}这个网站来查看字体内连字。有些字体虽然设计了连字，但并没有正确标注，导致这些连字虽然存在但却无法使用。面对这种情况，可以用\jumpto{https://fontforge.org/en-US/}{FontForge}软件进行\jumpto{https://fontforge.org/docs/tutorial/editexample4.html}{手动标注}。
 
-    \section{\texttt{ctex}包字体配置}
+    \subsection{\texttt{ctex}包字体配置}
 
     中文字符，如\texttt{你}，\texttt{我}，\texttt{；}（中文分号），\texttt{《}（中文书名号），均需要使用\texttt{ctex}包内的命令进行字体配置才能正常显示。
 
@@ -616,12 +642,6 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
     \lstinputlisting[style=TeX,caption=配置中文字体]{codes/font-6.tex}
 
     其中，方正系列四个字体都只有一个字重，而思源两个系列都具有extralight，light，regular，medium，semibold，bold，heavy七个字重，可以进行指定。所有字体中都不含斜体。
-
-    \section{外语字符配置中文字体}
-
-    有的中文字体中也一并包含了同风格的外语字符设计。如果需要使用，将其用\texttt{fontspec}包内命令加载，然后叠加使用即可。
-
-    \lstinputlisting[style=TeX,caption=外语与中文使用同一字体]{codes/font-8.tex}
 
     \section{高级配置}
 
@@ -643,13 +663,15 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     实际使用时，推荐将方正书宋（书宋即完全针对书籍印刷设计的宋体）作为主字体，指定方正楷体或仿宋作为斜体，以便于在正文中标注少量字符（如引用），这样易读性较佳。
 
-    不过，方正书宋只有一个字重免费，固然技术上可以将较粗的思源宋体或方正黑体作为粗体使用，但思源系列与方正书宋字形相似又不同，夹杂使用令人不适；黑体也不适用于书记正文。如果对加粗有明确的需求，请挑一款多字重的字体（如思源宋体）作为主字体。不过，由于字形差异足够大，依然可以搭配方正字体作为斜体。
+    不过，方正书宋只有一个字重免费，固然技术上可以将较粗的思源宋体或方正黑体作为粗体使用，但思源系列与方正书宋字形相似又不同，夹杂使用令人不适；黑体也不适用于书写正文。如果对加粗有明确的需求，请挑一款多字重的字体（如思源宋体）作为主字体。不过，由于字形差异足够大，依然可以搭配方正字体作为斜体。
 
     装饰性文字（脚注、页眉页脚等）建议使用方正仿宋或楷体，注意与斜体区分。
 
     各级标题字体建议用不同字重的思源宋体来显示。
 
     内页不推荐使用黑体。
+
+    可以用\texttt{\textbackslash{}ctexset\{ziju=额外倍数\}}来额外改变字距，但是不建议改，属于费力不讨好。
 
     \subsection{外语}
 
@@ -673,11 +695,11 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
         \blankpar
     \end{adjustwidth}
 
-    \textit{Neuton}的字母偏小。配置时可用\texttt{{[}Scale=比例{]}}参数放大。
+    \emph{Neuton}的字母偏小。配置时可用\texttt{{[}Scale=比例{]}}参数放大。
 
-    \textit{EB Garamond}的字母与中文相当契合，但数字采用了与英文相同的三格设计（俗称OldStyle），在数字与汉字混排时看起来会很诡异。可使用\texttt{{[}Numbers=Lining{]}}切换到等高数字。注意此方案起效建立在字体中含有等高数字的前提下，不是所有字体都支持。
+    \emph{EB Garamond}的字母与中文相当契合，但数字采用了与英文相同的三格设计（俗称OldStyle），在数字与汉字混排时看起来会很诡异。可使用\texttt{{[}Numbers=Lining{]}}切换到等高数字。注意此方案起效建立在字体中含有等高数字的前提下，不是所有字体都支持。
 
-    \textit{Spectral}的字距比起中文明显偏高。可使用\texttt{{[}LetterSpace=改变值（如-3）{]}}来降低字母间距。另，如果想要调整空格宽度，使用\texttt{{[}WordSpace=空格宽度{]}}参数即可。
+    \emph{Spectral}的字距比起中文明显偏高。可使用\texttt{{[}LetterSpace=改变值（如-3）{]}}来降低字母间距。另，如果想要调整空格宽度，使用\texttt{{[}WordSpace=空格宽度{]}}参数即可。
 
     思源系列是全语言支持，但是需缩小一点并降低字母间距，才适用于正文混排。默认比例适合于形如“Chapter 1 节俭”这样多语言分隔的格式，或极少量穿插其他语言的大段文本。
 
@@ -697,7 +719,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
         \blankpar
     \end{adjustwidth}
 
-    方正系列虽然覆盖了字母的字符，但只做了中文字形设计，对外语的支持仅能当做显示保底，并不能看。四种免费字体内除ASCII外的全部字符，均与中文字符等宽。
+    方正系列虽然覆盖了外语的字符，但并没有做对应的设计（很多被认为是抄的），基础参数也很不合理。四种免费字体内除ASCII外的全部字符，均与中文字符等宽，不适合用于显示外语。因此极不建议将其作为\texttt{fontspec}包配置的字体。例如，这是思源宋体中的{\fontspec{Source Han Serif CN} café}，这是方正书宋中的{\fontspec{FZShuSong-Z01} café}，这是EB Garamond 12中的{\fontspec{EB Garamond 12 Regular} café}。
 
     \chapter{页面排版}
 
@@ -729,7 +751,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \lstinputlisting[style=TeX,caption={调整段距}]{codes/parskip.tex}
 
-    使用时，最好不要只给一个数，容易导致每页出现大量\texttt{Overfull/Underfull\ \textbackslash{}vbox}错误，解决方法有两种。
+    使用时，最好不要只给一个数，容易导致出现大量\texttt{Overfull/Underfull\ \textbackslash{}vbox}错误，解决方法有两种。
 
     \begin{tightenum}
         \item   设置段距时，给出弹性空间。不要让最短段距低于0，会使得段间空白小于行间。
@@ -747,6 +769,28 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
     段首缩进的长度也可以调整，但不是很需要。中文文档用默认的2字宽是最合适的。
 
     \lstinputlisting[style=TeX,caption={修改缩进}]{codes/indent-2.tex}
+
+    \section{换页}
+
+    \texttt{\textbackslash{}clearpage}命令可以使后续内容从新的一页上开始，\texttt{\textbackslash{}newpage}则可以新起一栏（单栏模式下即为新开一页）。有浮动要素（如图片、表格）时，二者的处理机制也不同，如需要这部分功能请自行深入研究。
+
+    \section{自动空白页}
+
+    \texttt{\textbackslash{}chapter}及以上级别的标题会自动新起一张纸。\texttt{book}类文档中默认为双页模式，右页为新纸。当上文结束在奇数页时，会产生一页空白页。不想要的话，可以在定义\texttt{documentclass}的时候增加一个参数\texttt{openany}，允许在偶数页开启新内容。
+
+    \lstinputlisting[style=TeX,caption={不自动插入空白页}]{codes/page-1.tex}
+
+    相对的，如果在使用了\texttt{openany}参数后，希望某页在右页上开始，则可以使用\texttt{\textbackslash{}cleardoublepage}命令。该命令会自动插入空白页，使后续内容从下一个右页铺开。
+
+    若希望后文在左页上开始，可以使用以下写法：
+
+    \lstinputlisting[style=TeX,caption={在左页展开后续}]{codes/page-2.tex}
+
+    \section{手动空白页}
+
+    一页强制插入的白纸包含若干要素，建议直接写成命令，方便使用。
+
+    \lstinputlisting[style=TeX,caption={手动插入空白页}]{codes/blankpage.tex}
 
     \section{页码更改}
 
@@ -812,7 +856,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \section{段落格式}
 
-    适用于长引用，直接插入正文。
+    适用于长引用，直接插入正文。首段缩进在环境里不起效，如果需要，请在第一行文字前加入\texttt{\textbackslash{}hspace\{\textbackslash{}parindent\}}。
 
     引入\texttt{changepage}包
 
@@ -846,7 +890,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     脚注所使用的字体可以自行设定，方法如下
 
-    \lstinputlisting[style=TeX,caption={脚注沉底}]{codes/note-3.tex}
+    \lstinputlisting[style=TeX,caption={设置脚注字体}]{codes/note-3.tex}
 
     使用以下代码令脚注使用罗马数字
 
@@ -862,7 +906,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \lstinputlisting[style=TeX,caption={修改尾注标题}]{codes/note-5.tex}
 
-    尾注标题默认影响\texttt{\textbackslash{}leftmark}（该命令的用处见\textit{\nameref{hf}}），可以用以下命令规避。
+    尾注标题默认影响\texttt{\textbackslash{}leftmark}（该命令的用处见\emph{\nameref{hf}}），可以用以下命令规避。
 
     \lstinputlisting[style=TeX,caption={尾注不改标记}]{codes/note-6.tex}
 
@@ -902,9 +946,9 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     目录中的标题名默认会显示在序号区和页码区之间，内容默认与正文中的标题名相同，可以不同，有些时候也需要不同。如注只能放在正文中的标题里，而不能出现在目录索引里。
 
-    \lstinputlisting[style=TeX,caption={手动添加项进目录}]{codes/toc-5.tex}
+    \lstinputlisting[style=TeX,caption={手动设置索引中的标题名称}]{codes/toc-5.tex}
 
-    \texttt{{[}目录中的名称{]}}留空可以使其在目录中以编号节存在，而不显示节名称。
+    \texttt{{[}索引中的名称{]}}留空可以使其在目录中只有节编号，而不显示节名称。
 
     当改变页码字体时，可能会出现\texttt{\textbackslash{}hbox\ underfull}警告，可以用以下代码改变默认的页码宽度。
 
@@ -1019,22 +1063,9 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     顾名思义，就是把内容打包成一个盒子，然后转一下。
 
-    \chapter{杂七杂八}
+    \chapter{其它}
 
-    \section{空白页}
-
-    空白页要包含若干要素，建议直接写成命令，方便使用。
-
-    \lstinputlisting[style=TeX,caption={空白页}]{codes/blankpage.tex}
-
-    \section{空白段}
-    \label{blankpar}
-
-    有人（比如我）喜欢用空一段的方式分节。在{\LaTeX}中，文字后的空行，不管多少，都视为且只视为一个回车，空一段需要使用如下写法。
-
-    \lstinputlisting[style=TeX,caption={空白段}]{codes/blankpar.tex}
-
-    \section{规定标点宽度（如中文破折号）}
+    \section[规定标点宽度]{规定标点宽度（如破折号）}
     \label{chsline}
 
     绝大多数中文标点都能在{\LaTeX}中按标准方式渲染，但是破折号基本都不会和标准使用方法一样，等同于两个字宽。这与字体和连字均有关系，\jumpto{https://github.com/CTeX-org/ctex-kit/issues/382}{有兴趣可以阅读这篇帖子}。想完美解决很复杂，但是想简单解决真的很简单。
@@ -1043,7 +1074,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     使用中，可以将实现方式定义为一个命令，然后把正文中所有破折号替换为该命令，一键解决。
 
-    注：\texttt{\textbackslash{}mycommand\hspace{-0.1em}文字}会发生识别错误，应该使用\texttt{\{\textbackslash{}mycommand\}文字}的写法。
+    注：\texttt{\textbackslash{}mycommand\hspace{-0.1em}文字}会发生识别错误，应该使用\texttt{\{\textbackslash{}mycommand\}\hspace{-0.1em}文字}的写法。
 
     \section{特殊字符换字体}
 
@@ -1059,7 +1090,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     行溢出，即\texttt{Overfull\ \textbackslash{}hbox}警告。一行文字无法恰当地显示在规定的行宽里。
 
-    从本质上来说，\textit{警告}并不是一定要消除，因为它不影响功能的实现。但是{\LaTeX}中的\textit{警告}与\textit{丑}基本可以画等号，所以排版过程中还是建议解决一下。
+    从本质上来说，\emph{警告}并不是一定要消除，因为它不影响功能的实现。但是{\LaTeX}中的\emph{警告}与\emph{丑}基本可以画等号，所以排版过程中还是建议解决一下。
 
     调整字号、行宽等基础布局数值，都可能在某些页面产生或消除该警告。
 
@@ -1067,7 +1098,7 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     \lstinputlisting[style=TeX,caption={行溢出的处理}]{codes/ohbox.tex}
 
-    但这样的解决方法会导致某一行字距过大，还是影响观感。最美观的解决方法应该是直接调整文本，在确定页面参数后，通过增减这一行的几个字或标点来解决问题。不过因为只能在给自己排版时进行改动，所以大部分时候就只能接受一点点的不美观了。
+    但这样的解决方法会导致某一行字距过大，还是影响观感，本教程中就有多处这样的问题。最美观的解决方法应该是直接调整文本，在确定页面参数后，通过增减这一行的几个字或标点来解决问题。不过因为只能在给自己排版时进行改动，所以大部分时候就只能接受一点点的不美观了。
 
     \section{纸面不充盈}
 
@@ -1100,6 +1131,58 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
     在子文档中，页码自动从1开始。可以手动设置，但不建议这样做，因为手动调整页码的命令在主文件内同样生效，容易产生页码不连续的问题。
 
     \texttt{subfiles}包有时会出现一些bug，如果主文件和子文件渲染出来有页码之外的区别的话，大概就是原生bug造成的。如果调整不出来，可以釜底抽薪，删除开头结尾的\texttt{document}相关声明，改用\texttt{\textbackslash{}input}引入。
+
+    \section{更多文字装饰}
+
+    \texttt{ulem}包提供了更多的文字装饰方法，如下。
+
+    \lstinputlisting[style=TeX,caption={\texttt{ulem}装饰}]{codes/ulem-1.tex}
+
+    \input{codes/ulem-1.tex}
+
+    注意，\texttt{ulem}包会默认将\texttt{\textbackslash{}emph}命令的效果替换为下划线，每强调一次，强调内容下方就会多一条线。可以在引入时规避。
+
+    \lstinputlisting[style=TeX,caption={不允许\texttt{ulem}改变强调格式}]{codes/ulem-0.tex}
+
+    \section{色彩}
+
+    一般用\texttt{xcolor}处理色彩。
+
+    先定义颜色。
+
+    \lstinputlisting[style=TeX,caption={定义颜色}]{codes/color-1.tex}
+
+    用\texttt{\textbackslash{}color}设置字体颜色。
+
+    \lstinputlisting[style=TeX,caption={使用颜色}]{codes/color-2.tex}
+
+    用\texttt{\textbackslash{}colorbox}绘制彩色背景盒子。
+
+    \lstinputlisting[style=TeX,caption={彩色背景盒子}]{codes/color-3.tex}
+
+    \section{输入emoji}
+
+    emoji分单色和多色两种，有不同字体，使用方案不同。
+
+    \subsection{单色emoji}
+
+    单色emoji的使用方法近似于一般文字。\emoji{"1F407}上色后{\color{pink}即为\emoji{"1F407}}。{\checkmark}则为\emoji{"2714}放入彩色背景盒子后得到的。
+
+    加载单色emoji字体后，用\texttt{\textbackslash{}char}或\texttt{\textbackslash{}symbol}输入编码使用。emoji的unicode编码可以在\jumpto{https://www.emojiall.com/}{emoji字典}上查询。
+
+    典型的单色emoji字体如\jumpto{https://www.webfontfree.com/cn/download/Symbola}{Symbola}。
+
+    \lstinputlisting[style=TeX,caption={单色emoji}]{codes/emoji-1.tex}
+
+    \subsection{多色emoji}
+
+    多色emoji使用\texttt{emoji}包处理。\textbf{只能使用\LuaLaTeX（\texttt{LuaLaTeX}）编译}。
+
+    典型的多色emoji字体如\jumpto{https://github.com/jdecked/twemoji/releases/latest}{Twemoji}。
+
+    \lstinputlisting[style=TeX,caption={多色emoji}]{codes/emoji-2.tex}
+
+    每个emoji的名称见\texttt{emoji}包文档。
 
     \chapter{严格网格排版（进阶）}
 
@@ -1143,43 +1226,43 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     因为我喜欢{\LaTeX}。
 
-    大约在1977年的一天，高德纳（\textit{D. E. Knuth}）或许是收到了出版社寄来的可怕样书，或许是在写玩《计算机程序设计的艺术》第三卷《排序与搜索》的手稿时意识到电脑打不出这东西，总之，他深感当时的排版软件太烂了，配不上他的才华，所以选择搁置写作，给自己开发了一款高质量的排版工具。1983年6月，{\TeX}完工。1985年，\textit{Leslie Lamport}给{\TeX}套了一份宏，简便易用的{\LaTeX}从此诞生。
+    大约在1977年的一天，高德纳（\emph{D. E. Knuth}）或许是收到了出版社寄来的可怕样书，或许是在写玩《计算机程序设计的艺术》第三卷《排序与搜索》的手稿时意识到电脑打不出这东西，总之，他深感当时的排版软件太烂了，配不上他的才华，所以选择搁置写作，给自己开发了一款高质量的排版工具。1983年6月，{\TeX}完工。1985年，\emph{Leslie Lamport}给{\TeX}套了一份宏，简便易用的{\LaTeX}从此诞生。
 
     这是{\TeX}系列的精神内核，不是因为利益，而是因为需求。\textbf{因为我需要，而且我相信别人也需要。}整个{\TeX}社区就是基于这样的心态所建立的，我这篇文章也是同理。
 
     \section{为什么不用Typst？}
 
-    因为\jumpto{https://typst.app/}{\textit{Typst}}还是太菜了。
+    因为\jumpto{https://typst.app/}{\emph{Typst}}还是太菜了。
 
-    当然，这样说粗糙了些。具体地讲，放弃\textit{Typst}有以下几个原因。
+    当然，这样说粗糙了些。具体地讲，放弃\emph{Typst}有以下几个原因。
 
     \subsection{中文处理能力不足}
 
-    具体地说，在几个字符范围内的处理，\textit{Typst}已经把能做的都做了，但以段为单位的中文处理能力还距离出版级较为遥远。
+    具体地说，在几个字符范围内的处理，\emph{Typst}已经把能做的都做了，但以段为单位的中文处理能力还距离出版级较为遥远。
 
     细心的你或许一早就发现了我讲标点压缩和字距时留下的暗坑。
 
     标点压缩：
 
-    \begin{quotation} 连续的两个标点（如\texttt{：“}）合并挤压为1.5个字符宽 \end{quotation}
+    \begin{quote} 连续的两个标点（如\texttt{：“}）合并挤压为1.5个字符宽 \end{quote}
 
     字距：
 
-    \begin{quotation} 文字每行左右均顶格，恰好占满设定的行宽 \end{quotation}
+    \begin{quote} 文字每行左右均顶格，恰好占满设定的行宽 \end{quote}
 
     那么问题来了，如果我行宽设定为24个字宽，某行的内容是\texttt{兔子草灵感迸发，提笔写道：“此处应有一段广告，但}，那么它应该占多少格呢？
 
-    答案是24个。虽然只看文本，这一行应为23.5个字宽，但它既然是一行，就必须是24个字宽。为了美观，左右对齐的权重要重于标点压缩的正确性。可\textit{Typst}目前是渲染为23.5个字宽。
+    答案是24个。虽然只看文本，这一行应为23.5个字宽，但它既然是一行，就必须是24个字宽。为了美观，左右对齐的权重要重于标点压缩的正确性。可\emph{Typst}目前是渲染为23.5个字宽。
 
     （通常这里的解法有：把连用的标点扩到2个字宽；把三处标点各压一点，挤出半个字宽，多放一个字在这行；把整行字距增大一点点，凑出半个字宽 et al.）
 
-    如果说半个字宽你还觉得影响不大的话，请注意，一段长文字必然要换行，而大部分标点不可以出现在行首，但是又要占一格。自然换行处是标点的话，\textit{Typst}会从上一行扣一个字塞进下一行，使得前一行末尾出现整个字的空缺。
+    如果说半个字宽你还觉得影响不大的话，请注意，一段长文字必然要换行，而大部分标点不可以出现在行首，但是又要占一格。自然换行处是标点的话，\emph{Typst}会从上一行抠一个字塞进下一行，使得前一行末尾出现整个字的空缺。
 
-    结果就是：随便粘几百字有对话的小说进\textit{Typst}，右缘就稀烂了。如果文本是多语言夹杂的，这个问题还会更进一步放大。
+    结果就是：随便粘几百字有对话的小说进\emph{Typst}，右缘就稀烂了。如果文本是多语言夹杂的，这个问题还会更进一步放大。
 
-    \subsection{与其他格式的转换路径空缺}
+    \subsection{格式转换路径空缺}
 
-    我写文一般用markdown，而就这么轻量级的格式，typst也没有实现md2typ的自动转化。注释、图片、表格这堆东西，要我自己动手扣格式的话，我真的抠不动。
+    我写文一般用markdown，当下最简单的富文本格式。而就这么轻量级的语言，目前也没有md2typ的自动转化工具。注释、图片、表格这堆东西，要我自己动手抠格式，我是真的抠不动。
 
     \subsection{功能欠缺}
 
@@ -1193,9 +1276,9 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
         \item   很难按左右页设置页眉页脚。
     \end{tightenum}
 
-    \section{为什么不用别人都在推荐的InDesign呢？}
+    \section{为什么不用InDesign？}
 
-    因为作为外行，我在研究\textit{InDesign}时，\textbf{只}感到它\textbf{特别愚蠢}。
+    因为作为外行，我在研究\emph{InDesign}时，\textbf{只}感到它\textbf{特别愚蠢}。
 
     我无法理解各层UI目录的嵌套设计原则，出于同样的原因，我在阅读文档时也感到了极大的困扰。
 
@@ -1203,8 +1286,39 @@ License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebga
 
     我最无法接受的是它的性能。我只放了三页文档，调格式的时候都能明显感到卡顿。甚至有几次调完格式它原地崩溃了。我的电脑配置是i5-12400F，32G双通道内存，4060ti，还配得上三页只有字的A5纸吧。
 
+    \section{\texorpdfstring{{\LaTeX}怎么念？}{\textbackslash LaTeX怎么念？}}
+
+     {\TeX}虽然长得很像英语（该符号也是用英语字母绘制），但其实是希腊词根\emph{τεχ}（依次为tao，epsilon，chi）的大写\emph{ΤΕΧ}，具有technology和art双义，读作“泰-赫”。
+
+    {\LaTeX}的\emph{La}则是\emph{Lamport}的缩写，它读作“拉-泰-赫”。这个读音和\emph{Lamport}的读音没啥关系，多半只是为了继承{\TeX}反直觉的读法，故意取头两个字母，以让名字与乳胶（latex）长得很像。
+
+    \section{补充阅读}
+
+    本文旨在快速上手排版，因而跳过了大量命令解释和高级语法的内容。如果想要深度使用{\LaTeX}，仍需补课。
+
+    以下是几份我认为值得一读的参考，
+
+    \jumpto{https://ask.latexstudio.net/LearnLaTeX/}{\emph{LaTeX知识库}}是一套非常基础的文档，对于各个基本功能都进行了详细讲解。适于完整阅读，以初步了解{\LaTeX}。
+
+    \jumpto{https://ctan.math.utah.edu/ctan/tex-archive/info/lshort/chinese/lshort-zh-cn.pdf}{\emph{lshort-zh-cn}}是真正意义上的{\LaTeX}介绍文档\emph{lshort}的中文翻译版本。内容翔实丰富，基本覆盖了一切用户所需要知道的内容。适于想要认真使用{\LaTeX}的用户仔细阅读。
+
+    \jumpto{https://www.overleaf.com/learn}{\emph{Overleaf Document}}是一套\textbf{纯英文}的进阶文档，基本涵盖了所有用得上的功能。适于比较着急的人，针对性阅读能解决自己当下问题的章节段落即可。
+
+    \emph{{\TeX}book}是高德纳写的{\TeX}指南，\jumpto{https://github.com/seuliang/the-texbook-cn}{\emph{有中文翻译}}。建议至少读完前言和第一章“此名有诗意”，可以更好地理解{\TeX}的功能和目的；继续阅读，则能学到很多不知道用不用得上的知识。但，我建议等{\LaTeX}不够你玩了的时候，再进行深入学习。
+
     \thispagestyle{mystyle}
 
 \end{sloppypar}
+
+% \clearpage
+
+% \begin{multicols}{2}
+%     \listoffigures
+%     \begingroup
+%     \let\clearpage\relax
+%     \listoftables
+%     \lstlistoflistings
+%     \endgroup
+% \end{multicols}
 
 \end{document}

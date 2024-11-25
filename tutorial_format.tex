@@ -3,7 +3,8 @@
 \newcommand{\mytitleen}{Typesetting Tutorial for \LaTeX}
 \newcommand{\mytitle}{\LaTeX 排版教程}
 \newcommand{\myauthor}{兔子草}
-\newcommand{\myquote}{\hfill ——排同人本，只需要一个浏览器\hspace{15mm}}
+\newcommand{\myquote}{\hfill ——排版，只需要一个浏览器\hspace{15mm}}
+\def\version{1.0}
 
 \input{./font.tex}
 % \input{../formats.tex}
@@ -27,7 +28,7 @@
 \hypersetup{colorlinks,linkcolor=black,urlcolor=darkgreen}
 \usepackage{metalogo}
 \usepackage{enumitem}
-\usepackage{ulem}
+\usepackage[normalem]{ulem}
 \usepackage{listings}
 \renewcommand{\lstlistingname}{代码}
 \renewcommand{\lstlistlistingname}{代码}
@@ -56,7 +57,7 @@
     commentstyle=\color{grayblue},
 }
 \usepackage{makecell}
-\newcommand{\emoji}[1]{\fontspec{Symbola}\symbol{#1}}
+\newcommand{\emoji}[1]{{\fontspec{Symbola}\symbol{#1}}}
 \newcommand{\checkmark}{
     \makebox[1\ccwd]{
         \fboxsep1.5pt
@@ -86,15 +87,15 @@
 \fancypagestyle{mystyle}{
     \fancyhf{}
     \fancyhead[CE]{\headfont\mytitle}
-    \fancyhead[CO]{\headfont BY \myauthor}
-    \fancyfoot[CO]{\hfill\headfont\leftmark\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{1.5em}}
+    \fancyhead[CO]{\headfont\uppercase\expandafter{\romannumeral\thechapter}\quad\leftmark}
+    \fancyfoot[CO]{\hfill\headfont BY \myauthor\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{1.5em}}
     \fancyfoot[RO]{\pagenumberfont\thepage}
     \fancyfoot[LE]{\pagenumberfont\thepage}
     \fancyfoot[CE]{\hspace{1.5em}\rule[-4pt]{0.3pt}{20pt}\qquad\headfont\uppercase\expandafter{\romannumeral\thechapter}\hfill}
 }
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyfoot[CO]{\hfill\headfont\leftmark\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{1.5em}}
+    \fancyfoot[CO]{\hfill\headfont BY \myauthor\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{1.5em}}
     \fancyfoot[RO]{\pagenumberfont\thepage}
     \fancyfoot[LE]{\pagenumberfont\thepage}
     \fancyfoot[CE]{\hspace{1.5em}\rule[-4pt]{0.3pt}{20pt}\qquad\headfont\uppercase\expandafter{\romannumeral\thechapter}\hfill}
@@ -109,7 +110,7 @@
 
 \setlength{\ptop}{21mm}
 \setlength{\pbottom}{21mm}
-\setlength{\pinner}{22mm}
+\setlength{\pinner}{14mm}
 \setlength{\pouter}{13.5mm}
 \setlength{\phsep}{.8\baselineskip}
 \setlength{\pfskip}{2.2\baselineskip}
@@ -128,8 +129,8 @@
     paperwidth=6.625in,
     paperheight=10.25in,
     top=\ptop,
-    outer=\pouter,
-    % inner=\pinner,
+    inner=\pinner,
+    % outer=\pouter,
     % bottom=\pbottom,
     textwidth=\charcount\ccwd,
     textheight=\theight,
@@ -153,23 +154,23 @@
 {\vspace{0.3em}\large\tocchapter}
 {\makebox[10mm][l]{\normalsize\uppercase\expandafter{\romannumeral\thecontentslabel}}}
 {}
-{\hspace{4mm}\tocpage\large\contentspage}[\vspace{0.3em}]
+{\hfill\tocpage\large\contentspage}[\vspace{0.3em}]
 
 \renewcommand{\tocsectlabel}{\fontspec{EB Garamond SmallCaps 12 Regular}[Numbers=Lining]}
 \renewcommand{\sectionfont}{\tocsectlabel\sbsong}
-\renewcommand{\subsectionfont}{\tocsubsection\sbsong}
+\renewcommand{\subsectionfont}{\tocsubsection\songti}
 \renewcommand{\tocsubsectlabel}{\subsectionfont}
 \titlecontents{section}
 [8mm]
 {\tocsection}
-{\tocsectlabel \S \hspace{0.1em}\makebox[1.2em][c]{\thecontentslabel}\hspace{1em}}{}
-{\hspace{5mm}\tocpage\contentspage}
+{\tocsectlabel \S \hspace{0.1em}\makebox[1.2em][c]{\thecontentslabel}\hspace{1em}\sectionfont}{}
+{\dotfill\tocpage\contentspage}
 
 \titlecontents{subsection}
-[12mm]
+[16mm]
 {\tocsubsection}
 {\small\tocsubsectlabel\hspace{0.2em}\makebox[1em][c]{\expandafter{\romannumeral\thecontentslabel}}\hspace{0.8em}}{}
-{\hspace{7mm}\small\tocpage\contentspage}{}
+{\dotfill\small\tocpage\contentspage}{}
 
 \titleformat{\chapter}{\centering\Large\chapterfont}{\uppercase\expandafter{\romannumeral\thechapter}}{1em}{}
 \titlespacing{\chapter}{0em}{.5\baselineskip}{2\baselineskip}
@@ -199,7 +200,7 @@
 \renewcommand{\titlefont}{\bcfont\bsong}
 \newcommand{\mytitlepage}{
     \null
-    \vfill
+    \vspace{.18\textheight}
     \thispagestyle{empty}
 
     \begin{center}
@@ -213,18 +214,18 @@
 
         {\mytitle}
 
-        \vspace{5mm}
+        \vspace{2mm}
 
         {\large\fangsong\myquote}
 
-        \vspace{.3\textheight}
+        \vspace{.32\textheight}
 
         \Large
 
         {\signfont BY \myauthor}
-    \end{center}
 
-    \vfill
+        {\large\signfont v\version}
+    \end{center}
 
     \clearpage
 }
@@ -240,3 +241,19 @@
 \usepackage{footnpag}
 
 \usepackage{emptypage}
+
+\usepackage{multicol}
+
+% \usepackage{mathfont}
+
+% \mathfont[greeklower]{EB Garamond 12 Italic}
+
+\newcommand{\myendpage}{
+    \clearpage
+    \ifodd\thepage
+    \else
+        \mbox{}
+        \thispagestyle{empty}
+        \clearpage
+    \fi
+}
