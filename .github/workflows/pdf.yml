@@ -1,13 +1,9 @@
-name: Build and Release LaTeX document
+name: Release LaTeX document
 
 on:
     push:
-        branches: [main]
         tags:
             - "v*"
-    pull_request:
-        branches: [main]
-    workflow_dispatch:
 
 jobs:
     build_release_latex:
@@ -16,10 +12,10 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Pack Pdfs
-              run: |
-                  cp main.pdf 模板说明.pdf
-            - name: Upload APK to GitHub Release
+            - name: rename main pdf
+              run: cp main.pdf 模板说明.pdf
+
+            - name: Upload Pdf to GitHub Release
               uses: softprops/action-gh-release@v2
               with:
                   files: |
