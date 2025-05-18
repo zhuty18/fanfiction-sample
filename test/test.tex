@@ -1,0 +1,124 @@
+\documentclass[a5paper,10pt]{article}
+\usepackage[fontset=none]{ctex}
+\usepackage{geometry}
+\geometry{
+    left=25mm,right=25mm,top=10mm,bottom=10mm
+}
+\usepackage{xcolor}
+\usepackage{ulem}
+
+\setCJKmainfont{Source Han Serif CN}[ItalicFont=FZFangSong-Z02]
+
+% \newcommand{\testtext}{
+
+% Hal低低地笑了：“我希望你把蝙蝠车留给Tim，然后回家。……他说愿意替你7个小时的班，让你休息一下。”}
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\test}[4][]{\fontspec[#1]{#2} #2
+
+\color{red}#3
+
+\color{blue}#4
+
+\color{black}中文Alpha与Omega对比2814中文ct sp st对比Gryffindor中文\textbf{加粗test加粗}Даαé中文\textit{Italic 1234 \S II \S IV \S V}对比
+
+\null}
+
+\newcommand{\testtitle}[2][]{\fontspec[#1]{#2} #2
+
+Detective Bruce Wayne IIX iix
+
+Hal Jordan of 2814
+
+\null}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\fontspec{Vollkorn}fontspec weight=400
+
+\fontspec{Vollkorn}[Weight=200]fontspec weight=200
+
+\fontspec{Vollkorn}[Weight=700]fontspec weight=700
+
+\test[ItalicFont=FZFangSong-Z02]{Source Han Serif CN}{没有斜体}
+
+\test[ItalicFont=FZFangSong-Z02, BoldFont=Source Han Serif CN Bold]{FZShuSong-Z01}{没有斜体}
+
+\test[ItalicFont=FZFangSong-Z02, BoldFont=Source Han Serif CN Bold]{FZKai-Z03}{没有斜体}
+
+\test[ItalicFont=FZFangSong-Z02, BoldFont=Source Han Serif CN Bold]{FZFangSong-Z02}{没有斜体}
+
+\test[ItalicFont=FZFangSong-Z02, BoldFont=Source Han Serif CN Bold]{FZHei-B01}{没有斜体}
+
+\test[Ligatures=Rare]{Accanthis ADF Std No3}{没有俄语、希腊字母}{连字不错，有拉丁字母变体}
+
+\test{Alegreya}{没有俄语、希腊字母}{连字一般，字形很舒服}
+
+\test{Andada}{没有俄语、希腊字母}{连字一般，字形很舒服}
+
+\test{Baskervald ADF Std}{没有俄语、希腊字母}{连字一般，字形很舒服}
+
+\test[Ligatures=Rare,Numbers=Lining]{Cormorant Medium}{没有俄语、希腊字母}{连字不错}
+
+\test{Crimson Roman}{}{字母很全，连字不错}
+
+\test[Ligatures=Rare,ItalicFont=EBGaramond08-Italic.otf,BoldFont=EBGaramond08-Regular.otf]{EBGaramond08-Regular.otf}{}{连字一般，字母很全，漂亮}
+
+\test[Ligatures=Rare,ItalicFont=EB Garamond 12 Italic,BoldFont=EBGaramond08-Regular.otf]{EB Garamond 12 Regular}{}{连字一般，字母很全，漂亮}
+
+% \test{Komika Hand}
+
+\test[Ligatures=Rare]{Libre Baskerville}{没有俄语、希腊字母}{连字不错}
+
+\test{Neuton}{没有连字}{}
+
+\test{Nimbus Roman No9 L}{}{连字一般，字母很全}
+
+\test{PT Serif}{没有希腊字母，连字有限}{}
+
+\test[Ligatures=Rare]{Romande ADF Std}{没有俄语、希腊字母}{连字不错}
+
+\test{Simonetta}{没有俄语、希腊字母，连字不行}{字形很俏丽}
+
+\test[Ligatures=Rare]{Spectral}{没有希腊字母}{连字不错}
+
+\test{Tribun ADF Std}{没有俄语、希腊字母}{连字一般}
+
+\test[Ligatures=Rare]{Vollkorn}{没有希腊字母}{挺漂亮的}
+
+\test{Chaparral Pro}{付费，没有俄语、希腊字母}{连字一般，漂亮}
+
+\test{Fira Sans}{}{黑体}
+
+\clearpage
+
+\huge
+
+\testtitle{Allura}
+
+\testtitle{BlackChancery}
+
+\testtitle{Cinzel}
+
+\testtitle{Cinzel Bold}
+
+\testtitle{Cinzel Black}
+
+\testtitle{Cinzel Decorative}
+
+\testtitle{Cinzel Decorative Bold}
+
+\testtitle{Cinzel Decorative Black}
+
+\testtitle{Condiment}
+
+\testtitle{Italianno}
+
+\testtitle{Precious}
+
+\testtitle{Scriptina}
+
+\end{document}
