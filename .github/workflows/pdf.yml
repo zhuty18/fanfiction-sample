@@ -1,0 +1,21 @@
+name: Build and Release LaTeX document
+
+on:
+    push:
+        branches: [main]
+        # tags:
+        # - 'v*'
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    build_release_latex:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Compile LaTeX document
+              uses: xu-cheng/latex-action@v3
+              with:
+                  root_file: main.tex
