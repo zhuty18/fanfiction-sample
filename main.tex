@@ -1,35 +1,98 @@
 \documentclass[10pt,openany]{book}
+\usepackage[
+    title=同人文本LaTeX模板,
+    author=兔子草,
+    hf
+]{tutemplate}
 
-% 基本内容
-\newcommand{\mytitleen}{Title in English}
-\newcommand{\mytitle}{同人文本LaTeX模板}
-\newcommand{\myauthor}{兔子草}
-\newcommand{\mycp}{Alice Bob / Carol David}
-\title{\mytitleen\\\mytitle}
-\author{\myauthor}
-\date{}
+\def\customizetitlepage{}
+\def\bookcp{Alice Bob / Carol David}
 
-% 基础定义
-\def\freefont{} % 使用免费商业字体
-\def\costomizetitlepage{} % 使用自定义扉页titlepage.tex
-% \def\bleed{} % 出血
-\def\fontpath{fonts/} % 字体所在路径
+% region 设置
+% 这一区域内的内容与模版无关，是为撰写说明文档准备的
 
-% 字体配置
-\input{font.tex}
-\input{formats}
-\hypersetup{colorlinks,linkcolor=black}
+% 设置署名
+\usepackage{graphics}
+\newcommand{\signature}{
+    \vfill
+    \setstretch{1.5}
+
+    \begin{figure}[h]
+        \hfill\includegraphics[width=2.8em]{headshot.png}\hspace{5.1em}
+    \end{figure}
+
+    \vspace{-1.5em}
+
+    \hfill by\bookauthor \hspace{5em}
+
+    \hfill\number\year.\number\month.\number\day\hspace{4.8em}
+
+    \vspace{2cm}
+}
+% 扉页
+\newcommand{\mytitlepage}{
+    \null
+    \vfill
+    \thispagestyle{empty}
+
+    \begin{center}
+        \Huge
+
+        \headfont\labelfontCJK\bfseries
+
+        {\booktitle}
+
+        \vspace{2mm}
+
+        \Large
+
+        \vspace{.3\textheight}
+
+        {\mdseries\bookcp}
+
+        \vspace{2mm}
+
+        {\sbseries BY \bookauthor}
+    \end{center}
+
+    \vfill
+
+    \clearpage
+}
+
+% 尾页
+\newcommand{\myendpage}{
+    \newpage
+    \ifodd\thepage
+        \blankpage
+    \fi
+
+    \newpage
+
+    \thispagestyle{empty}
+
+    \
+
+    \vfill
+
+    \begin{minipage}{50mm}
+
+        模板制作：兔子草
+
+    \end{minipage}
+    \vspace{5mm}
+}
+\newcommand{\link}[2]{\href{#1}{#2}\footnote{#2 : \href{#1}{#1}}}
+
+\hypersetup{colorlinks}
+\usepackage{pdfpages}
 \usepackage{subfiles}
 
 \begin{document}
-
 \pagestyle{mystyle}
 
-\ifdefined\costomizetitlepage
-    \subfile{titlepage}
-\else
-    \maketitle
-\fi
+\mytitlepage
+\newpage
 
 \tocgeo
 \tableofcontents
@@ -41,167 +104,278 @@
 
 \part{模板说明}
 
-\chapter{初始设置}
+\chapter{模版介绍}
 
-\section{基本内容}
+模版采用常见的A5纸张大小（148*210mm），\LaTeX 中常用的规定纸张尺寸方式，在模板中将\textbf{不会生效}。
 
-\texttt{main.tex}第3--10行，定义了一些基础信息，包括标题、作者、CP，视情况修改即可。
+\blankpar
 
-\section{基础定义}
+模板中参考出版社常见做法，使用\textbf{方正楷体}作为主字体的\textbf{粗体Bold}，\textit{方正仿宋}作为主字体的\textit{斜体Italic}，\textbf{\textit{方正黑体}}作为主字体的\textbf{\textit{粗斜体Bold Italic}}。
 
-\texttt{main.tex}第12--16行，使用定义的方式进行了基础定义。
+\blankpar
 
-\texttt{\textbackslash freefont}，启用代表使用免费商用字体（需要自行安装）。
+模版的主要英文字体EB Garamond带有的连字（Ligature）全部被启用。包括ff, fi, fl, ffi, ct, st, Th。
 
-\texttt{\textbackslash fontpath}，字体文件路径，定义后即从路径加载字体
+数字上，模板正文中使用等高数字1234567890，页码使用不等高数字\labelfont\itshape 1234567890\upshape\rmfamily。
 
-本模版配置字体如下：
+\blankpar
 
-英文：\href{https://www.1001fonts.com/eb-garamond-font.html}{\emph{EB Garamond}}，\href{https://www.1001fonts.com/vollkorn-font.html}{Vollkorn}，\href{https://www.1001fonts.com/allura-font.html}{Allura}，点击字体名跳转下载。更多拉丁文免费字体可在\href{https://1001fonts.com}{1001 Fonts (https://1001fonts.com)}上获取。代码使用\href{https://github.com/tonsky/FiraCode/releases/latest}{Fira Code}。
+模版的安装与使用方式见\nameref{template-use}。
 
-中文：\href{https://www.fonts.net.cn/font-31610316242.html}{方正书宋}、\href{https://www.fonts.net.cn/font-31609167689.html}{方正黑体}、\href{https://www.fonts.net.cn/font-31607222283.html}{方正楷体}、\href{https://www.fonts.net.cn/font-31602268591.html}{方正仿宋}、\href{https://github.com/adobe-fonts/source-han-serif/releases/latest}{思源宋体}、\href{https://github.com/adobe-fonts/source-han-sans/releases/latest}{思源黑体}，即为六种常用的商用免费中文正文字体。此处给出的思源系列为官方GitHub下载地址，可能出现一些连接不良，属正常现象。方正官方渠道需要登录，因此给出的是第三方下载链接。如果失效，自行找GBK后缀（书宋字体文件8.87M）的使用即可。GB2312或简体后缀（书宋字体文件2.63M）容易出现缺字。
+\blankpar
 
-\texttt{\textbackslash costomizetitlepage}，启用代表使用独立扉页设计，禁用则使用\LaTeX 内置的扉页。
+模版提供了若干可选项，见\nameref{template-option}。
 
-独立扉页文件为\texttt{titlepage.tex}，模版自带了一版设计。
+\blankpar
 
-\texttt{\textbackslash bleed}，启用代表增设出血（上下左右各3mm），禁用则代表按A5（148*210mm）输出\textbf{效果图}，不适宜直接用于打印。
+模版提供了一些个人认为比较有用的功能，见\nameref{template-feature}。
 
-\section{可用命令}
+\chapter{使用须知/Need to Know}
+\label{template-use}
 
-\texttt{\textbackslash blankpar} 此处为空白段
+\section{使用方法/Install}
 
-\texttt{\textbackslash blankpage} 插入空白页
+从\link{https://github.com/zhuty18/fanfiction-sample/releases/latest/tutemplate.sty}{模版地址}下载\texttt{tutemplate.sty}文件，加入自己的\LaTeX 目录中。在文档的导言区加入以下代码：
 
-\texttt{\textbackslash storyend[]} 完结，可选参数为打印内容，默认为“完”，格式如下
+\begin{verbatim}
+\usepackage{tutemplate}
+\end{verbatim}
+
+编译运行，大功告成！
+
+\section{字体安装}
+
+本模版带有两套字体，一套是\LaTeX 原生字体，只要安装了\LaTeX 即可使用；另一套是免费商用的字体，需要自行下载安装。
+
+默认使用免费商用字体，通过\verb|latexfont|选项切换到\LaTeX 字体。
+
+\begin{verbatim}
+\usepackage[latexfont]{tutempalte}
+\end{verbatim}
+
+\blankpar
+
+以下是配置的免费商用字体及其下载链接。
+
+\emph{注：为了尽量用上字体功能，安装时优先使用.otf类型，如果没有.otf，再使用其他格式的字体文件。}
+
+\begin{enumerate}
+    \item \link{https://www.1001fonts.com/eb-garamond-font.html}{EB Garamond}：主要内容的英文字体。使用了12 Regular、\textit{12 Italic}、\textbf{08 Regular}、\textbf{\textit{08 Italic}}四种字形。\labelfont
+    \item \link{https://www.1001fonts.com/vollkorn-font.html}{Vollkorn}：目录标签、页码的英文字体。使用了Regular、\textit{Italic}、\textsb{Medium}、\textsb{\textit{Medium Italic}}、\textbf{Semibold}、\textbf{\textit{Semibold Italic}}六种字形。\titlefont\scshape
+    \item \link{https://www.1001fonts.com/cinzel-font.html}{Cinzel}：基准字体组是目录和正文各级标题中的部分英文字体，使用了Regular、\textbf{Bold}两个字形。\upshape\infofont Decorative字形组是页眉页脚上的英文字体，使用了Regular一个字形。\titlefont
+    \item \link{https://github.com/adobe-fonts/source-han-serif/releases/latest}{思源宋体（Source Han Serif CN）}：正文各级标题中的另一部分英文字体、目录与正文各级标题中的中文字体、可选主中文字体之一。使用了Regular（基础字体）、\textsb{SemiBold（半粗体）}、\fontspec{Source Han Serif CN}\textbf{Bold（粗体）}三个字形。\sffamily
+    \item \link{https://www.1001fonts.com/fira-sans-font.html}{Fira Sans}：无衬线类型的英文字体，使用范围比较狭窄。\ttfamily
+    \item \link{https://github.com/tonsky/FiraCode/releases/latest}{Fira Code}：等宽字体，如果没有“复古”或“插入代码”两种需求的话，应该用不上。\rmfamily\shusong
+    \item \link{https://www.fonts.net.cn/font-31610316242.html}{方正书宋}：另一种可选主中文字体。需要注意的是，方正系列字体分为GB2312和GBK两种编码集的版本，模版里配置的加载方案只支持GBK版本。下同。\sffamily
+    \item \link{https://www.fonts.net.cn/font-31609167689.html}{方正黑体}：无衬线类型和等宽的中文字体、主中文字体的粗斜体。\infofont
+    \item \link{https://www.fonts.net.cn/font-31607222283.html}{方正楷体}：页眉页脚上的中文字体、主中文字体的粗体。\rmfamily\itshape
+    \item \link{https://www.fonts.net.cn/font-31602268591.html}{方正仿宋}：主中文字体的斜体。\upshape
+\end{enumerate}
+
+\chapter{模版选项}
+
+\label{template-option}
+
+\section{书名和作者}
+
+使用方式：
+
+\begin{verbatim}
+\usepackage[
+    title=书名,
+    author=作者
+]{tutemplate}
+\end{verbatim}
+
+定义后，后续可以用\verb|\booktitle|获取书名，\verb|\bookauthor|获取作者。
+
+书名会在一些页眉页脚上作为信息显示，因此建议配置此项。
+
+\section{版心}
+
+行高比例通过\verb|spacing|设置。
+
+\begin{verbatim}
+\usepackage[
+    spacing=行高（倍数）
+]{tutemplate}
+\end{verbatim}
+
+\blankpar
+
+模版里默认采用网格化排版，每页上正文行所在的纵向位置统一。通过配置每行字数和每页行数来修改版心大小。
+
+\textit{网格化为了兼容不同主字号，留有一定弹性空间，一页上有复数个标题时会失效。}
+
+\begin{verbatim}
+\usepackage[
+    char=每行字数,
+    line=每页行数
+]{tutemplate}
+\end{verbatim}
+
+可以通过\verb|nogrid|选项来关闭网格布局。
+
+\begin{verbatim}
+\usepackage[
+    nogrid
+]{tutemplate}
+\end{verbatim}
+
+\section{主字体}
+
+默认使用思源宋体作为主字体，可以通过\verb|shusong|选项切换。
+
+\begin{verbatim}
+\usepackage[shusong]{tutemplate}
+\end{verbatim}
+
+\section{页眉页脚}
+
+页眉页脚的模式如下：
+
+\verb|head|：页眉模式。上侧角落显示页码，无分隔线，上侧两端有所在位置标题。
+
+\verb|foot|：页脚模式。下侧角落显示页码，有分隔线，下侧两端有所在位置标题。
+
+\verb|none|：无标题模式。仅下侧角落显示页码，无分隔线。
+
+\verb|both|：页眉+页脚模式。下侧角落显示页码，有分隔线，下侧两端有所在位置标题。上侧右页（奇数页）中央有\verb|part|级标题，上侧左页（偶数页）中央有书名。
+
+
+所在位置标题：右页（奇数页）是\verb|chapter|级标题，左页（偶数页）是\verb|part|级标题。如果没有使用\verb|part|级标题，则以书名替代。
+
+默认页眉页脚设置为\verb|foot|，可以通过\verb|hf|选项来修改。
+
+\begin{verbatim}
+\usepackage[
+    hf=页眉页脚模式
+]{tutemplate}
+\end{verbatim}
+
+只使用\verb|hf|，不选择的话，对应\verb|both|模式。
+
+说明文档使用的是\verb|both|模式。
+
+\section{顶级标题}
+
+模版的默认标题设计，适用于最高级为\verb|part|的文档。
+
+对于最高级为\verb|chapter|的文档，有另一套标题设计。用\verb|chapter|选项切换。
+
+\begin{verbatim}
+\usepackage[chapter]{tutemplate}
+\end{verbatim}
+
+\section{出血}
+
+默认不进行出血，可以通过使用\verb|bleed|选项来为文档添加出血。
+
+\begin{verbatim}
+\usepackage[bleed]{tutemplate}
+\end{verbatim}
+
+默认出血大小为3mm，可以通过\verb|bleed=出血尺寸|来修改。
+
+\begin{verbatim}
+\usepackage[bleed=1mm]{tutemplate}
+\end{verbatim}
+
+\chapter{模版功能}
+\label{template-feature}
+
+\section{页面布局}
+
+模版提供三种页面布局：正文布局，目录布局（\verb|\tocgeo|）和图片布局（\verb|\picgeo|）。
+
+目录布局为目录设计，有更大的留白，文字位置更靠中间。
+
+图片布局为整页的插图设计，除了出血外无边框，便于插入图片。
+
+\section{字体预定义}
+
+预定义了两种宋体，思源宋体（\verb|\siyuan|）和方正书宋（\verb|\shusong|）。
+
+定义好了无衬线体（\verb|\sffamily|）和等宽体（\verb|\ttfamily|）。
+
+\section{排版美观}
+
+设置了每段段首缩进两格。
+
+设置了隐藏超链接，使得可以点击目录跳转，而不影响印刷效果。
+
+设置了标题后不可立即换页。
+
+设置了脚注不影响上方的行距。
+
+\section{空白环境}
+
+预定义好了空白页（\verb|\blankpage|）、空白段（\verb|\blankpar|）。
+
+设置了空白页不显示页眉页脚。
+
+\section{尾注}
+
+对于\verb|endnotes|包提供的尾注功能，配置了尾注标题，并设置了不允许尾注影响页眉页脚的标签。
+
+\section{完结标注}
+
+预定义\verb|\storyend|作为完结符号，如下。
 
 \storyend
 
-\texttt{\textbackslash splitdot} 插入1字宽的分隔号{\splitdot}
+可以用\verb|\storyend[完结信息]|来修改完结的具体字样，如。
 
-\texttt{\textbackslash chsline}插入2字宽的破折号{\chsline}
+\storyend[结束End]
 
-\texttt{\textbackslash tempsymbol}插入摄氏度符号{\tempsymbol}
+完结标注的字体默认与\verb|subsection|级标题的字体一致，可以在传参时手动修改。
 
-\texttt{\textbackslash prenotes{标题}}一种和\texttt{\textbackslash section*}不太一样的无序号小标题
+\section{标点符号}
 
-\chapter{进阶设置}
+分隔号{\splitdot}（\verb|\splitdot|）。由于重码原因，思源宋体的分隔号·太窄了，不够美观。在使用思源宋体作为主字体时，建议用此命令替代手打的分隔号。
 
-本文的字体配置在\texttt{font.tex}文件中；格式设定在\texttt{formats.tex}文件中。如果对某处设定不满意的话，可以自行修改模板。
+\textit{重码：部分中文标点符号与其他语言的标点符号共享utf-8编码，在多语言环境下无法区分。思源系列这部分编码使用的是英文版本。}
 
-模版中有一些注释，但不是很全面。如果有地方不能理解，或者需要其他的功能，推荐阅读我写的这篇\href{https://zhuty18.github.io/fanfiction/%E5%90%8C%E4%BA%BA%E6%9C%ACLaTeX%E6%8E%92%E7%89%88%E6%95%99%E7%A8%8B}{排版教程}。这个教程随时可能进行调整和补充。由于内容不断变化，就不放在这里了。
+{\chsline}破折号（\verb|\chsline|）。说来话长，很少有字体能够做到破折号占两个字宽的，所以直接定义了一个命令，强行令其排版正确。
 
-本文的拉丁正文字体启用了Rare (Discretionary)和Historic两类连字（ligature），因此ct、st、Th三个字母组合看起来会有点特别。不用疑惑，我故意的。
+摄氏度符号{\tempsymbol}（\verb|\tempsymbol|）。摄氏度符号属于重码标点，\LaTeX 引擎中默认按英文字体渲染。主英文字体EB Garamond中的摄氏度符号设计有误（℃），因此使用思源宋体进行替代。
+
+\section{文前注}
+
+设置了一种特别的标题\verb|\prenotes{标题}|，不改变字体，只调整间距。可以用来做正文开始前的小标题，如下。
+
+\prenotes{标题}
+
+在\verb|prenotes|后，使用\verb|\prenotesblank|来拉高其与下文的距离。
+
+\prenotesblank
+
+再简单一些，也可以使用\verb|\prenoteswith{标题}{内容}|，一键式搞定。
+
+\prenoteswith{标题}{内容}
+
+对于以\verb|chapter|为最高级标题的文档，\verb|prenotes|默认的间距会显得狭小，用\verb|\chapterblank|可以在\verb|prenotes|前加一段空白。
+
+如果\verb|chapter|的行数不统一，又希望\verb|prenotes|在同样的位置开始。可以添加\verb|\minuschapterline|，降低留白区的大小。
+
+每一个\verb|\minuschapterline|将降低一行\verb|chapter|文字的高度。
+
+\chapter{最后}
+
+本模版欢迎使用与优化，\link{https://github.com/zhuty18/fanfiction-sample}{项目位置}。
+
+我还写了一份\LaTeX 出本教程，欢迎查看。
+
+\link{https://zhuty18.github.io/fanfiction/同人本LaTeX排版教程}{教程在线版}
+
+\link{https://github.com/zhuty18/fanfiction-sample/releases/latest/tutorial.pdf}{教程pdf}
 
 \signature
 
-\part{假文}
+\part{模板展示}
 
-\chapter{混合排版}
+\includepdf[pages={1,2,3}]{sample/chapter.pdf}
 
-\prenotes{说明}
-
-由于目前没有中英文混合的Lorem Ipsum包\footnote{对此深感遗憾}可用，直接引用了一篇科普来作为中英文混合的内容填充样例\endnote{本文来源于\href{https://cn.lipsum.com/}{https://cn.lipsum.com/}}。
-
-\section*{正文}
-
-Lorem Ipsum，也称乱数假文或者哑元文本，是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
-
-恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
-
-以下展示了自1500世纪以来使用的标准Lorem Ipsum段落，西塞罗笔下“de Finibus Bonorum et Malorum”章节1.10.32 ， 1.10.33的原著作，以及其1914年译自H. Rackham的英文版本
-
-无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
-
-如今互联网提供各种各样版本的Lorem Ipsum段落，但是大多数都多多少少出于刻意幽默或者其他随机插入的荒谬单词而被篡改过了。如果你想取用一段Lorem Ipsum，请确保段落中不含有令人尴尬的不恰当内容。所有网上的Lorem Ipsum生成器都倾向于在必要时重复预先准备的部分，然而这个生成器则是互联网上首个确切的生成器。它使用由超过200个拉丁单词所构造的词典，结合了几个模范句子结构，来生成看起来恰当的Lorem Ipsum。因此，生成出的结果无一例外免于重复，刻意的幽默，以及非典型的词汇等等。
-
-Lorem Ipsum，也称乱数假文或者哑元文本，是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
-
-恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
-
-以下展示了自1500世纪以来使用的标准Lorem Ipsum段落，西塞罗笔下“de Finibus Bonorum et Malorum”章节1.10.32 ， 1.10.33的原著作，以及其1914年译自H. Rackham的英文版本
-
-无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
-
-如今互联网提供各种各样版本的Lorem Ipsum段落，但是大多数都多多少少出于刻意幽默或者其他随机插入的荒谬单词而被篡改过了。如果你想取用一段Lorem Ipsum，请确保段落中不含有令人尴尬的不恰当内容。所有网上的Lorem Ipsum生成器都倾向于在必要时重复预先准备的部分，然而这个生成器则是互联网上首个确切的生成器。它使用由超过200个拉丁单词所构造的词典，结合了几个模范句子结构，来生成看起来恰当的Lorem Ipsum。因此，生成出的结果无一例外免于重复，刻意的幽默，以及非典型的词汇等等。
-
-\vfill
-
-\theendnotes
-
-\chapter{纯中文}
-
-\section*{介绍}
-
-本文出自狗屁不通文章生成器\footnote{https://suulnnka.github.io/BullshitGenerator/index.html}。
-
-\section{测试文本}
-
-经过上述讨论，拿破仑·希尔在不经意间这样说过，不要等待，时机永远不会恰到好处。这启发了我，这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。叔本华说过一句富有哲理的话，普通人只想到如何度过时间，有才能的人设法利用时间。这句话语虽然很短，但令我浮想联翩。生活中，若中午吃什么出现了，我们就不得不考虑它出现了的事实。我认为，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。
-
-一般来讲，我们都必须务必慎重的考虑考虑。而这些并不是完全重要，更加重要的问题是，每个人都不得不面对这些问题。在面对这种问题时，一般来说，问题的关键究竟为何？一般来讲，我们都必须务必慎重的考虑考虑。既然如何，要想清楚，中午吃什么，到底是一种怎么样的存在。
-
-既然如此，普列姆昌德曾经提到过，希望的灯一旦熄灭，生活刹那间变成了一片黑暗。这句话语虽然很短，但令我浮想联翩。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。屠格涅夫曾经说过，你想成为幸福的人吗？但愿你首先学会吃得起苦。这句话语虽然很短，但令我浮想联翩。我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。既然如何，所谓中午吃什么，关键是中午吃什么需要如何写。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。中午吃什么，发生了会如何，不发生又会如何。这样看来。
-
-米歇潘说过一句富有哲理的话，生命是一条艰险的峡谷，只有勇敢的人才能通过。这不禁令我深思。韩非曾经说过，内外相应，言行相称。这不禁令我深思。要想清楚，中午吃什么，到底是一种怎么样的存在。塞内加曾经说过，勇气通往天堂，怯懦通往地狱。这启发了我，既然如何，一般来说，我们都知道，只要有意义，那么就必须慎重考虑。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。就我个人来说，中午吃什么对我的意义，不能不说非常重大。
-
-我认为，中午吃什么，发生了会如何，不发生又会如何。而这些并不是完全重要，更加重要的问题是，卡耐基曾经说过，我们若已接受最坏的，就再没有什么损失。这启发了我，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。莎士比亚说过一句富有哲理的话，人的一生是短的，但如果卑劣地过这一生，就太长了。这似乎解答了我的疑惑。塞内加曾经提到过，勇气通往天堂，怯懦通往地狱。我希望诸位也能好好地体会这句话。
-
-现在，解决中午吃什么的问题，是非常非常重要的。所以，我认为，一般来讲，我们都必须务必慎重的考虑考虑。我们都知道，只要有意义，那么就必须慎重考虑。经过上述讨论，所谓中午吃什么，关键是中午吃什么需要如何写。了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。中午吃什么，发生了会如何，不发生又会如何。
-
-在这种困难的抉择下，本人思来想去，寝食难安。海贝尔说过一句富有哲理的话，人生就是学校。在那里，与其说好的教师是幸福，不如说好的教师是不幸。这似乎解答了我的疑惑。我们不得不面对一个非常尴尬的事实，那就是，就我个人来说，中午吃什么对我的意义，不能不说非常重大。我们不得不面对一个非常尴尬的事实，那就是，我认为，而这些并不是完全重要，更加重要的问题是，带着这些问题，我们来审视一下中午吃什么。
-
-既然如此，问题的关键究竟为何？所谓中午吃什么，关键是中午吃什么需要如何写。总结的来说，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。莎士比亚说过一句富有哲理的话，人的一生是短的，但如果卑劣地过这一生，就太长了。这启发了我，那么，中午吃什么，到底应该如何实现。现在，解决中午吃什么的问题，是非常非常重要的。所以，文森特·皮尔曾经提到过，改变你的想法，你就改变了自己的世界。这似乎解答了我的疑惑。我认为，在这种困难的抉择下，本人思来想去，寝食难安。一般来说，那么，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。带着这些问题，我们来审视一下中午吃什么。
-
-西班牙曾经提到过，自知之明是最难得的知识。我希望诸位也能好好地体会这句话。卡耐基曾经说过，我们若已接受最坏的，就再没有什么损失。这似乎解答了我的疑惑。那么，既然如此，在这种困难的抉择下，本人思来想去，寝食难安。中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。从这个角度来看，既然如何，可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。中午吃什么因何而发生？爱迪生在不经意间这样说过，失败也是我需要的，它和成功对我一样有价值。这启发了我，吉格·金克拉说过一句富有哲理的话，如果你能做梦，你就能实现它。这似乎解答了我的疑惑。
-
-\storyend
-
-\chapter{测试章}
-
-塞涅卡曾经说过，生命如同寓言，其价值不在与长短，而在与内容。我希望诸位也能好好地体会这句话。在这种困难的抉择下，本人思来想去，寝食难安。就我个人来说，中午吃什么对我的意义，不能不说非常重大。这样看来，而这些并不是完全重要，更加重要的问题是，对我个人而言，中午吃什么不仅仅是一个重大的事件，还可能会改变我的人生。
-
-带着这些问题，我们来审视一下中午吃什么。那么，中午吃什么，到底应该如何实现。奥普拉·温弗瑞曾经说过，你相信什么，你就成为什么样的人。这启发了我，从这个角度来看，中午吃什么，发生了会如何，不发生又会如何。叔本华在不经意间这样说过，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这不禁令我深思。我们不得不面对一个非常尴尬的事实，那就是，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。可是，即使是这样，中午吃什么的出现仍然代表了一定的意义。既然如何，中午吃什么的发生，到底需要如何做到，不中午吃什么的发生，又会如何产生。这样看来。
-
-叔本华说过一句富有哲理的话，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这不禁令我深思。就我个人来说，中午吃什么对我的意义，不能不说非常重大。米歇潘曾经提到过，生命是一条艰险的峡谷，只有勇敢的人才能通过。带着这句话，我们还要更加慎重的审视这个问题：在这种困难的抉择下，本人思来想去，寝食难安。
-
-中午吃什么，发生了会如何，不发生又会如何。塞内加曾经提到过，勇气通往天堂，怯懦通往地狱。我希望诸位也能好好地体会这句话。我们都知道，只要有意义，那么就必须慎重考虑。我认为，带着这些问题，我们来审视一下中午吃什么。中午吃什么，到底应该如何实现。
-
-从这个角度来看，从这个角度来看，中午吃什么因何而发生？而这些并不是完全重要，更加重要的问题是，这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。问题的关键究竟为何？别林斯基曾经说过，好的书籍是最贵重的珍宝。
-
-带着这句话，我们还要更加慎重的审视这个问题：我认为，从这个角度来看，要想清楚，中午吃什么，到底是一种怎么样的存在。总结的来说，经过上述讨论，一般来说，我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。中午吃什么因何而发生？在这种困难的抉择下，本人思来想去，寝食难安。带着这些问题，我们来审视一下中午吃什么。本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。一般来说，从这个角度来看，一般来说，从这个角度来看，我们不得不面对一个非常尴尬的事实，那就是，了解清楚中午吃什么到底是一种怎么样的存在，是解决一切问题的关键。问题的关键究竟为何。
-
-\storyend
-
-\chapter{纯拉丁字母}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nisl felis, vestibulum efficitur velit nec, malesuada faucibus mi. Fusce consectetur ac urna cursus faucibus. Maecenas vitae tortor nulla. Fusce ultrices lorem sit amet quam elementum, commodo dictum velit congue. Nulla non lorem ac leo imperdiet dapibus id eget felis. Aliquam vestibulum eros quis odio interdum consectetur. Proin scelerisque enim non mi accumsan, eu cursus nisl gravida. Aenean sodales nisi sem, quis fringilla lorem gravida sed. Nunc vel tristique risus. Vivamus vel est suscipit, euismod neque at, iaculis libero.
-
-Aenean dapibus tempor urna, id mollis nibh commodo vitae. Cras a accumsan enim, vel ultrices ipsum. Sed ullamcorper elit sit amet velit interdum sollicitudin. Donec consequat purus hendrerit, ornare sem at, mollis lectus. Etiam consectetur ipsum ac nibh ornare vehicula. Integer eu quam nibh. In nisl lectus, ullamcorper sed pharetra eu, vehicula a nisl. Fusce euismod quam lacus,
-a blandit sapien tempor lacinia. Vivamus finibus fermentum magna ut ornare. Morbi semper ligula leo, id condimentum libero rutrum id.
-
-Aliquam finibus rutrum ante id sodales. Fusce non nibh est. Fusce quam turpis, condimentum in viverra quis, lacinia vitae libero. Cras mollis leo quis nibh mattis, vitae ornare sapien efficitur. Aliquam lobortis venenatis lobortis. Nunc massa urna, aliquet a lacus non, tincidunt porttitor erat. Sed a metus mollis, tincidunt mi vel, fermentum tortor. Quisque semper sollicitudin hendrerit. Aliquam sed laoreet lorem. Nullam sit amet rutrum diam, quis dictum diam. Ut iaculis ipsum ipsum, vel congue nisl dictum nec. Phasellus ornare augue turpis, feugiat faucibus leo maximus eu. Phasellus nec lacus viverra, viverra diam eget, dictum lacus. Duis hendrerit rhoncus scelerisque. Integer blandit tortor et lacus maximus, ut ornare ex fringilla.
-
-In et tortor bibendum, ornare lorem nec, pulvinar mauris. Nunc neque lacus, fringilla ac elementum et, iaculis sed leo. Phasellus consequat sed mauris sed varius. Pellentesque nec diam eleifend, porttitor lacus et, tempor orci. Nunc mattis sed sapien non maximus.
-
-Cras imperdiet nibh et ipsum hendrerit pellentesque. Praesent malesuada, tortor vitae fringilla fermentum, velit urna vulputate sem, a tristique velit lacus et nunc. Nullam sollicitudin felis nisi, ut ultrices justo imperdiet quis. Etiam commodo semper condimentum. Nunc quis leo fringilla, volutpat lectus vitae, lobortis sapien. Aenean pretium non lacus quis condimentum. Sed sed sem tempor, varius purus ultricies, ullamcorper lectus. Donec sed viverra dui, ac imperdiet dui. Sed tristique posuere elit, vel tincidunt elit aliquam nec. Vivamus id ipsum ac nisl vulputate feugiat a sed felis. Nunc varius justo sit amet ultrices vehicula.
-
-Donec vel purus accumsan lectus porttitor posuere. Suspendisse quis nunc volutpat, sodales tellus in, malesuada nisl. Donec tincidunt fringilla sem, in porttitor massa dignissim ultricies. Sed at commodo massa, consectetur gravida mi. Praesent placerat odio vitae libero porttitor tincidunt. Praesent euismod ac lacus eu condimentum. Phasellus congue, augue et fermentum semper, nisl mauris venenatis risus, eget tincidunt neque magna eget justo. Sed nisi turpis, dapibus eu porta vitae, facilisis non erat. Pellentesque porta arcu eget ultrices fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam accumsan ipsum id arcu finibus commodo. Nulla accumsan, leo id aliquet gravida, odio eros pharetra velit, eget feugiat justo leo et augue. Aliquam consectetur iaculis nisi id aliquam. Donec eget dictum neque. Aenean viverra mauris sit amet erat consectetur consectetur.
-
-Aenean et ultricies est, at sodales leo. Nulla facilisi. Fusce faucibus accumsan elit, quis sagittis mauris suscipit laoreet. Curabitur sagittis, tortor ac cursus sagittis, ex neque ultrices ex, interdum placerat velit nibh eget metus. Maecenas porttitor justo in felis congue convallis. Suspendisse scelerisque ultrices odio nec finibus. Duis ullamcorper massa a aliquet dictum.
-
-Nam lacus nisl, semper in metus sed, malesuada laoreet leo. In urna elit, lacinia in gravida sed, ornare ac purus. Duis rhoncus fermentum elementum. Sed molestie purus quis tortor rhoncus, accumsan feugiat arcu suscipit. In eu mi quis ex tincidunt maximus aliquam id sapien. In pulvinar dui eleifend convallis ullamcorper. Phasellus congue molestie felis faucibus maximus. Praesent ultrices magna ut risus bibendum gravida. Aliquam ac lectus enim. Vivamus id libero purus.
-
-Aliquam iaculis metus a tellus aliquam aliquet. Aliquam accumsan ornare erat. Suspendisse at est a metus consectetur scelerisque eu eget purus. Nam tempus sollicitudin nulla, quis semper purus. Praesent gravida, mi id egestas facilisis, elit nisi viverra dolor, quis tempor tellus justo a nibh. Nulla facilisi. In vitae dui eget mi sagittis eleifend. Sed vitae lobortis nisl. Aenean nec velit dolor. Vestibulum ut tellus dictum, iaculis quam vitae, mattis nibh. Sed hendrerit dolor quis quam dapibus volutpat id a orci. Donec sed condimentum nisl. Duis tempus est augue, nec hendrerit quam elementum ac.
-
-Praesent mollis faucibus felis vitae finibus. Nullam gravida risus nulla, in tempor risus venenatis id. Nullam varius tellus vitae nulla lobortis congue a vel velit. In in arcu at ligula ornare sagittis sed et ante. Phasellus auctor quam nisi, sed vehicula enim accumsan ac. Etiam tempus id felis tincidunt rhoncus. Ut suscipit augue quis tempus eleifend. Suspendisse potenti. Suspendisse potenti. Sed id arcu vel quam blandit rutrum. \endnote{Generated from https://www.lipsum.com/}
-
-\storyend[Ultimus]
-
-\vfill
-
-\theendnotes
-
-\myendpage
+\includepdf[pages={1,2,3}]{sample/foot.pdf}
 
 \end{document}

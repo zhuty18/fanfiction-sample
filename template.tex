@@ -1,0 +1,48 @@
+\documentclass[10pt]{extbook}
+\usepackage[
+    % title=书名
+    title=同人文LaTeX模板,
+    % author=作者
+    author=兔子草,
+    % 行高
+    % spacing=1.5,
+    % 每页字数，默认值如下
+    % char=32,line=27,
+    % 使用nogird选项：关闭网格排版模式
+    % nogrid,
+    % hf=页眉页脚设置方式，分别为head（只有页眉）,foot（只有页脚）,none（只有页码）,both（页眉+页脚）
+    % hf=foot,
+    % 使用bleed选项：增加出血。默认3mm，可以用bleed=出血尺寸来修改
+    % bleed,
+    % 使用chapter选项：以chapter为最高级别标题的风格
+    % chapter
+    % 使用shusong选项：以方正书宋作为正文主字体
+    % shusong,
+    % 使用latexfont选项：以ctex包的默认字体来编译文档。会严重影响画面美观程度
+    % latexfont,
+]{tutemplate}
+
+
+\usepackage{pdfpages}
+\begin{document}
+
+\pagestyle{mystyle}
+
+% 导入扉页
+% \includepdf{扉页.pdf}
+
+% 目录
+\tocgeo
+\tableofcontents
+\thispagestyle{empty}
+
+% 正文开始在右页，页码重新开始计数
+\cleardoublepage
+\setcounter{page}{1}
+\restoregeometry
+
+\chapter{正文}
+
+正文内容从这里开始。
+
+\end{document}

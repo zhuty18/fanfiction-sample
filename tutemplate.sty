@@ -1,0 +1,471 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tutemplate}[2025/05/15]
+
+\newcommand{\teststring}{测试字符串}
+
+% region 包选项
+\RequirePackage{kvoptions}
+
+\DeclareBoolOption[false]{shusong}
+
+\DeclareStringOption[32]{char}
+\DeclareStringOption[27]{line}
+\DeclareStringOption[1.5]{spacing}
+\DeclareStringOption[0mm]{bleed}[3mm]
+
+\DeclareStringOption[foot]{hf}[both]
+\def\hf@head{head}
+\def\hf@foot{foot}
+\def\hf@none{none}
+\def\hf@both{both}
+
+\DeclareStringOption[书名booktitle]{title}
+\DeclareStringOption[作者名bookauthor]{author}
+
+\DeclareBoolOption{latexfont}
+\DeclareBoolOption{chapter}
+\DeclareBoolOption{nogrid}
+
+\ProcessKeyvalOptions{tutemplate}
+
+% region 读取参数
+\newcommand{\booktitle}{\tutemplate@title}
+\newcommand{\bookauthor}{\tutemplate@author}
+\title{\booktitle}
+\author{\bookauthor}
+
+\def\charcount{\tutemplate@char}
+\def\linecount{\tutemplate@line}
+\newlength{\bleed}
+\setlength{\bleed}{\tutemplate@bleed}
+
+\def\hfoffset{2em}
+
+% region 字体
+\RequirePackage{fontspec}
+\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+\DeclareTextFontCommand{\textsb}{\sbseries}
+\DeclareRobustCommand\scshape{\upshape\fontshape{sc}\selectfont}
+\DeclareTextFontCommand{\textsc}{\scshape}
+\iftutemplate@latexfont
+    \RequirePackage{ctex}
+    \newcommand{\labelfont}{\rmfamily}
+    \newcommand{\titlefont}{\rmfamily}
+    \newcommand{\infofont}{\ttfamily}
+    \newcommand{\shusong}{\rmfamily}
+    \newcommand{\siyuan}{\rmfamily}
+\else
+    \RequirePackage[fontset=none]{ctex}
+    % 字体配置
+    % 主字体
+    \iftutemplate@shusong
+        \newcommand{\mainfont}{FZShuSong-Z01}
+    \else
+        \newcommand{\mainfont}{Source Han Serif CN}
+    \fi
+    \setmainfont{EB Garamond 12 Regular}[
+        Ligatures={Rare,Historic},
+        Numbers=Lining,
+        BoldFont=[EBGaramond08-Regular],
+        BoldItalicFont=[EBGaramond08-Italic]]
+    \setCJKmainfont{\mainfont}[
+        ItalicFont=FZFangSong-Z02,
+        BoldFont=FZKai-Z03,
+        BoldItalicFont=FZHei-B01
+    ]
+    % 等宽字体
+    \setmonofont{Fira Code Regular}
+    \setCJKmonofont{FZHei-B01}
+    % 无衬线体
+    \setsansfont{Fira Sans}
+    \setCJKsansfont{FZHei-B01}
+
+    % 书宋
+    \newCJKfontfamily\shusong{FZShuSong-Z01}
+    % 思源宋体
+    \newCJKfontfamily\siyuan{Source Han Serif CN}
+
+    % 目录字体
+    \newfontfamily\labelfonten{Vollkorn}[
+        BoldFont=* Semibold,
+        BoldItalicFont=* Semibold Italic,
+        FontFace={m}{sc}{Cinzel},
+        FontFace={sb}{n}{* Medium},
+        FontFace={sb}{it}{* Medium Italic},
+        FontFace={sb}{sc}{Cinzel Bold},
+        FontFace={b}{sc}{Cinzel Bold}
+    ]
+    \newCJKfontfamily\labelfontCJK{Source Han Serif CN}[
+        ItalicFont=*,
+        BoldItalicFont=* Bold,
+        FontFace={m}{sc}{*},
+        FontFace={sb}{n}{* SemiBold},
+        FontFace={sb}{it}{* SemiBold},
+        FontFace={sb}{sc}{* SemiBold},
+        FontFace={b}{sc}{* Bold}
+    ]
+    \newcommand{\labelfont}{\labelfonten\labelfontCJK}
+    % 章节标题字体
+    \newfontfamily\titlefonten{Source Han Serif CN}[
+        FontFace={m}{sc}{Cinzel},
+        FontFace={sb}{n}{* SemiBold},
+        FontFace={sb}{sc}{Cinzel},
+        FontFace={b}{sc}{Cinzel Bold},
+    ]
+    \newcommand{\titlefont}{\titlefonten\labelfontCJK}
+    % 页眉页脚字体
+    \newfontfamily\headfont{Cinzel Decorative}
+    \newCJKfontfamily\headfontCJK{FZKai-Z03}
+
+    \newcommand{\infofont}{\headfont\headfontCJK}
+
+\fi
+
+% region 文本
+% 首段缩进
+\RequirePackage{indentfirst}
+
+% 启用且隐藏超链接
+\RequirePackage{hyperref}
+\hypersetup{hidelinks}
+
+% 调整行距和段距
+\RequirePackage{setspace}
+\newcommand{\mysetspacing}{\setstretch{\tutemplate@spacing}}
+\setlength{\parskip}{0pt}
+\mysetspacing
+
+% region 页面配置
+
+\RequirePackage{geometry}
+% 主布局
+\newlength{\pw}
+\newlength{\ph}
+% A5 148*210
+\setlength{\pw}{148mm}
+\setlength{\ph}{210mm}
+
+\newlength{\ptop}
+\newlength{\pbottom}
+\newlength{\pinner}
+\newlength{\pouter}
+\newlength{\phsep}
+\newlength{\pfskip}
+
+\setlength{\ptop}{21mm}
+\setlength{\pbottom}{20.9mm}
+\setlength{\pinner}{19mm}
+\setlength{\pouter}{16.5mm}
+\setlength{\phsep}{0.8\baselineskip}
+\setlength{\pfskip}{2.2\baselineskip}
+\addtolength{\pfskip}{-1em}
+
+\setlength{\headheight}{\baselineskip}
+
+\newlength{\tocmargin}
+\setlength{\tocmargin}{27mm}
+
+\addtolength{\pw}{2\bleed}
+\addtolength{\ph}{2\bleed}
+\addtolength{\ptop}{\bleed}
+\addtolength{\pbottom}{\bleed}
+\addtolength{\pinner}{\bleed}
+\addtolength{\pouter}{\bleed}
+\addtolength{\tocmargin}{\bleed}
+
+\newcommand{\tocgeo}{
+    \newgeometry{inner=\tocmargin,outer=\tocmargin,top=\ptop,bottom=\ptop}
+}
+\newcommand{\picgeo}{
+    \newgeometry{top=\bleedlen,bottom=\bleedlen,inner=\bleedlen,outer=\bleedlen}
+}
+
+\newlength{\theight}
+\setlength{\theight}{\linecount\baselineskip}
+\addtolength{\theight}{1em}
+\addtolength{\theight}{-\baselineskip}
+
+\newcommand{\twidth}{\charcount\ccwd}
+
+\iftutemplate@nogrid
+    \geometry{
+        paperwidth=\pw,
+        paperheight=\ph,
+        top=\ptop,
+        bottom=\pbottom,
+        inner=\pinner,
+        outer=\pouter,
+        headsep=\phsep,
+        footskip=\pfskip
+    }
+\else
+    \geometry{
+        paperwidth=\pw,
+        paperheight=\ph,
+        top=\ptop,
+        inner=\pinner,
+        textwidth=\twidth,
+        textheight=\theight,
+        headsep=\phsep,
+        footskip=\pfskip
+    }
+\fi
+
+% region 页眉页脚
+% 每个part更新部名
+\newcommand{\parttitle}{\booktitle}
+
+\RequirePackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+% 去除页眉横线
+\renewcommand{\headrulewidth}{0pt}
+% 页码溢出
+\fancyhfoffset[RO,LE]{\hfoffset}
+\ifx\tutemplate@hf\hf@head
+    % 页眉溢出一点
+    \fancypagestyle{mystyle}{
+        \fancyhf{}
+        \fancyhead[CE]{\hspace{\hfoffset}\infofont\parttitle \hfill}
+        \fancyhead[CO]{\hfill\infofont\leftmark\hspace{\hfoffset}}
+        \fancyhead[LE]{\raisebox{.1em}{\small\labelfont\itshape\thepage\hfill}}
+        \fancyhead[RO]{\raisebox{.1em}{\hfill\small\labelfont\itshape\thepage}}
+    }
+    \fancypagestyle{plain}{
+        \fancyhf{}
+    }
+\else\ifx\tutemplate@hf\hf@foot
+        \fancypagestyle{mystyle}{
+            \fancyhf{}
+            \fancyfoot[CO]{\hfill\infofont\leftmark\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{\hfoffset}}
+            \fancyfoot[RO]{\labelfont\itshape\thepage}
+            \fancyfoot[LE]{\labelfont\itshape\thepage}
+            \fancyfoot[CE]{\hspace{\hfoffset}\rule[-4pt]{0.3pt}{20pt}\qquad\infofont\parttitle\hfill}
+        }
+        \fancypagestyle{plain}{
+            \fancyhf{}
+            \fancyfoot[CO]{\hfill\infofont\leftmark\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{\hfoffset}}
+            \fancyfoot[RO]{\labelfont\itshape\thepage}
+            \fancyfoot[LE]{\labelfont\itshape\thepage}
+            \fancyfoot[CE]{\hspace{\hfoffset}\rule[-4pt]{0.3pt}{20pt}\qquad\infofont\parttitle\hfill}
+        }
+    \else\ifx\tutemplate@hf\hf@none
+            \fancypagestyle{mystyle}{
+                \fancyhf{}
+                \fancyfoot[RO]{\labelfont\itshape\thepage}
+                \fancyfoot[LE]{\labelfont\itshape\thepage}
+            }
+            \fancypagestyle{plain}{
+                \fancyhf{}
+                \fancyfoot[RO]{\labelfont\itshape\thepage}
+                \fancyfoot[LE]{\labelfont\itshape\thepage}
+            }
+        \else\ifx\tutemplate@hf\hf@both
+                \fancypagestyle{mystyle}{
+                    \fancyhf{}
+                    \fancyhead[CE]{\infofont\booktitle}
+                    \fancyhead[CO]{\infofont\parttitle}
+                    \fancyfoot[CO]{\hfill\infofont\leftmark\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{\hfoffset}}
+                    \fancyfoot[RO]{\labelfont\itshape\thepage}
+                    \fancyfoot[LE]{\labelfont\itshape\thepage}
+                    \fancyfoot[CE]{\hspace{\hfoffset}\rule[-4pt]{0.3pt}{20pt}\qquad\infofont\parttitle\hfill}
+                }
+                \fancypagestyle{plain}{
+                    \fancyhf{}
+                    \fancyfoot[CO]{\hfill\infofont\leftmark\qquad\rule[-4pt]{0.3pt}{20pt}\hspace{\hfoffset}}
+                    \fancyfoot[RO]{\labelfont\itshape\thepage}
+                    \fancyfoot[LE]{\labelfont\itshape\thepage}
+                    \fancyfoot[CE]{\hspace{\hfoffset}\rule[-4pt]{0.3pt}{20pt}\qquad\infofont\parttitle\hfill}
+                }
+            \else
+                \renewcommand{\booktitle}{信息读取错误}
+                \fancypagestyle{mystyle}{
+                    \fancyhf{}
+                }
+                \fancypagestyle{plain}{
+                    \fancyhf{}
+                }
+
+            \fi
+        \fi
+    \fi
+\fi
+
+
+% region 标题
+\RequirePackage{titlesec}
+\titleformat{\part}[display]{\centering\huge\titlefont\bfseries\scshape}{\thepart}{1.5pc}{\thispagestyle{empty}}
+\titlespacing{\part}{0em}{.3\textheight}{0em}
+
+\titleformat{\section}{\titlefont\sbseries\scshape}{\upshape Chapter~\thesection}{1em}{}
+
+\titleformat{\subsection}{\titlefont\scshape}{0\thesubsection}{1em}{}
+
+\iftutemplate@chapter
+    \renewcommand{\contentsname}{
+    {\hspace{10mm}}目\hspace{0.75em}录{\hfill}
+    \vspace{5mm}
+    }
+    \titleformat{\chapter}{\titlefont\huge\bfseries\scshape}{}{1em}{\thispagestyle{empty}}
+    \titlespacing{\chapter}{0em}{5em}{1em}
+
+    \titlespacing{\section}{2em}{2\baselineskip plus 2pt minus 2pt}{.9\baselineskip plus 2pt minus 2pt}
+
+    \titlespacing{\subsection}{2em}{.5\baselineskip}{.5\baselineskip}
+    \newcommand{\minuschapterline}{{\huge\vspace{-\baselineskip}}}
+\else
+    \renewcommand{\contentsname}{
+        目\quad 录
+    }
+    \titleformat{\chapter}{\centering\Large\titlefont\bfseries\scshape}{}{0em}{}
+    \titlespacing{\chapter}{0em}{.5\baselineskip plus 2pt minus 2pt}{2\baselineskip plus 2pt minus 2pt}
+
+    \titlespacing{\section}{2em}{1.4\baselineskip plus 2pt minus 2pt}{.5\baselineskip plus 2pt minus 2pt}
+
+    \titlespacing{\subsection}{2em}{.5\baselineskip plus 2pt minus 2pt}{.5\baselineskip plus 2pt minus 2pt}
+    \newcommand{\minuschapterline}{{\Large\vspace{-\baselineskip}}}
+\fi
+
+% region 目录
+% 不带上级目录计数
+\counterwithout{section}{chapter}
+\counterwithout{subsection}{section}
+% 目录格式
+\RequirePackage{titletoc}
+% 章节符号
+\def\myss{\labelfont\textsb{\textit{\S}}}
+
+\titlecontents{part}
+[0em]
+{\vspace{1em}\Large\labelfont\sbseries\itshape}
+{}
+{}
+{\hspace{4mm}\mdseries\contentspage}[\vspace{0.5em}]
+
+\titlecontents{chapter}
+[6mm]
+{\vspace{0.3em}\large\labelfont\sbseries\itshape}
+{\makebox[10mm][l]{\myss\hspace{0.1em}\normalsize\uppercase\expandafter{\romannumeral\thecontentslabel}}\upshape\scshape}
+{}
+{\hspace{4mm}\mdseries\upshape\itshape\large\contentspage}[\vspace{0.3em}]
+
+\titlecontents{section}
+[12mm]
+{\labelfont\scshape}
+{\makebox[1.9em][l]{\small\romannumeral\thecontentslabel}}{}
+{\hspace{5mm}\mdseries\upshape\itshape\contentspage}[\vspace{0.1em}]
+
+\titlecontents{subsection}
+[18mm]
+{\small\labelfont\scshape}
+{0\thecontentslabel\hspace{1em}\mdseries}{}
+{\hspace{5mm}\mdseries\upshape\itshape\contentspage}[]
+
+% 每页重置脚注编号
+\RequirePackage{footnpag}
+
+% region 空白
+
+% 空白页
+\newcommand{\blankpage}{
+    \newpage
+    \makebox{}
+    \thispagestyle{empty}
+    \newpage
+}
+
+% 空白页无页眉页脚
+\RequirePackage{emptypage}
+
+% 空白段
+\newcommand{\blankpar}{
+    ~\
+}
+
+% region 尾注
+\RequirePackage{endnotes}
+\renewcommand{\notesname}{注：}
+\renewcommand{\enoteheading}{\section*{\notesname}\mbox{}\par\vskip-\baselineskip}
+\renewcommand{\theendnote}{\roman{endnote}}
+
+% region 功能命令
+% 故事完
+\newcommand{\storyend}[1][完]{
+    \nopagebreak
+    \vspace{1.5\baselineskip}
+
+    \blankpar
+
+    \hfill {\titlefont\scshape #1} \hspace{5em}
+
+    \vspace{2.5\baselineskip}
+}
+
+% 特殊符号和字体
+\newcommand{\splitdot}{{\shusong ·}}
+
+\newcommand{\tempsymbol}{{\titlefont ℃}}
+
+\newcommand{\chsline}{\makebox[2em]{——}}
+
+% 章前注
+% 章前注的参数
+\newcommand{\chapterblank}{\vspace{4.65\baselineskip}}
+\newcommand{\prenotesblank}{\vspace{1\baselineskip}}
+% 使用章前注
+\newcommand{\prenotes}[1]{
+    \vspace{1.3\baselineskip}
+    {\labelfont #1}
+    \vspace{.2\baselineskip}
+}
+\newcommand{\prenoteswith}[2]{
+    \prenotes{#1}
+
+    #2
+
+    \prenotesblank
+}
+
+% 让脚注不影响上文的行距
+\RequirePackage[bottom]{footmisc}
+% 脚注上方高度
+\setlength{\footnotesep}{8pt}
+% 脚注上方横线
+\renewcommand{\footnoterule}{
+    \kern -2pt
+    \hrule width .25\textwidth height 0.5pt
+    \kern 1.5pt
+}
+
+% 标题后不立即换页
+\RequirePackage{etoolbox}
+\makeatletter
+% 页码宽度
+\renewcommand{\contentspage}[1][\thecontentspage]{\hb@xt@\@pnumwidth{#1\hfil}}
+\renewcommand{\@pnumwidth}{9mm}
+% 每章重置尾注编号
+\@addtoreset{endnote}{chapter}  % Reset endnote numbering every new chapter
+\@addtoreset{subsection}{section} % Reset subsection numbering every new section
+\@addtoreset{section}{chapter} % Reset section numbering every new chapter
+\@addtoreset{chapter}{part}  % Reset chapter numbering every new part
+% 章节标题后不可立即换页
+\patchcmd{\@afterheading}%
+{\clubpenalty \@M}{\clubpenalties 3 \@M \@M 0}{}{}
+\patchcmd{\@afterheading}%
+{\clubpenalty \@clubpenalty}{\clubpenalties 2 \@clubpenalty 0}{}{}
+\makeatother
+
+% 每定义一个part更新标签
+\let\origpart\part
+\renewcommand*{\part}[2][]{
+    \ifx\\#1\\% optional argument not present?
+    \origpart{#2}
+        \renewcommand*\parttitle{#2}
+    \else
+    \origpart[#1]{#2}
+        \renewcommand*\parttitle{#1}
+    \fi
+    \mysetspacing
+}
+
+\endinput
