@@ -6,6 +6,7 @@
 }
 \usepackage{xcolor}
 \usepackage{ulem}
+\usepackage{fontspec}
 
 \setCJKmainfont{Source Han Serif CN}[ItalicFont=FZFangSong-Z02]
 
@@ -17,11 +18,23 @@
 
 \newcommand{\test}[4][]{\fontspec[#1]{#2} #2
 
-\color{red}#3
+\color{red} #3
 
-\color{blue}#4
+\color{blue} #4
 
 \color{black}中文Alpha与Omega对比2814中文ct sp st对比Gryffindor中文\textbf{加粗test加粗}Даαé中文\textit{Italic 1234 \S II \S IV \S V}对比
+
+\null}
+
+\newcommand{\testcode}[4][]{\fontspec[#1]{#2} #2
+
+\color{red} #3
+
+\color{blue} #4
+
+\color{black}代码测试1|lI <= >= !=代码测试0oO代码测试01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+\textit{斜体样式01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
 
 \null}
 
@@ -91,7 +104,13 @@ Hal Jordan of 2814
 
 \test{Chaparral Pro}{付费，没有俄语、希腊字母}{连字一般，漂亮}
 
+\clearpage
+
 \test{Fira Sans}{}{黑体}
+
+\testcode[StylisticSet=1]{Cascadia Code}{Regular适用于编辑器，用进文章里显得粗}{喜欢这套花里胡哨的斜体}
+
+\testcode{Fira Code}{没有斜体，文字略宽}{字重比较板正合适}
 
 \clearpage
 
